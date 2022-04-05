@@ -61,3 +61,8 @@ repos:
   - id: yamlfmt
     name: format YAML files
     args: [--mapping, '2', --sequence, '2', --offset, '0', --width, '250']
+
+- repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+  rev: 2.4.0
+  hooks:
+  - id: editorconfig-checker
