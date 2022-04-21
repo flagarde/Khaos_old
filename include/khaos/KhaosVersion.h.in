@@ -1,0 +1,40 @@
+/** \file KhaosVersion.h
+ *  \copyright 2022 flagarde
+ *
+ *  \brief Macros providing the Khaos version.
+ *
+ *  \details Contain the macros to obtain the version and version tweak of Khaos.
+ *
+ *  \note Use these macros only if you need preprocessor version checking.
+ *  \note For example :
+ *  \code{.cpp}
+ *  #if KHAOS_GET_VERSION_MAJOR(KHAOS_VERSION == 2
+ *    //...
+ *  #else
+ *    //...
+ *  #endif
+ *  \endcode
+ */
+
+#ifndef KHAOS_KHAOSVERSION_H_
+#define KHAOS_KHAOSVERSION_H_
+
+/*!
+  \brief Khaos version. \hideinitializer
+  \returns Khaos version in integer literal UL form.
+  \note Use #KHAOS_GET_VERSION_MAJOR(version), #KHAOS_GET_VERSION_MINOR(version), #KHAOS_GET_VERSION_PATCH(version) to parse it.
+*/
+// clang-format off
+#define KHAOS_VERSION_PRIVATE()       (((@Khaos_VERSION_MAJOR@UL % 100) * 10000000) + ((@Khaos_VERSION_MINOR@UL % 100) * 100000) + (@Khaos_VERSION_PATCH@UL % 100000))
+// clang-format on
+
+/*!
+  \brief Khaos version tweak. \hideinitializer
+  \returns Khaos version tweak in integer literal UL form.
+  \note Use #KHAOS_GET_VERSION_TWEAK(version) to parse it.
+*/
+// clang-format off
+#define KHAOS_VERSION_TWEAK_PRIVATE() (@Khaos_VERSION_TWEAK@UL % 100000)
+// clang-format on
+
+#endif  // KHAOS_KHAOSVERSION_H_
