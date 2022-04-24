@@ -10,7 +10,7 @@ lint:
   local_var_pattern: '[A-Za-z][A-Za-z0-9_]+'
   private_var_pattern: _[0-9a-z_]+
   public_var_pattern: '[A-Z][0-9A-Z_]+'
-  argument_var_pattern: '[a-z][a-z0-9_]+'
+  argument_var_pattern: '[A-Za-z][A-Za-z0-9_]+'
   keyword_pattern: '[A-Z][0-9A-Z_]+'
   max_conditionals_custom_parser: 2
   min_statement_spacing: 1

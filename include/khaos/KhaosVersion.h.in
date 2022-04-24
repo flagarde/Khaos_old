@@ -8,7 +8,7 @@
  *  \note Use these macros only if you need preprocessor version checking.
  *  \note For example :
  *  \code{.cpp}
- *  #if KHAOS_GET_VERSION_MAJOR(KHAOS_VERSION == 2
+ *  #if GET_VERSION_MAJOR(Khaos) == 2
  *    //...
  *  #else
  *    //...
@@ -22,19 +22,19 @@
 /*!
   \brief Khaos version. \hideinitializer
   \returns Khaos version in integer literal UL form.
-  \note Use #KHAOS_GET_VERSION_MAJOR(version), #KHAOS_GET_VERSION_MINOR(version), #KHAOS_GET_VERSION_PATCH(version) to parse it.
+  \note Use #GET_VERSION_MAJOR(Khaos), #GET_VERSION_MINOR(Khaos), #GET_VERSION_PATCH(Khaos) to parse it.
 */
 // clang-format off
-#define KHAOS_VERSION_PRIVATE()       (((@Khaos_VERSION_MAJOR@UL % 100) * 10000000) + ((@Khaos_VERSION_MINOR@UL % 100) * 100000) + (@Khaos_VERSION_PATCH@UL % 100000))
+#define KHAOS_VERSION_Khaos_PRIVATE()       (((@Khaos_VERSION_MAJOR@UL % 100) * 10000000) + ((@Khaos_VERSION_MINOR@UL % 100) * 100000) + (@Khaos_VERSION_PATCH@UL % 100000))
 // clang-format on
 
 /*!
   \brief Khaos version tweak. \hideinitializer
   \returns Khaos version tweak in integer literal UL form.
-  \note Use #KHAOS_GET_VERSION_TWEAK(version) to parse it.
+  \note Use #GET_VERSION_TWEAK(Khaos) to parse it.
 */
 // clang-format off
-#define KHAOS_VERSION_TWEAK_PRIVATE() (@Khaos_VERSION_TWEAK@UL % 100000)
+#define KHAOS_VERSION_Khaos_TWEAK_PRIVATE() (@Khaos_VERSION_TWEAK@UL % 100000)
 // clang-format on
 
 #endif  // KHAOS_KHAOSVERSION_H_

@@ -10,7 +10,7 @@
  *  \note Use these macros only if you need preprocessor version checking.
  *  \note For example :
  *  \code{.cpp}
- *  #if KHAOS_VERSION_GREATER(version1,version2)
+ *  #if CHECK_VERSIONS(version1,==,version2)
  *   //...
  *  #else
  *   //...
@@ -19,58 +19,25 @@
  */
 
 /** \hideinitializer
- *  \brief Check if version is greater than the major, minor, patch .
- *  \param[in] version .
- *  \param[in] major .
- *  \param[in] minor .
- *  \param[in] patch .
+ *  \brief Check the \b version with \b major, \b minor, \b patch using the operator \b op
+ *  \param[in] version version to compare.
+ *  \param[in] op operator =, !=, >=, <= >, < .
+ *  \param[in] major major part.
+ *  \param[in] minor minor part.
+ *  \param[in] patch patch part.
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define KHAOS_VERSION_GREATER(version, major, minor, patch) (version##_PRIVATE() > KHAOS_SET_VERSION(major, minor, patch))
+#define CHECK_VERSION(version, op, major, minor, patch) ((KHAOS_VERSION_##version##_PRIVATE())op(SET_VERSION(major, minor, patch)))
 
 /** \hideinitializer
- *  \brief Check if version is greater or equal than major, minor, patch .
- *  \param[in] version .
- *  \param[in] major .
- *  \param[in] minor .
- *  \param[in] patch .
+ *  \brief Check the \b versiona with \b versionb using the operator \b op
+ *  \param[in] versiona version to compare.
+ *  \param[in] op operator =, !=, >=, <= >, < .
+ *  \param[in] versionb version to compare.
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define KHAOS_VERSION_GREATER_EQUAL(version, major, minor, patch) (version##_PRIVATE() >= KHAOS_SET_VERSION(major, minor, patch))
-
-/** \hideinitializer
- *  \brief Check if version is equal than major, minor, patch .
- *  \param[in] version .
- *  \param[in] major .
- *  \param[in] minor .
- *  \param[in] patch .
- *
- *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
- */
-#define KHAOS_VERSION_EQUAL(version, major, minor, patch) (version##_PRIVATE() == KHAOS_SET_VERSION(major, minor, patch))
-
-/** \hideinitializer
- *  \brief Check if version is lower or equal than major, minor, patch .
- *  \param[in] version .
- *  \param[in] major .
- *  \param[in] minor .
- *  \param[in] patch .
- *
- *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
- */
-#define KHAOS_VERSION_LOWER_EQUAL(version, major, minor, patch) (version##_PRIVATE() <= KHAOS_SET_VERSION(major, minor, patch))
-
-/** \hideinitializer
- *  \brief Check if version is lower than major, minor, patch .
- *  \param[in] version .
- *  \param[in] major .
- *  \param[in] minor .
- *  \param[in] patch .
- *
- *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
- */
-#define KHAOS_VERSION_LOWER(version, major, minor, patch) (version##_PRIVATE() < KHAOS_SET_VERSION(major, minor, patch))
+#define CHECK_VERSIONS(a, op, b) ((KHAOS_VERSION_##a##_PRIVATE())op(KHAOS_VERSION_##b##_PRIVATE()))
 
 #endif  // KHAOS_COMPAREVERSIONMACROS_H_
