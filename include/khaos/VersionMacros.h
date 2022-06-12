@@ -20,12 +20,11 @@
 
 /** \hideinitializer
  *  \brief Set standard version numbers.
- *  \param[in] major The major number can be in the [0,99] range.
- *  \param[in] minor The minor number can be in the [0,99] range.
- *  \param[in] patch The patch number can be in the [0,99999] range.
+ *  \param[in] major The major number can be in the [0,255] range.
+ *  \param[in] minor The minor number can be in the [0,255] range.
+ *  \param[in] patch The patch number can be in the [0,65535] range.
  *
- *  \remark Decimal base whole numbers in the range [0,1000000000).
- *  \remarks The number range is designed to allow for a (2,2,5) triplet; Which fits within a 32 bit value.
+ *  \remarks The number range is designed to allow for a (8,8,16) triplet; Which fits within a 32 bit value.
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  *  \note Values can be specified in any base. As the defined value is an constant expression.
@@ -36,7 +35,7 @@
  *  #define KHAOS_VERSION_myversion_PRIVATE() SET_VERSION(2,3,4)
  *  \endcode
  */
-#define SET_VERSION(major, minor, patch) ((((major)*1UL % 100) * 10000000) + (((minor)*1UL % 100) * 100000) + ((patch)*1UL % 100000))
+#define SET_VERSION(major, minor, patch) ((((major)*1UL % 256) << 24) + (((minor)*1UL % 256) << 16) + ((patch)*1UL % 65536))
 
 /** \hideinitializer
  *  \brief Set standard tweak (build) numbers.
@@ -51,7 +50,7 @@
  *  #define KHAOS_VERSION_myversion_TWEAK_PRIVATE() SET_VERSION_TWEAK(10)
  *  \endcode
  */
-#define SET_VERSION_TWEAK(tweak) ((tweak)*1UL % 100000)
+#define SET_VERSION_TWEAK(tweak) ((tweak)*1UL % 65536)
 
 /** \hideinitializer
  *  \brief Get standard major version numbers.
@@ -59,7 +58,7 @@
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_MAJOR(version) (((KHAOS_VERSION_##version##_PRIVATE()) * 1UL / 10000000) % 100)
+#define GET_VERSION_MAJOR(version) (((KHAOS_VERSION_##version##_PRIVATE()) * 1UL >> 24) % 256)
 
 /** \hideinitializer
  *  \brief Get standard minor version numbers.
@@ -67,7 +66,7 @@
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_MINOR(version) (((KHAOS_VERSION_##version##_PRIVATE()) * 1UL / 100000) % 100)
+#define GET_VERSION_MINOR(version) (((KHAOS_VERSION_##version##_PRIVATE()) * 1UL >> 16) % 256)
 
 /** \hideinitializer
  *  \brief Get standard patch version numbers.
@@ -75,7 +74,7 @@
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_PATCH(version) ((KHAOS_VERSION_##version##_PRIVATE()) * 1UL % 100000)
+#define GET_VERSION_PATCH(version) ((KHAOS_VERSION_##version##_PRIVATE()) * 1UL % 65536)
 
 /** \hideinitializer
  *  \brief Get standard tweak version numbers.
@@ -83,6 +82,6 @@
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_TWEAK(version) ((KHAOS_VERSION_##version##_TWEAK_PRIVATE()) * 1UL % 100000)
+#define GET_VERSION_TWEAK(version) ((KHAOS_VERSION_##version##_TWEAK_PRIVATE()) * 1UL % 65536)
 
 #endif  // KHAOS_VERSIONMACROS_H_
