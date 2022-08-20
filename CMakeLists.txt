@@ -7,7 +7,7 @@ option(BUILD_TESTS "Build the tests" ON)
 
 if(BUILD_DOCS OR BUILD_TESTS)
   include(GetCMakeMM)
-  cmmm(VERSION 2.2 REPOSITORY flagarde/CMakeMM)
+  cmmm(VERSION 2.3 REPOSITORY flagarde/CMakeMM)
 
   cmmm_modules_list(REPOSITORY flagarde/CMakeCM)
 endif()

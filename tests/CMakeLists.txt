@@ -1,4 +1,12 @@
-include(Doctest)
+list(FIND CMAKE_CXX_COMPILE_FEATURES cxx_std_11 CPP_STANDARD_FOUND)
+if(CPP_STANDARD_FOUND STREQUAL "-1")
+	include(Missives)
+	missive(ERROR "Compiler ${CMAKE_CXX_COMPILER_ID} is too old to run doctest")
+	missive(ERROR "Tests disabled")
+	return()
+else()
+	include(Doctest)
+endif()
 
 if(POLICY CMP0110)
   cmake_policy(SET CMP0110 NEW)
