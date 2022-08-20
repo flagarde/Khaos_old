@@ -5,17 +5,18 @@ if(POLICY CMP0110)
 endif()
 
 add_library(KhaosTestFlags INTERFACE)
+
 target_compile_options(KhaosTestFlags INTERFACE
-          $<$<CXX_COMPILER_ID:Clang>:-Wall -Weverything -Wpedantic -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-padded>
-          $<$<CXX_COMPILER_ID:GNU>:-Wall -Wextra -Wpedantic>
-          $<$<CXX_COMPILER_ID:Intel>:-Wall -Wextra -Wpedantic>
-          $<$<CXX_COMPILER_ID:IntelLLVM>:-Wall -Wextra -Wpedantic>
-          $<$<CXX_COMPILER_ID:MSVC>:/W4>
-          $<$<C_COMPILER_ID:Clang>:-Wall -Weverything -Wpedantic -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-padded>
-          $<$<C_COMPILER_ID:GNU>:-Wall -Wextra -Wpedantic>
-          $<$<C_COMPILER_ID:IntelLLVM>:-Wall -Wextra -Wpedantic>
-          $<$<C_COMPILER_ID:Intel>:-Wall -Wextra -Wpedantic>
-          $<$<C_COMPILER_ID:MSVC>:/W4>)
+	$<$<CXX_COMPILER_ID:Clang>:-Wall -Weverything -pedantic -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-padded>
+	$<$<CXX_COMPILER_ID:GNU>:-Wall -Wextra -pedantic>
+	$<$<CXX_COMPILER_ID:Intel>:-Wall -Wextra -pedantic>
+	$<$<CXX_COMPILER_ID:IntelLLVM>:-Wall -Wextra -pedantic>
+	$<$<CXX_COMPILER_ID:MSVC>:/W4>
+	$<$<C_COMPILER_ID:Clang>:-Wall -Weverything -pedantic -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-padded>
+	$<$<C_COMPILER_ID:GNU>:-Wall -Wextra -pedantic>
+	$<$<C_COMPILER_ID:IntelLLVM>:-Wall -Wextra -pedantic>
+	$<$<C_COMPILER_ID:Intel>:-Wall -Wextra -pedantic>
+	$<$<C_COMPILER_ID:MSVC>:/W4>)
 
 add_executable(KhaosVersion.test KhaosVersion.test.cpp)
 target_link_libraries(KhaosVersion.test PRIVATE Khaos::Headers doctest_with_main KhaosTestFlags)
