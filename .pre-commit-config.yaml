@@ -35,7 +35,7 @@ repos:
     args: [--allow-multiple-documents]
 
 - repo: https://github.com/jumanjihouse/pre-commit-hooks
-  rev: 2.1.6
+  rev: 3.0.0
   hooks:
   - id: check-mailmap
     name: detect if an email address needs to be added to mailmap
