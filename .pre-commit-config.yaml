@@ -90,7 +90,7 @@ repos:
   hooks:
   - id: clang-format
   - id: clang-tidy
-    args: [-Bbuild, --config-file=.clang-tidy]
+    args: [-Bbuild, --config=]
   - id: cppcheck
     args: [-Bbuild, --suppressions-list=.cppcheck]
   - id: include-what-you-use

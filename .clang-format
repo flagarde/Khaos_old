@@ -3,7 +3,7 @@ Language: Cpp
 BasedOnStyle: LLVM
 AccessModifierOffset: -2
 AlignAfterOpenBracket: Align
-AlignConsecutiveMacros: AcrossComments
+AlignConsecutiveMacros: AcrossEmptyLinesAndComments
 AlignConsecutiveAssignments: AcrossComments
 AlignConsecutiveDeclarations: AcrossComments
 AlignEscapedNewlines: Left
