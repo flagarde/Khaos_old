@@ -24,7 +24,7 @@ jobs:
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Install packages
-      run: apk --update-cache add clang-tidy cppcheck iwyu
+      run: apk --update-cache add clang-extra-tools cppcheck include-what-you-use
 
     - name: 🔧 Configure
       run: cmake -S . -B ./build -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTS=ON -DBUILD_DOCS=OFF -DBUILD_EXAMPLES=ON -DCMAKE_INSTALL_PREFIX=./install -DCMAKE_NUMBER_JOBS=2 -DCMAKE_NUMBER_JOBS_TESTS=1
