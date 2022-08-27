@@ -26,8 +26,6 @@
     * The compiler treats Microsoft extended keywords as simple identifiers, disables the other Microsoft extensions, and automatically defines the __STDC__ predefined macro for C programs.
     */
     #define KHAOS_C_STANDARD_PRIVATE() KHAOS_STANDARD_C90_PRIVATE()
-  #else
-    #error "C is detected but __STDC__ is not defined !"
   #endif
 #endif
 

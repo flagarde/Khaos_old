@@ -1,4 +1,8 @@
 ---
+ci:
+  skip: [cppcheck, include-what-you-use]
+
+
 default_install_hook_types:
 - pre-commit
 - pre-merge-commit
@@ -82,12 +86,16 @@ repos:
   - id: cmake-lint
     args: [--config=.cmake-linter.yml]
 
-- repo: https://github.com/pre-commit/mirrors-clang-format
-  rev: v14.0.6
+- repo: https://github.com/Takishima/cmake-pre-commit-hooks
+  rev: v1.5.3
   hooks:
   - id: clang-format
-
-- repo: https://gitlab.com/daverona/pre-commit/cpp
-  rev: 0.8.0
-  hooks:
+  - id: clang-tidy
+    args: [-Bbuild, --config-file=.clang-tidy]
+  - id: cppcheck
+    args: [-Bbuild, --suppressions-list=.cppcheck]
   - id: cpplint
+  - id: include-what-you-use
+    args: [-Bbuild, -p, build, --jobs, '10']
+  - id: lizard
+    args: [--CCN, '50', --length, '150', --arguments, '20', --warnings_only, -x, '*/*tests*/*', -x, '*/*build*/*', ./]

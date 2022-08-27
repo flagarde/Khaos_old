@@ -1,11 +1,11 @@
 list(FIND CMAKE_CXX_COMPILE_FEATURES cxx_std_11 CPP_STANDARD_FOUND)
 if(CPP_STANDARD_FOUND STREQUAL "-1" OR ((CMAKE_CXX_COMPILER_ID STREQUAL "GNU") AND ${CMAKE_CXX_COMPILER_VERSION} VERSION_LESS 4.8))
-	include(Missives)
-	missive(ERROR "Compiler ${CMAKE_CXX_COMPILER_ID} is too old to run doctest")
-	missive(ERROR "Tests disabled")
-	return()
+  include(Missives)
+  missive(ERROR "Compiler ${CMAKE_CXX_COMPILER_ID} is too old to run doctest")
+  missive(ERROR "Tests disabled")
+  return()
 else()
-	include(Doctest)
+  include(Doctest)
 endif()
 
 if(POLICY CMP0110)
@@ -15,16 +15,16 @@ endif()
 add_library(KhaosTestFlags INTERFACE)
 
 target_compile_options(KhaosTestFlags INTERFACE
-	$<$<CXX_COMPILER_ID:Clang>:-Wall -Weverything -pedantic -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-padded>
-	$<$<CXX_COMPILER_ID:GNU>:-Wall -Wextra -pedantic>
-	$<$<CXX_COMPILER_ID:Intel>:-Wall -Wextra -pedantic>
-	$<$<CXX_COMPILER_ID:IntelLLVM>:-Wall -Wextra -pedantic>
-	$<$<CXX_COMPILER_ID:MSVC>:/W4>
-	$<$<C_COMPILER_ID:Clang>:-Wall -Weverything -pedantic -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-padded>
-	$<$<C_COMPILER_ID:GNU>:-Wall -Wextra -pedantic>
-	$<$<C_COMPILER_ID:IntelLLVM>:-Wall -Wextra -pedantic>
-	$<$<C_COMPILER_ID:Intel>:-Wall -Wextra -pedantic>
-	$<$<C_COMPILER_ID:MSVC>:/W4>)
+  $<$<CXX_COMPILER_ID:Clang>:-Wall -Weverything -pedantic -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-padded>
+  $<$<CXX_COMPILER_ID:GNU>:-Wall -Wextra -pedantic>
+  $<$<CXX_COMPILER_ID:Intel>:-Wall -Wextra -pedantic>
+  $<$<CXX_COMPILER_ID:IntelLLVM>:-Wall -Wextra -pedantic>
+  $<$<CXX_COMPILER_ID:MSVC>:/W4>
+  $<$<C_COMPILER_ID:Clang>:-Wall -Weverything -pedantic -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-padded>
+  $<$<C_COMPILER_ID:GNU>:-Wall -Wextra -pedantic>
+  $<$<C_COMPILER_ID:IntelLLVM>:-Wall -Wextra -pedantic>
+  $<$<C_COMPILER_ID:Intel>:-Wall -Wextra -pedantic>
+  $<$<C_COMPILER_ID:MSVC>:/W4>)
 
 add_executable(KhaosVersion.test KhaosVersion.test.cpp)
 target_link_libraries(KhaosVersion.test PRIVATE Khaos::Headers doctest_with_main KhaosTestFlags)
