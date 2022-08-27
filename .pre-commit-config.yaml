@@ -93,8 +93,12 @@ repos:
     args: [-Bbuild, --config-file=.clang-tidy]
   - id: cppcheck
     args: [-Bbuild, --suppressions-list=.cppcheck]
-  - id: cpplint
   - id: include-what-you-use
     args: [-Bbuild, -p, build, --jobs, '10']
   - id: lizard
     args: [--CCN, '50', --length, '150', --arguments, '20', --warnings_only, -x, '*/*tests*/*', -x, '*/*build*/*', ./]
+
+- repo: https://gitlab.com/daverona/pre-commit/cpp
+  rev: 0.8.0
+  hooks:
+  - id: cpplint
