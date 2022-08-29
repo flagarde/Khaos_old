@@ -21,4 +21,4 @@ jobs:
     - name: 🔧 Configure
       run: cmake -S . -B ./build -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTS=ON -DBUILD_DOCS=OFF -DBUILD_EXAMPLES=ON -DCMAKE_INSTALL_PREFIX=./install -DCMAKE_NUMBER_JOBS=2 -DCMAKE_NUMBER_JOBS_TESTS=1
 
-    - uses: pre-commit/action@v2.0.3
+    - uses: pre-commit/action@v3.0.0
