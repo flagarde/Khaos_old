@@ -58,9 +58,6 @@ jobs:
         cmake-version: 3.24.x
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Install with apt-get
-      run: apt-get install --no-install-recommends -y git
-
     - name: 🔧 Configure
       run: cmake -S . -B ./build -D CMAKE_BUILD_TYPE=Release
 
