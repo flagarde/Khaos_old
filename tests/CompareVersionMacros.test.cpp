@@ -2,7 +2,9 @@
 
 #include "khaos/CompareVersionMacros.h"
 
+// NOLINTBEGIN
 #include <doctest/doctest.h>
+// NOLINTEND
 
 TEST_CASE("Test CHECK_VERSION(x,>,major,minor,patch)")
 {

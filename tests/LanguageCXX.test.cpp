@@ -61,7 +61,9 @@ int main()
 
 #else
   #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-  #include "doctest/doctest.h"
+  // NOLINTBEGIN
+  #include <doctest/doctest.h>
+// NOLINTEND
 TEST_CASE("Test LANGUAGE_IS(x)")
 {
   #if LANGUAGE_IS(C) || LANGUAGE_IS(Cuda) || LANGUAGE_IS(ClangCuda) || LANGUAGE_IS(ObjCPP) || LANGUAGE_IS(ObjC) || LANGUAGE_IS(Assembler) || LANGUAGE_IS(Fortran)

@@ -18,6 +18,7 @@
 
 #ifndef KHAOS_KHAOSVERSION_H_
 #define KHAOS_KHAOSVERSION_H_
+#include "khaos/VersionMacros.h"
 
 /*!
   \brief Khaos version. \hideinitializer
@@ -25,7 +26,7 @@
   \note Use #GET_VERSION_MAJOR(Khaos), #GET_VERSION_MINOR(Khaos), #GET_VERSION_PATCH(Khaos) to parse it.
 */
 // clang-format off
-#define KHAOS_VERSION_Khaos_PRIVATE()       (((@Khaos_VERSION_MAJOR@UL % 100) * 10000000) + ((@Khaos_VERSION_MINOR@UL % 100) * 100000) + (@Khaos_VERSION_PATCH@UL % 100000))
+#define KHAOS_VERSION_Khaos_PRIVATE()       SET_VERSION(@Khaos_VERSION_MAJOR@UL,@Khaos_VERSION_MINOR@UL,@Khaos_VERSION_PATCH@UL)
 // clang-format on
 
 /*!
@@ -34,7 +35,7 @@
   \note Use #GET_VERSION_TWEAK(Khaos) to parse it.
 */
 // clang-format off
-#define KHAOS_VERSION_Khaos_TWEAK_PRIVATE() (@Khaos_VERSION_TWEAK@UL % 100000)
+#define KHAOS_VERSION_Khaos_TWEAK_PRIVATE() SET_VERSION_TWEAK(@Khaos_VERSION_TWEAK@UL)
 // clang-format on
 
 #endif  // KHAOS_KHAOSVERSION_H_

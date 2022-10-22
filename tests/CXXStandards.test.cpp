@@ -3,7 +3,9 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "khaos/CXXStandards.h"
 
-#include "doctest/doctest.h"
+// NOLINTBEGIN
+#include <doctest/doctest.h>
+// NOLINTEND
 
 TEST_CASE("Test the CXXStandards values")
 {
