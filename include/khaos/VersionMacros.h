@@ -84,4 +84,4 @@
  */
 #define GET_VERSION_TWEAK(version) ((KHAOS_VERSION_##version##_TWEAK_PRIVATE()) * 1UL % 65536)
 
-#endif  // KHAOS_VERSIONMACROS_H_
+#endif /* KHAOS_VERSIONMACROS_H_ */

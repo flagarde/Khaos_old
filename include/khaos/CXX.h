@@ -19,7 +19,7 @@
    *
    */
   #if defined(_MSVC_LANG)
-    #define KHAOS_CXX_STANDARD_PRIVATE() (_MSVC_LANG)
+    #define KHAOS_CXX_STANDARD_PRIVATE() (_MSVC_LANG) /*!< defined as _MSVC_LANG */
     #if __cplusplus != _MSVC_LANG
       #if _MSC_VER >= 1914
         #pragma message("[Khaos] : MSVC doesn't set the correct value for __cplusplus (cf. https://devblogs.microsoft.com/cppblog/msvc-now-correctly-reports-__cplusplus/) !")
@@ -29,24 +29,24 @@
       #endif
     #endif
   #else
-    #define KHAOS_CXX_STANDARD_PRIVATE() (__cplusplus)
+    #define KHAOS_CXX_STANDARD_PRIVATE() (__cplusplus) /*!< defined as __cplusplus */
   #endif
 #else
-  #define KHAOS_CXX_STANDARD_PRIVATE() (__cplusplus)
+  #define KHAOS_CXX_STANDARD_PRIVATE() (__cplusplus) /*!< defined as __cplusplus */
 #endif
 
 #if defined(__STRICT_ANSI__)
-  #define KHAOS_LANGUAGE_ISO_PRIVATE()        (1L)  //!< 1 if strict ISO, 0 otherwise
-  #define KHAOS_LANGUAGE_Extensions_PRIVATE() (0L)  //!< 0 if strict ISO, 1 otherwise
+  #define KHAOS_LANGUAGE_ISO_PRIVATE()        (1L) /*!< 1 if strict ISO, 0 otherwise */
+  #define KHAOS_LANGUAGE_Extensions_PRIVATE() (0L) /*!< 0 if strict ISO, 1 otherwise */
 #else
-  #define KHAOS_LANGUAGE_ISO_PRIVATE()        (0L)  //!< 1 if strict ISO, 0 otherwise
-  #define KHAOS_LANGUAGE_Extensions_PRIVATE() (1L)  //!< 0 if strict ISO, 1 otherwise
+  #define KHAOS_LANGUAGE_ISO_PRIVATE()        (0L) /*!< 1 if strict ISO, 0 otherwise */
+  #define KHAOS_LANGUAGE_Extensions_PRIVATE() (1L) /*!< 0 if strict ISO, 1 otherwise */
 #endif
 
 #if defined(__embedded_cplusplus)
-  #define KHAOS_LANGUAGE_Embedded_PRIVATE() (1L)  //!< 1 if CPP Embedded
+  #define KHAOS_LANGUAGE_Embedded_PRIVATE() (1L) /*!< 1 if CPP Embedded */
 #else
-  #define KHAOS_LANGUAGE_Embedded_PRIVATE() (0L)  //!< 0 if CPP Embedded
+  #define KHAOS_LANGUAGE_Embedded_PRIVATE() (0L) /*!< 0 if CPP Embedded */
 #endif
 
-#endif  // KHAOS_CXX_H_
+#endif /* KHAOS_CXX_H_ */
