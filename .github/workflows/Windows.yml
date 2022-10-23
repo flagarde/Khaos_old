@@ -46,7 +46,7 @@ jobs:
     - name: Build
       run: cmake --build build --parallel 2
     - name: Test
-      run: cd build ; ctest -j 2 -C Debug --output-on-failure
+      run: cd build ; ctest -C Debug --output-on-failure
 
   msvc2019:
     runs-on: windows-2019
@@ -66,7 +66,7 @@ jobs:
     - name: Build
       run: cmake --build build --config Debug --parallel 2
     - name: Test
-      run: cd build ; ctest -j 2 -C Debug --output-on-failure
+      run: cd build ; ctest -C Debug --output-on-failure
 
   msvc2022:
     runs-on: windows-2022
@@ -86,7 +86,7 @@ jobs:
     - name: Build
       run: cmake --build build --config Debug --parallel 2
     - name: Test
-      run: cd build ; ctest -j 2 -C Debug --output-on-failure
+      run: cd build ; ctest -C Debug --output-on-failure
 
   clang:
     runs-on: windows-2019
@@ -103,7 +103,7 @@ jobs:
     - name: Build
       run: cmake --build build --parallel 2
     - name: Test
-      run: cd build ; ctest -j 2 -C Debug --output-on-failure
+      run: cd build ; ctest -C Debug --output-on-failure
 
   clang-cl-11:
     runs-on: windows-2019
@@ -118,4 +118,4 @@ jobs:
     - name: Build
       run: cmake --build build --config Debug --parallel 2
     - name: Test
-      run: cd build ; ctest -j 2 -C Debug --output-on-failure
+      run: cd build ; ctest -C Debug --output-on-failure
