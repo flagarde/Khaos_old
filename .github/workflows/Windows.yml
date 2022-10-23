@@ -53,7 +53,7 @@ jobs:
     strategy:
       matrix:
         architecture: [win32, x64]
-        toolset: [v143, v142, v141, v140, v130, v120, v110, v100, v90]
+        toolset: [16.10, 14.32, 14.29, 12.0, 11.0, 10.0]
 
     steps:
     - uses: actions/checkout@v3
@@ -74,7 +74,7 @@ jobs:
     strategy:
       matrix:
         architecture: [win32, x64]
-        toolset: [v143, v142, v141, v140, v130, v120, v110, v100, v90]
+        toolset: [17.3, 14.32, 12.0, 11.0, 10.0]
 
     steps:
     - uses: actions/checkout@v3
