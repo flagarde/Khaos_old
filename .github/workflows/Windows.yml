@@ -57,11 +57,13 @@ jobs:
     strategy:
       matrix:
         architecture: [Win32, x64]
+        toolset: [10.0.14393.0, 10.0.16299.0, 10.0.17134.0, 10.0.17763.0, 10.0.18362.0, 10.0.19041.0, 10.0.20348.0, 10.0.22000.0, 10.0.22621.0]
+        system: [10.0.40219, 11.0.61030, 12.0.40660, 12.0.21005, 14.29.30139, 14.32.31332]
 
     steps:
     - uses: actions/checkout@v3
     - name: Run CMake
-      run: cmake -S . -B build -G "Visual Studio 16 2019" -A ${{ matrix.architecture }}
+      run: cmake -S . -B build -G "Visual Studio 16 2019" -A ${{ matrix.architecture }} -DCMAKE_SYSTEM_VERSION=${{ matrix.architecture }} -DCMAKE_GENERATOR_TOOLSET=${{ matrix.toolset }}
     - name: Build
       run: cmake --build build --config Debug --parallel 2
     - name: Test
@@ -72,6 +74,8 @@ jobs:
     strategy:
       matrix:
         architecture: [Win32, x64]
+        toolset: [10.0.17763.0, 10.0.19041.0, 10.0.20348.0, 10.0.22000.0, 10.0.22621.0]
+        system: [10.0.40219, 11.0.61030, 12.0.40660, 14.32.31332]
 
     steps:
     - uses: actions/checkout@v3
@@ -86,7 +90,7 @@ jobs:
     runs-on: windows-2019
     strategy:
       matrix:
-        version: [7.1.0, 8.0.1, 9.0.1, 10.0.0, 11.1.0, 12.0.1, 13.0.1, 14.0.6, 15.0.2]
+        version: [11.1.0, 12.0.1, 13.0.1, 14.0.6, 15.0.2]
 
     steps:
     - uses: actions/checkout@v3
