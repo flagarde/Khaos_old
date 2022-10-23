@@ -56,11 +56,17 @@ jobs:
     runs-on: windows-2019
     strategy:
       matrix:
-        architecture: [Win32, x64]
-        toolset: [v143, v142, v141, v140, v120, v110, v100, v90]
+        architecture: [win32, x64]
+        toolset: [10.0.40219, 11.0.61030, 12.0.40660, 14.32.31332]
+        sdk: [10.0.17763.0, 10.0.19041.0, 10.0.20348.0, 10.0.22000.0, 10.0.22621.0]
 
     steps:
     - uses: actions/checkout@v3
+    - uses: ilammy/msvc-dev-cmd@v1.12.0
+      with:
+        arch: ${{ matrix.architecture }}
+        sdk: ${{ matrix.sdk }}
+        toolset: ${{ matrix.toolset }}
     - name: Run CMake
       run: cmake -S . -B build -G "Visual Studio 16 2019" -A ${{ matrix.architecture }} -T ${{ matrix.toolset }}
     - name: Build
@@ -72,11 +78,17 @@ jobs:
     runs-on: windows-2022
     strategy:
       matrix:
-        architecture: [Win32, x64]
-        toolset: [v143, v142, v141, v140, v120, v110, v100, v90]
+        architecture: [win32, x64]
+        toolset: [10.0.40219, 11.0.61030, 12.0.40660, 12.0.21005, 14.29.30139, 14.32.31332]
+        sdk: [10.0.14393.0, 10.0.16299.0, 10.0.17134.0, 10.0.17763.0, 10.0.18362.0, 10.0.19041.0, 10.0.20348.0, 10.0.22000.0, 10.0.22621.0]
 
     steps:
     - uses: actions/checkout@v3
+    - uses: ilammy/msvc-dev-cmd@v1.12.0
+      with:
+        arch: ${{ matrix.architecture }}
+        sdk: ${{ matrix.sdk }}
+        toolset: ${{ matrix.toolset }}
     - name: Run CMake
       run: cmake -S . -B build -G "Visual Studio 17 2022" -A ${{ matrix.architecture }} -T ${{ matrix.toolset }}
     - name: Build
