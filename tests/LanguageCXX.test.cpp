@@ -108,7 +108,7 @@ TEST_CASE("Test LANGUAGE_IS(x)")
   #endif
 }
 
-  #if CPP_STANDARD == 11
+  #if CPP_STANDARD == 11 && !defined(_MSC_VER) && !defined(__clang__) /* MSV will never been c++11 only */
     #if CPP_EXTENSIONS == 0
 TEST_CASE("Test the language CXX11 extensions OFF")
     #else
