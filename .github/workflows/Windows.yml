@@ -62,7 +62,7 @@ jobs:
         sdk: ${{ matrix.sdk }}
         toolset: ${{ matrix.toolset }}
     - name: Run CMake
-      run: cmake -S . -B build -G "Visual Studio 16 2019" -A ${{ matrix.architecture }} -T ${{ matrix.toolset }}
+      run: cmake -S . -B build -G "Visual Studio 16 2019" -A ${{ matrix.architecture }}
     - name: Build
       run: cmake --build build --config Debug --parallel 2
     - name: Test
@@ -82,7 +82,7 @@ jobs:
         sdk: ${{ matrix.sdk }}
         toolset: ${{ matrix.toolset }}
     - name: Run CMake
-      run: cmake -S . -B build -G "Visual Studio 17 2022" -A ${{ matrix.architecture }} -T ${{ matrix.toolset }}
+      run: cmake -S . -B build -G "Visual Studio 17 2022" -A ${{ matrix.architecture }}
     - name: Build
       run: cmake --build build --config Debug --parallel 2
     - name: Test
