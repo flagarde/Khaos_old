@@ -1,6 +1,5 @@
+/* Copyright 2022 flagarde */
 /* doctest need c++11 so disable it to test C++98 */
-
-// Copyright 2022 flagarde
 
 #include "khaos/Language.h"
 

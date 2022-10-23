@@ -1,4 +1,4 @@
-// Copyright 2022 flagarde
+/* Copyright 2022 flagarde */
 
 #include "khaos/VersionMacros.h"
 
@@ -7,9 +7,9 @@
 // NOLINTEND
 
 #define KHAOS_VERSION_Test_PRIVATE()        SET_VERSION(2, 3, 4)
-#define KHAOS_VERSION_Test2_PRIVATE()       SET_VERSION(256, 256, 65536)  // Should be seen as 0.0.0
+#define KHAOS_VERSION_Test2_PRIVATE()       SET_VERSION(256, 256, 65536) /* Should be seen as 0.0.0 */
 #define KHAOS_VERSION_Test_TWEAK_PRIVATE()  SET_VERSION_TWEAK(5)
-#define KHAOS_VERSION_Test2_TWEAK_PRIVATE() SET_VERSION_TWEAK(65536)  // Should be seen as 0
+#define KHAOS_VERSION_Test2_TWEAK_PRIVATE() SET_VERSION_TWEAK(65536) /* Should be seen as 0 */
 
 TEST_CASE("Test GET_VERSION_MAJOR(x)")
 {

@@ -1,4 +1,4 @@
-// Copyright 2022 flagarde
+/* Copyright 2022 flagarde */
 
 #include "khaos/CompareVersionMacros.h"
 
@@ -126,7 +126,7 @@ TEST_CASE("Test CHECK_VERSION(x,!=,major,minor,patch)")
 #undef KHAOS_VERSION_Test_PRIVATE
 }
 
-// Test CHECK_VERSIONS
+/* Test CHECK_VERSIONS */
 #define KHAOS_VERSION_Test1_PRIVATE() SET_VERSION(MAJOR, MINOR, PATCH)
 #define KHAOS_VERSION_Test2_PRIVATE() SET_VERSION(MAJOR + 1, MINOR, PATCH)
 TEST_CASE("Test CHECK_VERSIONS(x,>,y)") { CHECK_EQ(0, CHECK_VERSIONS(Test1, >, Test2)); }

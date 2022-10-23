@@ -1,4 +1,4 @@
-// Copyright 2022 flagarde
+/* Copyright 2022 flagarde */
 
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "khaos/CXXStandards.h"

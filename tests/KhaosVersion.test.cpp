@@ -1,4 +1,4 @@
-// Copyright 2022 flagarde
+/* Copyright 2022 flagarde */
 
 #include "khaos/KhaosVersion.h"
 
