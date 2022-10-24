@@ -4,7 +4,6 @@
 #include "khaos/Language.h"
 
 #if CPP_STANDARD == 98
-  #if !defined(_MSC_VER) && !defined(__clang__) /* MSVC will never been c++11 only */
 int main()
 {
   #if LANGUAGE_IS_GREATER(CXX98)
@@ -57,7 +56,6 @@ int main()
 
   #endif
 }
-  #endif
 #else
   #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
   // NOLINTBEGIN
