@@ -8,6 +8,7 @@
 #endif
 
 #if CPP_STANDARD == 98
+#if !defined(_MSC_VER) && !defined(__clang__)
 int main()
 {
   #if LANGUAGE_IS_GREATER(CXX98)
@@ -60,6 +61,8 @@ int main()
 
   #endif
 }
+#endif
+int main() { return 0; }
 #else
   #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
   // NOLINTBEGIN
