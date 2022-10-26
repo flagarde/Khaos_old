@@ -3,7 +3,7 @@
 #include "khaos/CompareVersionMacros.h"
 
 // NOLINTBEGIN
-#if _WIN32
+#if defined(_WIN32) && !defined(__MINGW32__) && !defined(__MINGW64__)
   #pragma warning(disable : 4805)
 #endif
 #include <doctest/doctest.h>
