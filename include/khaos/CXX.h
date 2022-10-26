@@ -34,18 +34,20 @@
   #define KHAOS_CXX_STANDARD_PRIVATE() (__cplusplus) /*!< defined as __cplusplus */
 #endif
 
-#if defined(__STRICT_ANSI__) || (defined(_MSC_VER) && !defined(_MSC_EXTENSIONS))
+#if defined(_MSC_VER)
+  #if defined(_MSC_EXTENSIONS)
+    #define KHAOS_LANGUAGE_ISO_PRIVATE()        (0L) /*!< 1 if strict ISO, 0 otherwise */
+    #define KHAOS_LANGUAGE_Extensions_PRIVATE() (1L) /*!< 0 if strict ISO, 1 otherwise */
+  #else
+    #define KHAOS_LANGUAGE_ISO_PRIVATE()        (1L) /*!< 1 if strict ISO, 0 otherwise */
+    #define KHAOS_LANGUAGE_Extensions_PRIVATE() (0L) /*!< 0 if strict ISO, 1 otherwise */
+  #endif
+#elif defined(__STRICT_ANSI__)
   #define KHAOS_LANGUAGE_ISO_PRIVATE()        (1L) /*!< 1 if strict ISO, 0 otherwise */
   #define KHAOS_LANGUAGE_Extensions_PRIVATE() (0L) /*!< 0 if strict ISO, 1 otherwise */
 #else
   #define KHAOS_LANGUAGE_ISO_PRIVATE()        (0L) /*!< 1 if strict ISO, 0 otherwise */
   #define KHAOS_LANGUAGE_Extensions_PRIVATE() (1L) /*!< 0 if strict ISO, 1 otherwise */
-#endif
-
-#if defined(__embedded_cplusplus)
-  #define KHAOS_LANGUAGE_Embedded_PRIVATE() (1L) /*!< 1 if CPP Embedded */
-#else
-  #define KHAOS_LANGUAGE_Embedded_PRIVATE() (0L) /*!< 0 if CPP Embedded */
 #endif
 
 #endif /* KHAOS_CXX_H_ */

@@ -33,7 +33,15 @@
   #endif
 #endif
 
-#if defined(__STRICT_ANSI__) || (defined(_MSC_VER) && !defined(_MSC_EXTENSIONS))
+#if defined(_MSC_VER)
+  #if defined(_MSC_EXTENSIONS)
+    #define KHAOS_LANGUAGE_ISO_PRIVATE()        (0L) /*!< 1 if strict ISO, 0 otherwise */
+    #define KHAOS_LANGUAGE_Extensions_PRIVATE() (1L) /*!< 0 if strict ISO, 1 otherwise */
+  #else
+    #define KHAOS_LANGUAGE_ISO_PRIVATE()        (1L) /*!< 1 if strict ISO, 0 otherwise */
+    #define KHAOS_LANGUAGE_Extensions_PRIVATE() (0L) /*!< 0 if strict ISO, 1 otherwise */
+  #endif
+#elif defined(__STRICT_ANSI__)
   #define KHAOS_LANGUAGE_ISO_PRIVATE()        (1L) /*!< 1 if strict ISO, 0 otherwise */
   #define KHAOS_LANGUAGE_Extensions_PRIVATE() (0L) /*!< 0 if strict ISO, 1 otherwise */
 #else
