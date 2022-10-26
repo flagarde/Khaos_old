@@ -22,8 +22,7 @@
     #define KHAOS_CXX_STANDARD_PRIVATE() (_MSVC_LANG) /*!< defined as _MSVC_LANG */
     #if __cplusplus != _MSVC_LANG
       #if _MSC_VER >= 1914
-        #pragma message("[Khaos] : MSVC doesn't set the correct value for __cplusplus (cf. https://devblogs.microsoft.com/cppblog/msvc-now-correctly-reports-__cplusplus/) !")
-        #pragma message("[Khaos] : Use /Zc:__cplusplus option to activate it !")
+        #pragma message("[Khaos] : MSVC doesn't set the correct value for __cplusplus (cf. https://devblogs.microsoft.com/cppblog/msvc-now-correctly-reports-__cplusplus/). Use /Zc:__cplusplus option to activate it !")
       #else
         #pragma message("[Khaos] : MSVC doesn't set the correct value for __cplusplus (cf. https://devblogs.microsoft.com/cppblog/msvc-now-correctly-reports-__cplusplus/) !")
       #endif

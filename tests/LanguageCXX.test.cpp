@@ -3,6 +3,10 @@
 
 #include "khaos/Language.h"
 
+#if _WIN32
+  #pragma warning(disable : 4702 4805)
+#endif
+
 #if CPP_STANDARD == 98
 int main()
 {

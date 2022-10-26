@@ -3,6 +3,9 @@
 #include "khaos/CompareVersionMacros.h"
 
 // NOLINTBEGIN
+#if _WIN32
+  #pragma warning(disable : 4805)
+#endif
 #include <doctest/doctest.h>
 // NOLINTEND
 
