@@ -33,7 +33,7 @@
   #endif
 #endif
 
-#if defined(__STRICT_ANSI__) && (defined(_WIN32) && !defined(_MSC_EXTENSIONS))
+#if defined(__STRICT_ANSI__) || (defined(_WIN32) && !defined(_MSC_EXTENSIONS))
   #define KHAOS_LANGUAGE_ISO_PRIVATE()        (1L) /*!< 1 if strict ISO, 0 otherwise */
   #define KHAOS_LANGUAGE_Extensions_PRIVATE() (0L) /*!< 0 if strict ISO, 1 otherwise */
 #else
