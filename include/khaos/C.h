@@ -25,7 +25,11 @@
     * When both C compilation and the /Za option are specified, the C compiler conforms strictly to the C89/C90 standard.
     * The compiler treats Microsoft extended keywords as simple identifiers, disables the other Microsoft extensions, and automatically defines the __STDC__ predefined macro for C programs.
     */
-    #define KHAOS_C_STANDARD_PRIVATE() KHAOS_STANDARD_C90_PRIVATE() /*!< defined as C90 */
+    #if defined(__STDC_VERSION__)
+      #define KHAOS_C_STANDARD_PRIVATE() (__STDC_VERSION__) /*!< defined as __STDC_VERSION__ */
+    #else
+      #define KHAOS_C_STANDARD_PRIVATE() KHAOS_STANDARD_C90_PRIVATE() /*!< defined as C90 */
+    #endif
   #endif
 #endif
 
