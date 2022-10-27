@@ -37,6 +37,9 @@ jobs:
 
     steps:
 
+    - name: Install git
+      run: apt-get install --no-install-recommends -y git
+
     - name: Checkout
       uses: actions/checkout@v3
 
@@ -87,6 +90,9 @@ jobs:
 
     steps:
 
+    - name: Install git
+      run: apt-get install --no-install-recommends -y git
+
     - name: Checkout
       uses: actions/checkout@v3
 
@@ -116,11 +122,11 @@ jobs:
 
     steps:
 
+    - name: Install intel-oneapi
+      run: apt-get install --no-install-recommends -y git pkg-config build-essential
+
     - name: Checkout
       uses: actions/checkout@v3
-
-    - name: Install intel-oneapi
-      run: apt-get install --no-install-recommends -y pkg-config build-essential
 
     - name: Setup CMake
       uses: jwlawson/actions-setup-cmake@v1.13
