@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  xcode_1:
+  macos-11:
     runs-on: macos-11
     strategy:
       fail-fast: false
@@ -30,7 +30,7 @@ jobs:
     - name: Test
       run: cd build ; ctest -j 10 --output-on-failure
 
-  xcode_2:
+  macos-12:
     runs-on: macos-12
     strategy:
       fail-fast: false
