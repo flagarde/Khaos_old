@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  mingw:
+  msys2:
     runs-on: windows-latest
     strategy:
       fail-fast: false
