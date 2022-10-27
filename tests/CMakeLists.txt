@@ -49,7 +49,7 @@ add_executable(CXXStandards.test CXXStandards.test.cpp)
 target_link_libraries(CXXStandards.test PRIVATE Khaos::Headers doctest_with_main KhaosTestFlags)
 doctest_discover_tests(CXXStandards.test)
 
-set(CPP_STANDARDS "98;11;14;17")
+set(CPP_STANDARDS "98;11;14;17;20")
 if (WIN32)
   missive(WARN "Extensions are always ON on Windows")
   set(CPP_EXTENSIONS "ON")
