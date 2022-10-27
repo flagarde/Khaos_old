@@ -52,6 +52,7 @@
  */
 #define SET_VERSION_TWEAK(tweak) ((tweak)*1UL % 65536)
 
+#pragma warning disable S968
 /** \hideinitializer
  *  \brief Get standard major version numbers.
  *  \param[in] version The standard version number.
@@ -83,5 +84,6 @@
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
 #define GET_VERSION_TWEAK(version) ((KHAOS_VERSION_##version##_TWEAK_PRIVATE()) * 1UL % 65536)
+#pragma warning restore S968
 
 #endif /* KHAOS_VERSIONMACROS_H_ */

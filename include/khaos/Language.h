@@ -77,7 +77,10 @@
  *
  * \note Can be directly used in both preprocessor and compiler expressions.
  */
+
+#pragma warning disable S968
 #define LANGUAGE_IS(language) (KHAOS_LANGUAGE_##language##_PRIVATE())
+
 #if LANGUAGE_IS(C)
   /** @hideinitializer
   * Check if the C, CXX standard is greater than \b standard.
@@ -153,5 +156,6 @@
   #define LANGUAGE_IS_LOWER_EQUAL(standard)   (0L)
   #define LANGUAGE_IS_LOWER(standard)         (0L)
 #endif
+#pragma warning restore S968
 
 #endif /* KHAOS_LANGUAGE_H_ */

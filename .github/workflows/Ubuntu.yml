@@ -77,4 +77,4 @@ jobs:
       run: cmake --install ./build --config Release --strip
 
     - name: Tests
-      run: ctest --build ./build --config Release --parallel 2
+      run: ctest --build ./build --config Release

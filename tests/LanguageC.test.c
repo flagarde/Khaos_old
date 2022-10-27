@@ -3,7 +3,7 @@
 #include "khaos/Language.h"
 
 #if defined(_WIN32) && !defined(__MINGW32__) && !defined(__MINGW64__)
-  #pragma warning(disable:4702 4805)
+  #pragma warning(disable : 4702 4805)
 #endif
 
 int main()
