@@ -33,12 +33,8 @@ jobs:
         path-type: minimal
         release: true
         update: true
-        install: >-
-          git
-          libutil-linux-devel
-          make
         pacboy: >-
-          toolchain:p
+          gcc:p
           cmake:p
 
     - name: Run CMake
