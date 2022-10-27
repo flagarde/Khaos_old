@@ -1,8 +1,6 @@
 #ifndef KHAOS_COMPAREVERSIONMACROS_H_
 #define KHAOS_COMPAREVERSIONMACROS_H_
 
-#define HH() /**/
-
 #include "khaos/KhaosVersion.h"
 #include "khaos/VersionMacros.h"
 
@@ -30,7 +28,6 @@
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#pragma warning disable S968
 #define CHECK_VERSION(version, op, major, minor, patch) ((KHAOS_VERSION_##version##_PRIVATE())op(SET_VERSION(major, minor, patch)))
 
 /** \hideinitializer
@@ -43,6 +40,5 @@
  */
 
 #define CHECK_VERSIONS(a, op, b) ((KHAOS_VERSION_##a##_PRIVATE())op(KHAOS_VERSION_##b##_PRIVATE()))
-#pragma warning restore S968
 
 #endif /* KHAOS_COMPAREVERSIONMACROS_H_ */
