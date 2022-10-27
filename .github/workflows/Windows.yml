@@ -22,31 +22,31 @@ jobs:
         run:
           shell: msys2 {0}
 
-      steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
 
-      - name: Setup MSYS2
-        uses: msys2/setup-msys2@v2
-        with:
-          msystem: ${{matrix.sys}}
-          path-type: minimal
-          release: true
-          update: true
-          install: >-
-            git
-            libutil-linux-devel
-            make
-          pacboy: >-
-            toolchain:p
-            cmake:p
+    - name: Setup MSYS2
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: ${{matrix.sys}}
+        path-type: minimal
+        release: true
+        update: true
+        install: >-
+          git
+          libutil-linux-devel
+          make
+        pacboy: >-
+          toolchain:p
+          cmake:p
 
-      - name: Run CMake
-        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
-      - name: Build
-        run: cmake --build build --parallel 2
-      - name: Test
-        run: cd build ; ctest -C Debug --output-on-failure
+    - name: Run CMake
+      run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
+    - name: Build
+      run: cmake --build build --parallel 2
+    - name: Test
+      run: cd build ; ctest -C Debug --output-on-failure
 
   msvc2019:
     runs-on: windows-2019
