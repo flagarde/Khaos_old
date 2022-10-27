@@ -7,7 +7,7 @@
   #pragma warning(disable : 4702 4805)
 #endif
 
-#if CPP_STANDARD == 98 && !defined(_MSC_VER) && !defined(__clang__) /* MSV will never been c++98 only */
+#if CPP_STANDARD == 98
   #if(!defined(_MSC_VER) && !defined(__clang__)) || defined(__MINGW32__) || defined(__MINGW64__)
 int main()
 {
