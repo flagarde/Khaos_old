@@ -67,7 +67,7 @@ int main() { return 0; }
 #else
   #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
   // NOLINTBEGIN
-  #include <doctest/doctest.h>
+  #include "doctest/doctest.h"
 // NOLINTEND
 TEST_CASE("Test LANGUAGE_IS(x)")
 {

@@ -3,7 +3,7 @@
 #include "khaos/VersionMacros.h"
 
 // NOLINTBEGIN
-#include <doctest/doctest.h>
+#include "doctest/doctest.h"
 // NOLINTEND
 
 #define KHAOS_VERSION_Test_PRIVATE()        SET_VERSION(2, 3, 4)

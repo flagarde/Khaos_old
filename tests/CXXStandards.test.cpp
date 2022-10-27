@@ -4,7 +4,7 @@
 #include "khaos/CXXStandards.h"
 
 // NOLINTBEGIN
-#include <doctest/doctest.h>
+#include "doctest/doctest.h"
 // NOLINTEND
 
 TEST_CASE("Test the CXXStandards values")

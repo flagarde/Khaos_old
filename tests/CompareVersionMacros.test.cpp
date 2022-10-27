@@ -6,7 +6,7 @@
 #if defined(_WIN32) && !defined(__MINGW32__) && !defined(__MINGW64__)
   #pragma warning(disable : 4805)
 #endif
-#include <doctest/doctest.h>
+#include "doctest/doctest.h"
 // NOLINTEND
 
 TEST_CASE("Test CHECK_VERSION(x,>,major,minor,patch)")

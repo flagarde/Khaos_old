@@ -3,7 +3,7 @@
 #include "khaos/KhaosVersion.h"
 
 // NOLINTBEGIN
-#include <doctest/doctest.h>
+#include "doctest/doctest.h"
 // NOLINTEND
 
 TEST_CASE("Test KHAOS_VERSION") { CHECK_EQ((((MAJOR) % 100) * 10000000) + (((MINOR) % 100) * 100000) + ((PATCH) % 100000), KHAOS_VERSION_Khaos_PRIVATE()); }
