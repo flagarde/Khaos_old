@@ -122,8 +122,8 @@ jobs:
 
     steps:
 
-    - name: Install intel-oneapi
-      run: apt-get install --no-install-recommends -y git pkg-config build-essential
+    - name: Install git
+      run: apt-get install --no-install-recommends -y git
 
     - name: Checkout
       uses: actions/checkout@v3
