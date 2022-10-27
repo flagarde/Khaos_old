@@ -18,9 +18,9 @@ jobs:
       fail-fast: false
       matrix:
         sys: [mingw32, mingw64, ucrt64, clang64, clang32]
-      defaults:
-        run:
-          shell: msys2 {0}
+    defaults:
+      run:
+        shell: msys2 {0}
 
     steps:
     - name: Checkout
