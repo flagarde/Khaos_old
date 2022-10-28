@@ -135,13 +135,13 @@ jobs:
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Install intel-onepai
-      run: apt install --no-install-recommends -y intel-oneapi-compiler-dpcpp-cpp; . /opt/intel/oneapi/setvars.sh
+      run: apt install --no-install-recommends -y intel-oneapi-compiler-dpcpp-cpp
 
     - name: 🔧 Configure
       env:
         CC: icx
         CXX: icpx
-      run: cmake -S . -B ./build -D CMAKE_BUILD_TYPE=Release
+      run: /opt/intel/oneapi/setvars.sh; cmake -S . -B ./build -D CMAKE_BUILD_TYPE=Release
 
     - name: ⚙️ Build
       run: cmake --build ./build --config Release --parallel 2
