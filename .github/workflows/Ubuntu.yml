@@ -118,7 +118,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    container: ghcr.io/flagarde/ci-ubuntu-gcc-12-x86_64:main
+    container: ghcr.io/flagarde/ci-ubuntu-gcc-11-x86_64:main
 
     steps:
 
