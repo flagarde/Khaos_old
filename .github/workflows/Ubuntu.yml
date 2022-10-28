@@ -36,16 +36,11 @@ jobs:
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: 🔧 Configure
-      run: cmake -S . -B ./build -D CMAKE_BUILD_TYPE=Release
-
-    - name: ⚙️ Build
-      run: cmake --build ./build --config Release --parallel 2
-
-    - name: Install
-      run: cmake --install ./build --config Release --strip
-
-    - name: Tests
-      run: ctest --build ./build --config Release
+      run: cmake -S . -B ./build -D CMAKE_BUILD_TYPE=Debug
+    - name: Build
+      run: cmake --build build --parallel 2
+    - name: Test
+      run: cd build ; ctest -C Debug --output-on-failure
 
   clang:
 
@@ -72,16 +67,11 @@ jobs:
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: 🔧 Configure
-      run: cmake -S . -B ./build -D CMAKE_BUILD_TYPE=Release
-
-    - name: ⚙️ Build
-      run: cmake --build ./build --config Release --parallel 2
-
-    - name: Install
-      run: cmake --install ./build --config Release --strip
-
-    - name: Tests
-      run: ctest --build ./build --config Release
+      run: cmake -S . -B ./build -D CMAKE_BUILD_TYPE=Debug
+    - name: Build
+      run: cmake --build build --parallel 2
+    - name: Test
+      run: cd build ; ctest -C Debug --output-on-failure
 
   intel:
 
@@ -110,13 +100,8 @@ jobs:
       env:
         CC: icx
         CXX: icpx
-      run: . /opt/intel/oneapi/setvars.sh ; cmake -S . -B ./build -D CMAKE_BUILD_TYPE=Release
-
-    - name: ⚙️ Build
-      run: cmake --build ./build --config Release --parallel 2
-
-    - name: Install
-      run: cmake --install ./build --config Release --strip
-
-    - name: Tests
-      run: ctest --build ./build --config Release
+      run: . /opt/intel/oneapi/setvars.sh ; cmake -S . -B ./build -D CMAKE_BUILD_TYPE=Debug
+    - name: Build
+      run: cmake --build build --parallel 2
+    - name: Test
+      run: cd build ; ctest -C Debug --output-on-failure
