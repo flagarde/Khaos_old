@@ -117,8 +117,8 @@ jobs:
   intel:
 
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
+
+    container: ghcr.io/flagarde/ci-ubuntu-gcc-12-x86_64:main
 
     steps:
 
