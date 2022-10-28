@@ -141,7 +141,7 @@ jobs:
       env:
         CC: icx
         CXX: icpx
-      run: source /opt/intel/oneapi/setvars.sh; cmake -S . -B ./build -D CMAKE_BUILD_TYPE=Release
+      run: . /opt/intel/oneapi/setvars.sh ; cmake -S . -B ./build -D CMAKE_BUILD_TYPE=Release
 
     - name: ⚙️ Build
       run: cmake --build ./build --config Release --parallel 2
