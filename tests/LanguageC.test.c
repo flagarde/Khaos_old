@@ -6,7 +6,7 @@
   #pragma warning(disable : 4702 4805)
 #endif
 
-int main()
+int main(void)
 {
 #if !LANGUAGE_IS(C)
   return -1;
