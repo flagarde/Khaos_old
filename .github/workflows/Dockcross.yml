@@ -1,0 +1,38 @@
+---
+name: Dockcross
+
+on:
+  push:
+    branches:
+    - '*'
+    paths-ignore:
+    - '**/README.md'
+  pull_request:
+    branches:
+    - '*'
+
+jobs:
+  image:
+    name: Build ${{ matrix.image_name }} ${{ matrix.build_type }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Remove images that you do not need
+        image_name: [android-arm, android-arm64, android-x86, android-x86_64, linux-x86, linux-x64, linux-x64-clang, linux-arm64, linux-arm64-musl, linux-arm64-full, linux-armv5, linux-armv5-musl, linux-m68k-uclibc, linux-s390x, linux-x64-tinycc, linux-armv6,
+          linux-armv6-lts, linux-armv6-musl, linux-armv7l-musl, linux-armv7, linux-armv7a, linux-x86_64-full, linux-mips, linux-ppc64le, linux-riscv64, linux-riscv32, linux-xtensa-uclibc, web-wasm]
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    - name: Make script dockcross-${{ matrix.image_name }}
+      run: docker run --rm dockcross/${{ matrix.image_name }} > ./dockcross-${{ matrix.image_name }}; chmod +x ./dockcross-${{ matrix.image_name }}
+
+    - name: Run CMake
+      run: ./dockcross-${{ matrix.image_name }} cmake -B build -S . -G Ninja
+
+    - name: Compile
+      run: ./dockcross-${{ matrix.image_name }} ninja -C build
