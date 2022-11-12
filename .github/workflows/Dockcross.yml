@@ -19,8 +19,9 @@ jobs:
       fail-fast: false
       matrix:
         # Remove images that you do not need
-        image_name: [android-arm, android-arm64, android-x86, android-x86_64, linux-x86, linux-x64, linux-x64-clang, linux-arm64, linux-arm64-musl, linux-armv5, linux-armv5-musl, linux-m68k-uclibc, linux-s390x, linux-x64-tinycc, linux-armv6,
-          linux-armv6-lts, linux-armv6-musl, linux-armv7l-musl, linux-armv7, linux-armv7a, linux-mips, linux-ppc64le, linux-riscv64, linux-riscv32, linux-xtensa-uclibc, web-wasm]
+        image_name: [android-arm, android-arm64, android-x86, android-x86_64, linux-arm64, linux-arm64-musl, linux-armv5, linux-armv5-musl, linux-armv5-uclibc, linux-armv6, linux-armv6-musl, linux-armv7, linux-armv7a, linux-armv7l-musl, linux-mips, linux-mipsel-lts,
+          linux-s390x, linux-ppc64le, linux-riscv32, linux-riscv64, linux-m68k-uclibc, linux-xtensa-uclibc, linux-x86, linux-x64, linux-x64-clang, linux-x64-tinycc, web-wasm, web-wasi, windows-shared-x86, windows-shared-x64, windows-shared-x64-posix, windows-static-x86,
+          windows-static-x64, windows-static-x64-posix, windows-armv7, windows-arm64]
     steps:
     - name: Checkout Code
       uses: actions/checkout@v3
