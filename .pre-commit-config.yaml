@@ -85,8 +85,8 @@ repos:
   - id: cmake-lint
     args: [--config=.cmake-linter.yml]
 
-- repo: https://github.com/flagarde/cmake-pre-commit-hooks
-  rev: test
+- repo: repo: https://github.com/Takishima/cmake-pre-commit-hooks
+  rev: v1.8.0
   hooks:
   - id: clang-tidy
     args: [-Bbuild, --config=]
