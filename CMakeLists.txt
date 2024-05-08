@@ -10,7 +10,7 @@ if(KHAOS_BUILD_DOCS OR KHAOS_BUILD_TESTS)
   FetchContent_Declare(CMMM GIT_REPOSITORY "https://github.com/cmake-tools/cmmm.git" GIT_TAG "v1.0")
   FetchContent_MakeAvailable(CMMM)
   cmmm()
-  cmmm_modules_list(URL "https://raw.githubusercontent.com/flagarde/CMakeCM/main/ModulesList.cmake")
+  cmmm_modules_list(URL "https://raw.githubusercontent.com/flagarde/CMakeCM/main/")
 endif()
 
 project(Khaos VERSION 0.0.1.0 DESCRIPTION "A C/C++ library to simplify cross-platform programming" HOMEPAGE_URL "https://github.com/flagarde/Khaos" LANGUAGES C CXX)
