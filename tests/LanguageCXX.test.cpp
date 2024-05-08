@@ -1,3 +1,12 @@
+/*
+* Khaos
+* C/C++ library for writing cross-platform codes.
+*
+* SPDX-FileCopyrightText: 2020-2024 flagarde
+*
+* SPDX-License-Identifier: MIT
+*/
+
 /* Copyright 2022 flagarde */
 /* doctest need c++11 so disable it to test C++98 */
 

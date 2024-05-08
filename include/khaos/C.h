@@ -1,8 +1,16 @@
+/*
+* Khaos
+* C/C++ library for writing cross-platform codes.
+*
+* SPDX-FileCopyrightText: 2020-2024 flagarde
+*
+* SPDX-License-Identifier: MIT
+*/
+
 #ifndef KHAOS_C_H_
 #define KHAOS_C_H_
 
 /** \file C.h
- *  \copyright 2022 flagarde
  *  \brief Detect the C standard and define some useful macros.
  */
 

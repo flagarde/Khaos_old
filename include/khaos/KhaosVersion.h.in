@@ -1,5 +1,13 @@
+/*
+* Khaos
+* C/C++ library for writing cross-platform codes.
+*
+* SPDX-FileCopyrightText: 2020-2024 flagarde
+*
+* SPDX-License-Identifier: MIT
+*/
+
 /** \file KhaosVersion.h
- *  \copyright 2022 flagarde
  *
  *  \brief Macros providing the Khaos version.
  *

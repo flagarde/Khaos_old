@@ -1,3 +1,12 @@
+/*
+* Khaos
+* C/C++ library for writing cross-platform codes.
+*
+* SPDX-FileCopyrightText: 2020-2024 flagarde
+*
+* SPDX-License-Identifier: MIT
+*/
+
 #ifndef KHAOS_COMPAREVERSIONMACROS_H_
 #define KHAOS_COMPAREVERSIONMACROS_H_
 
@@ -5,7 +14,6 @@
 #include "khaos/VersionMacros.h"
 
 /** \file CompareVersionMacros.h
- *  \copyright 2022 flagarde
  *  \brief Define macros to compare versions.
  *  \note Use these macros only if you need preprocessor version checking.
  *  \note For example :
