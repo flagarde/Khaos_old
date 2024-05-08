@@ -32,8 +32,6 @@ repos:
   - id: fix-byte-order-marker
   - id: mixed-line-ending
     args: [--fix=lf]
-  - id: trailing-whitespace
-    args: [--markdown-linebreak-ext=md]
   - id: check-yaml
     args: [--allow-multiple-documents]
 
@@ -58,12 +56,12 @@ repos:
   hooks:
   - id: codespell
 
-- repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
-  rev: 0.2.2
-  hooks:
-  - id: yamlfmt
-    name: format YAML files
-    args: [--mapping, '2', --sequence, '2', --offset, '0', --width, '250']
+#- repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
+#  rev: 0.2.2
+#  hooks:
+#  - id: yamlfmt
+#    name: format YAML files
+#    args: [--mapping, '2', --sequence, '2', --offset, '0', --width, '250']
 
 - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
   rev: 2.7.1

@@ -8,5 +8,8 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_trailing_newline = true
 
-[*.md]
+[*.md,.clang-tidy]
+trim_trailing_whitespace = false
+
+[.clang-tidy]
 trim_trailing_whitespace = false
