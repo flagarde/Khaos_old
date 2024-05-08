@@ -29,9 +29,9 @@ jobs:
       run: |
         mkdir build
         cmake -S . -B build
-        build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build build/ --config Release
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@master
+        build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE --build build/ --config Release
+    - name: Run sonar-scanner
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: sonar-scanner --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}"
