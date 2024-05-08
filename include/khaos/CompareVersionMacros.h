@@ -19,16 +19,17 @@
  */
 
 /** \hideinitializer
- *  \brief Check the \b version with \b major, \b minor, \b patch using the operator \b op
+ *  \brief Check the \b version with \b major, \b minor, \b patch, \b tweak using the operator \b op
  *  \param[in] version version to compare.
  *  \param[in] op operator =, !=, >=, <= >, < .
  *  \param[in] major major part.
  *  \param[in] minor minor part.
  *  \param[in] patch patch part.
+ *  \param[in] tweak tweak part.
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define CHECK_VERSION(version, op, major, minor, patch) ((KHAOS_VERSION_##version##_PRIVATE())op(SET_VERSION(major, minor, patch)))
+#define CHECK_VERSION(version, op, major, minor, patch, tweak) ((KHAOS_VERSION_##version##_PRIVATE())op(SET_VERSION(major, minor, patch, tweak)))
 
 /** \hideinitializer
  *  \brief Check the \b versiona with \b versionb using the operator \b op

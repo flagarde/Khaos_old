@@ -1,11 +1,10 @@
 /* Copyright 2022 flagarde */
-
 #include "khaos/KhaosVersion.h"
+
+#include <cmath>
 
 // NOLINTBEGIN
 #include "doctest/doctest.h"
 // NOLINTEND
 
-TEST_CASE("Test KHAOS_VERSION") { CHECK_EQ((((MAJOR) % 100) * 10000000) + (((MINOR) % 100) * 100000) + ((PATCH) % 100000), KHAOS_VERSION_Khaos_PRIVATE()); }
-
-TEST_CASE("Test KHAOS_VERSION_TWEAK") { CHECK_EQ(static_cast<int>(TWEAK), static_cast<int>(KHAOS_VERSION_Khaos_TWEAK_PRIVATE())); }
+TEST_CASE("Test KHAOS_VERSION") { CHECK_EQ((((MAJOR) % 65536) * pow(2, 48)) + (((MINOR) % 65536) * pow(2, 32)) + (((PATCH) % 65536) * pow(2, 16)) + ((TWEAK) % 65536), KHAOS_VERSION_Khaos_PRIVATE()); }
