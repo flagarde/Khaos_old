@@ -49,7 +49,7 @@
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_MAJOR(version) ((((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) >> 48) % 65536)
+#define GET_VERSION_MAJOR(version) ((((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) >> 48) % 65536) //NOSONAR
 
 /** \hideinitializer
  *  \brief Get standard minor version numbers.
@@ -57,7 +57,7 @@
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_MINOR(version) ((((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) >> 32) % 65536)
+#define GET_VERSION_MINOR(version) ((((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) >> 32) % 65536) //NOSONAR
 
 /** \hideinitializer
  *  \brief Get standard patch version numbers.
@@ -65,7 +65,7 @@
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_PATCH(version) ((((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) >> 16) % 65536)
+#define GET_VERSION_PATCH(version) ((((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) >> 16) % 65536) //NOSONAR
 
 /** \hideinitializer
  *  \brief Get standard tweak version numbers.
@@ -73,6 +73,6 @@
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_TWEAK(version) (((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) % 65536)
+#define GET_VERSION_TWEAK(version) (((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) % 65536) //NOSONAR
 
 #endif /* KHAOS_VERSIONMACROS_H_ */
