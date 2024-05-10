@@ -86,7 +86,7 @@
  * \note Can be directly used in both preprocessor and compiler expressions.
  */
 
-#define LANGUAGE_IS(language) (KHAOS_LANGUAGE_##language##_PRIVATE())
+#define LANGUAGE_IS(language) (KHAOS_LANGUAGE_##language##_PRIVATE()) /* //NOSONAR */
 
 #if LANGUAGE_IS(C)
   /** @hideinitializer
@@ -113,7 +113,7 @@
   *
   * \note Can be directly used in both preprocessor and compiler expressions.
   */
-  #define LANGUAGE_IS_GREATER(standard)       (KHAOS_C_STANDARD_PRIVATE() > KHAOS_STANDARD_##standard##_PRIVATE())
+  #define LANGUAGE_IS_GREATER(standard)       (KHAOS_C_STANDARD_PRIVATE() > KHAOS_STANDARD_##standard##_PRIVATE()) /* //NOSONAR */
   /** @hideinitializer
   * Check if the C, CXX standard is greater or equal than \b standard.
   * \param[in] standard The language to test.
@@ -122,7 +122,7 @@
   *
   * \note Can be directly used in both preprocessor and compiler expressions.
   */
-  #define LANGUAGE_IS_GREATER_EQUAL(standard) (KHAOS_C_STANDARD_PRIVATE() >= KHAOS_STANDARD_##standard##_PRIVATE())
+  #define LANGUAGE_IS_GREATER_EQUAL(standard) (KHAOS_C_STANDARD_PRIVATE() >= KHAOS_STANDARD_##standard##_PRIVATE()) /* //NOSONAR */
   /** @hideinitializer
   * Check if the C, CXX standard is equal than \b standard.
   * \param[in] standard The language to test.
@@ -131,7 +131,7 @@
   *
   * \note Can be directly used in both preprocessor and compiler expressions.
   */
-  #define LANGUAGE_IS_EQUAL(standard)         (KHAOS_C_STANDARD_PRIVATE() == KHAOS_STANDARD_##standard##_PRIVATE())
+  #define LANGUAGE_IS_EQUAL(standard)         (KHAOS_C_STANDARD_PRIVATE() == KHAOS_STANDARD_##standard##_PRIVATE()) /* //NOSONAR */
   /** @hideinitializer
   * Check if the C, CXX standard is lower or equal than \b standard.
   * \param[in] standard The language to test.
@@ -140,7 +140,7 @@
   *
   * \note Can be directly used in both preprocessor and compiler expressions.
   */
-  #define LANGUAGE_IS_LOWER_EQUAL(standard)   (KHAOS_C_STANDARD_PRIVATE() <= KHAOS_STANDARD_##standard##_PRIVATE()) //NOSONAR
+  #define LANGUAGE_IS_LOWER_EQUAL(standard)   (KHAOS_C_STANDARD_PRIVATE() <= KHAOS_STANDARD_##standard##_PRIVATE()) /* //NOSONAR */
   /** @hideinitializer
   * Check if the C, CXX standard is lower than \b standard.
   * \param[in] standard The language to test.
@@ -149,13 +149,13 @@
   *
   * \note Can be directly used in both preprocessor and compiler expressions.
   */
-  #define LANGUAGE_IS_LOWER(standard)         (KHAOS_C_STANDARD_PRIVATE() < KHAOS_STANDARD_##standard##_PRIVATE())
+  #define LANGUAGE_IS_LOWER(standard)         (KHAOS_C_STANDARD_PRIVATE() < KHAOS_STANDARD_##standard##_PRIVATE()) /* //NOSONAR */
 #elif LANGUAGE_IS(CXX)
-  #define LANGUAGE_IS_GREATER(standard)       (KHAOS_CXX_STANDARD_PRIVATE() > KHAOS_STANDARD_##standard##_PRIVATE())
-  #define LANGUAGE_IS_GREATER_EQUAL(standard) (KHAOS_CXX_STANDARD_PRIVATE() >= KHAOS_STANDARD_##standard##_PRIVATE())
-  #define LANGUAGE_IS_EQUAL(standard)         (KHAOS_CXX_STANDARD_PRIVATE() == KHAOS_STANDARD_##standard##_PRIVATE())
-  #define LANGUAGE_IS_LOWER_EQUAL(standard)   (KHAOS_CXX_STANDARD_PRIVATE() <= KHAOS_STANDARD_##standard##_PRIVATE())
-  #define LANGUAGE_IS_LOWER(standard)         (KHAOS_CXX_STANDARD_PRIVATE() < KHAOS_STANDARD_##standard##_PRIVATE())
+  #define LANGUAGE_IS_GREATER(standard)       (KHAOS_CXX_STANDARD_PRIVATE() > KHAOS_STANDARD_##standard##_PRIVATE()) /* //NOSONAR */
+  #define LANGUAGE_IS_GREATER_EQUAL(standard) (KHAOS_CXX_STANDARD_PRIVATE() >= KHAOS_STANDARD_##standard##_PRIVATE()) /* //NOSONAR */
+  #define LANGUAGE_IS_EQUAL(standard)         (KHAOS_CXX_STANDARD_PRIVATE() == KHAOS_STANDARD_##standard##_PRIVATE()) /* //NOSONAR */
+  #define LANGUAGE_IS_LOWER_EQUAL(standard)   (KHAOS_CXX_STANDARD_PRIVATE() <= KHAOS_STANDARD_##standard##_PRIVATE()) /* //NOSONAR */
+  #define LANGUAGE_IS_LOWER(standard)         (KHAOS_CXX_STANDARD_PRIVATE() < KHAOS_STANDARD_##standard##_PRIVATE()) /* //NOSONAR */
 #else
   #define LANGUAGE_IS_GREATER(standard)       (0L)
   #define LANGUAGE_IS_GREATER_EQUAL(standard) (0L)
