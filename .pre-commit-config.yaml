@@ -86,7 +86,7 @@ repos:
   - id: cmake-lint
     args: [--config=.cmake-linter.yml]
 
-#- repo: https://github.com/Takishima/cmake-pre-commit-hooks
+  #- repo: https://github.com/Takishima/cmake-pre-commit-hooks
   #rev: v1.8.0
   #hooks:
   #- id: clang-tidy
