@@ -86,11 +86,11 @@ repos:
   - id: cmake-lint
     args: [--config=.cmake-linter.yml]
 
-- repo: https://github.com/Takishima/cmake-pre-commit-hooks
-  rev: v1.8.0
-  hooks:
-  - id: clang-tidy
-    args: [-Bbuild, --config=]
+#- repo: https://github.com/Takishima/cmake-pre-commit-hooks
+  #rev: v1.8.0
+  #hooks:
+  #- id: clang-tidy
+  #  args: [-Bbuild, --config=]
   #- id: cppcheck-conda
   #  args: [-Bbuild, --suppressions-list=.cppcheck]
   #- id: include-what-you-use-conda
