@@ -27,20 +27,20 @@
    *
    */
   #if defined(_MSVC_LANG)
-  #define KHAOS_CXX_STANDARD_PRIVATE() (_MSVC_LANG) /*!< defined as _MSVC_LANG */
+  #define KHAOS_CXX_STANDARD_PRIVATE() (_MSVC_LANG) /* //NOSONAR */ /*!< defined as _MSVC_LANG */
   #else
-  #define KHAOS_CXX_STANDARD_PRIVATE() (__cplusplus) /*!< defined as __cplusplus */
+  #define KHAOS_CXX_STANDARD_PRIVATE() (__cplusplus) /* //NOSONAR */ /*!< defined as __cplusplus */
   #endif
 #else
-  #define KHAOS_CXX_STANDARD_PRIVATE() (__cplusplus) /*!< defined as __cplusplus */
+  #define KHAOS_CXX_STANDARD_PRIVATE() (__cplusplus) /* //NOSONAR */ /*!< defined as __cplusplus */
 #endif
 
 #if defined(__STRICT_ANSI__)
-  #define KHAOS_LANGUAGE_ISO_PRIVATE()        (1L) /*!< 1 if strict ISO, 0 otherwise */
-  #define KHAOS_LANGUAGE_Extensions_PRIVATE() (0L) /*!< 0 if strict ISO, 1 otherwise */
+  #define KHAOS_LANGUAGE_ISO_PRIVATE()        (1L) /* //NOSONAR */ /*!< 1 if strict ISO, 0 otherwise */
+  #define KHAOS_LANGUAGE_Extensions_PRIVATE() (0L) /* //NOSONAR */ /*!< 0 if strict ISO, 1 otherwise */
 #else
-  #define KHAOS_LANGUAGE_ISO_PRIVATE()        (0L) /*!< 1 if strict ISO, 0 otherwise */
-  #define KHAOS_LANGUAGE_Extensions_PRIVATE() (1L) /*!< 0 if strict ISO, 1 otherwise */
+  #define KHAOS_LANGUAGE_ISO_PRIVATE()        (0L) /* //NOSONAR */ /*!< 1 if strict ISO, 0 otherwise */
+  #define KHAOS_LANGUAGE_Extensions_PRIVATE() (1L) /* //NOSONAR */ /*!< 0 if strict ISO, 1 otherwise */
 #endif
 
 #endif /* KHAOS_CXX_H_ */
