@@ -36,10 +36,10 @@
   #define KHAOS_LANGUAGE_Fortran_PRIVATE() 1L
 #elif defined(__cplusplus)
   #define KHAOS_LANGUAGE_CXX_PRIVATE() 1L
-  #include "khaos/CXX.h"
+  #include "Khaos/CXX.h"
 #else
   #define KHAOS_LANGUAGE_C_PRIVATE() 1L
-  #include "khaos/C.h"
+  #include "Khaos/C.h"
 #endif
 
 #if !defined(KHAOS_LANGUAGE_Cuda_PRIVATE)

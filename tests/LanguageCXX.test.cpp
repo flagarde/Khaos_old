@@ -10,7 +10,7 @@
 /* Copyright 2022 flagarde */
 /* doctest need c++11 so disable it to test C++98 */
 
-#include "khaos/Language.h"
+#include "Khaos/Language.h"
 
 #if defined(_WIN32) && !defined(__MINGW32__) && !defined(__MINGW64__)
   #pragma warning(disable : 4702 4805)

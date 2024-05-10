@@ -10,8 +10,7 @@
 #ifndef KHAOS_COMPAREVERSIONMACROS_H_
 #define KHAOS_COMPAREVERSIONMACROS_H_
 
-#include "khaos/KhaosVersion.h"
-#include "khaos/VersionMacros.h"
+#include "Khaos/VersionMacros.h"
 
 /** \file CompareVersionMacros.h
  *  \brief Define macros to compare versions.

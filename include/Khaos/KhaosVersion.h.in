@@ -26,7 +26,7 @@
 
 #ifndef KHAOS_KHAOSVERSION_H_
 #define KHAOS_KHAOSVERSION_H_
-#include "khaos/VersionMacros.h"
+#include "Khaos/VersionMacros.h"
 
 /*!
   \brief Khaos version. \hideinitializer

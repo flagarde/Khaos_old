@@ -15,7 +15,7 @@
  *  \warning \b CXX11 is always false for \b MSVC only c++14 and upper are considered.
 */
 
-#include "CXXStandards.h"
+#include "Khaos/CXXStandards.h"
 
 #if defined(_MSC_VER)
   /*!

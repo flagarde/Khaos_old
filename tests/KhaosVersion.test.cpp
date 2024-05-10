@@ -8,7 +8,7 @@
 */
 
 /* Copyright 2022 flagarde */
-#include "khaos/KhaosVersion.h"
+#include "Khaos/KhaosVersion.h"
 
 #include <cmath>
 

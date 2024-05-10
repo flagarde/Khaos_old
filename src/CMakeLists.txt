@@ -1,3 +1,3 @@
 include(GNUInstallDirs)
 
-add_subdirectory(khaos)
+add_subdirectory(Khaos)

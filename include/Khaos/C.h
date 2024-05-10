@@ -14,7 +14,7 @@
  *  \brief Detect the C standard and define some useful macros.
  */
 
-#include "CStandards.h"
+#include "Khaos/CStandards.h"
 
 #if defined(__STDC__)
   #if defined(__STDC_VERSION__)

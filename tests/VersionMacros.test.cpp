@@ -9,9 +9,8 @@
 
 /* Copyright 2022 flagarde */
 
-#include "khaos/VersionMacros.h"
-
-#include "khaos/KhaosVersion.h"
+#include "Khaos/VersionMacros.h"
+#include "Khaos/KhaosVersion.h"
 
 // NOLINTBEGIN
 #include "doctest/doctest.h"

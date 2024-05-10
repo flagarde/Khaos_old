@@ -4,6 +4,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 option(KHAOS_BUILD_DOCS "Build the docs" ON)
 option(KHAOS_BUILD_TESTS "Build the tests" ON)
+option(KHAOS_BUILD_EXAMPLES "Build the examples" ON)
 
 if(KHAOS_BUILD_DOCS OR KHAOS_BUILD_TESTS)
   include(FetchContent)
@@ -24,4 +25,8 @@ endif()
 if(KHAOS_BUILD_TESTS)
   include(CTest)
   add_subdirectory(tests)
+endif()
+
+if(KHAOS_BUILD_EXAMPLES)
+  add_subdirectory(examples)
 endif()

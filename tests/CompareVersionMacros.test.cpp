@@ -9,7 +9,8 @@
 
 /* Copyright 2022 flagarde */
 
-#include "khaos/CompareVersionMacros.h"
+#include "Khaos/CompareVersionMacros.h"
+#include "Khaos/KhaosVersion.h"
 
 // NOLINTBEGIN
 #if defined(_WIN32) && !defined(__MINGW32__) && !defined(__MINGW64__)
