@@ -27,9 +27,9 @@
    *
    */
   #if defined(_MSVC_LANG)
-    #define KHAOS_CXX_STANDARD_PRIVATE() (_MSVC_LANG) /*!< defined as _MSVC_LANG */
+  #define KHAOS_CXX_STANDARD_PRIVATE() (_MSVC_LANG) /*!< defined as _MSVC_LANG */
   #else
-    #define KHAOS_CXX_STANDARD_PRIVATE() (__cplusplus) /*!< defined as __cplusplus */
+  #define KHAOS_CXX_STANDARD_PRIVATE() (__cplusplus) /*!< defined as __cplusplus */
   #endif
 #else
   #define KHAOS_CXX_STANDARD_PRIVATE() (__cplusplus) /*!< defined as __cplusplus */

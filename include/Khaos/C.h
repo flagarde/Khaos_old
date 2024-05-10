@@ -18,9 +18,9 @@
 
 #if defined(__STDC__)
   #if defined(__STDC_VERSION__)
-    #define KHAOS_C_STANDARD_PRIVATE() (__STDC_VERSION__) /*!< defined as __STDC_VERSION__ */
+  #define KHAOS_C_STANDARD_PRIVATE() (__STDC_VERSION__) /*!< defined as __STDC_VERSION__ */
   #else
-    #define KHAOS_C_STANDARD_PRIVATE() KHAOS_STANDARD_C90_PRIVATE() /*!< defined as C90 */
+  #define KHAOS_C_STANDARD_PRIVATE() KHAOS_STANDARD_C90_PRIVATE() /*!< defined as C90 */
   #endif
 #else
   /*
