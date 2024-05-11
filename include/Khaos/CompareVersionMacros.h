@@ -36,7 +36,7 @@
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define CHECK_VERSION(version, op, major, minor, patch, tweak) ((KHAOS_VERSION_##version##_PRIVATE())op(SET_VERSION(major, minor, patch, tweak)))
+#define CHECK_VERSION(version, op, major, minor, patch, tweak) ((KHAOS_DEFINE_##version##_VERSION_PRIVATE())op(SET_VERSION(major, minor, patch, tweak)))
 
 /** \hideinitializer
  *  \brief Check the \b versiona with \b versionb using the operator \b op
@@ -47,6 +47,6 @@
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
 
-#define CHECK_VERSIONS(a, op, b) ((KHAOS_VERSION_##a##_PRIVATE())op(KHAOS_VERSION_##b##_PRIVATE()))
+#define CHECK_VERSIONS(a, op, b) ((KHAOS_DEFINE_##a##_VERSION_PRIVATE())op(KHAOS_DEFINE_##b##_VERSION_PRIVATE()))
 
 #endif /* KHAOS_COMPAREVERSIONMACROS_H_ */

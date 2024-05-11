@@ -36,43 +36,43 @@
  *  \note Values can be specified in any base. As the defined value is an constant expression.
  *  \note The implementation enforces the individual ranges for the major, minor, and patch numbers.
  *  \warning Values over the ranges are truncated (modulo).
- *  \warning The name of the macro must be of the form KHAOS_VERSION_name_PRIVATE() to be able to be parsed by the Khaos library.
+ *  \warning The name of the macro must be of the form KHAOS_DEFINE_name_VERSION_PRIVATE() to be able to be parsed by the Khaos library.
  *  \code{.cpp}
- *  #define KHAOS_VERSION_myversion_PRIVATE() SET_VERSION(2,3,4,5)
+ *  #define KHAOS_DEFINE_name_VERSION_PRIVATE() SET_VERSION(2,3,4,5)
  *  \endcode
  */
 #define SET_VERSION(major, minor, patch, tweak) ((((major)*1ULL % (1<<16)) << 48) + (((minor)*1ULL % (1<<16)) << 32) + (((patch)*1ULL % (1<<16)) << 16) + ((tweak)*1ULL % (1<<16)))
 
 /** \hideinitializer
- *  \brief Get standard major version numbers.
- *  \param[in] version The standard version number.
+ *  \brief Get the major version numbers.
+ *  \param[in] name The name for which to return the corresponding major version number.
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_MAJOR(version) ((((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) >> 48) % (1<<16)) /* //NOSONAR */
+#define GET_VERSION_MAJOR(version) ((((KHAOS_DEFINE_##version##_VERSION_PRIVATE()) * 1ULL) >> 48) % (1<<16)) /* //NOSONAR */
 
 /** \hideinitializer
- *  \brief Get standard minor version numbers.
- *  \param[in] version The standard version number.
+ *  \brief Get the minor version numbers.
+ *  \param[in] name The name for which to return the corresponding minor version number.
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_MINOR(version) ((((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) >> 32) % (1<<16)) /* //NOSONAR */
+#define GET_VERSION_MINOR(version) ((((KHAOS_DEFINE_##version##_VERSION_PRIVATE()) * 1ULL) >> 32) % (1<<16)) /* //NOSONAR */
 
 /** \hideinitializer
- *  \brief Get standard patch version numbers.
- *  \param[in] version The standard version number.
+ *  \brief Get the patch version numbers.
+ *  \param[in]name The name for which to return the corresponding patch version number.
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_PATCH(version) ((((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) >> 16) % (1<<16)) /* //NOSONAR */
+#define GET_VERSION_PATCH(version) ((((KHAOS_DEFINE_##version##_VERSION_PRIVATE()) * 1ULL) >> 16) % (1<<16)) /* //NOSONAR */
 
 /** \hideinitializer
- *  \brief Get standard tweak version numbers.
- *  \param[in] version The standard version number.
+ *  \brief Get the tweak version numbers.
+ *  \param[in] name The name for which to return the corresponding tweak version number.
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_TWEAK(version) (((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) % (1<<16)) /* //NOSONAR */
+#define GET_VERSION_TWEAK(version) (((KHAOS_DEFINE_##version##_VERSION_PRIVATE()) * 1ULL) % (1<<16)) /* //NOSONAR */
 
 #endif /* KHAOS_VERSIONMACROS_H_ */
