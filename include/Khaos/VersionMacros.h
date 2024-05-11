@@ -41,7 +41,7 @@
  *  #define KHAOS_VERSION_myversion_PRIVATE() SET_VERSION(2,3,4,5)
  *  \endcode
  */
-#define SET_VERSION(major, minor, patch, tweak) ((((major)*1ULL % 65536) << 48) + (((minor)*1ULL % 65536) << 32) + (((patch)*1ULL % 65536) << 16) + ((tweak)*1ULL % 65536))
+#define SET_VERSION(major, minor, patch, tweak) ((((major)*1ULL % (1<<16)) << 48) + (((minor)*1ULL % (1<<16)) << 32) + (((patch)*1ULL % (1<<16)) << 16) + ((tweak)*1ULL % (1<<16)))
 
 /** \hideinitializer
  *  \brief Get standard major version numbers.
@@ -49,7 +49,7 @@
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_MAJOR(version) ((((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) >> 48) % 65536) /* //NOSONAR */
+#define GET_VERSION_MAJOR(version) ((((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) >> 48) % (1<<16)) /* //NOSONAR */
 
 /** \hideinitializer
  *  \brief Get standard minor version numbers.
@@ -57,7 +57,7 @@
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_MINOR(version) ((((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) >> 32) % 65536) /* //NOSONAR */
+#define GET_VERSION_MINOR(version) ((((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) >> 32) % (1<<16)) /* //NOSONAR */
 
 /** \hideinitializer
  *  \brief Get standard patch version numbers.
@@ -65,7 +65,7 @@
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_PATCH(version) ((((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) >> 16) % 65536) /* //NOSONAR */
+#define GET_VERSION_PATCH(version) ((((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) >> 16) % (1<<16)) /* //NOSONAR */
 
 /** \hideinitializer
  *  \brief Get standard tweak version numbers.
@@ -73,6 +73,6 @@
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_TWEAK(version) (((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) % 65536) /* //NOSONAR */
+#define GET_VERSION_TWEAK(version) (((KHAOS_VERSION_##version##_PRIVATE()) * 1ULL) % (1<<16)) /* //NOSONAR */
 
 #endif /* KHAOS_VERSIONMACROS_H_ */
