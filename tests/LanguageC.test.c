@@ -38,7 +38,6 @@ int main(void)
 #elif C_EXTENSIONS == 1
 
   #if LANGUAGE_IS(ISO)
-    #error 145
   return -1;
   #endif
 
