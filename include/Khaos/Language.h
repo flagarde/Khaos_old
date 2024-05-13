@@ -36,10 +36,10 @@
   #define KHAOS_LANGUAGE_Fortran_PRIVATE() 1L
 #elif defined(__cplusplus)
   #define KHAOS_LANGUAGE_CXX_PRIVATE() 1L
-  #include "Khaos/CXX.h"
+  #include "Khaos/details/languages/CXX.h"
 #else
   #define KHAOS_LANGUAGE_C_PRIVATE() 1L
-  #include "Khaos/C.h"
+  #include "Khaos/details/languages/C.h"
 #endif
 
 #if !defined(KHAOS_LANGUAGE_Cuda_PRIVATE)
@@ -151,11 +151,11 @@
   */
   #define LANGUAGE_IS_LOWER(standard)         (KHAOS_C_STANDARD_PRIVATE() < KHAOS_STANDARD_##standard##_PRIVATE()) /* //NOSONAR */
 #elif LANGUAGE_IS(CXX)
-  #define LANGUAGE_IS_GREATER(standard)       (KHAOS_CXX_STANDARD_PRIVATE() > KHAOS_STANDARD_##standard##_PRIVATE()) /* //NOSONAR */
+  #define LANGUAGE_IS_GREATER(standard)       (KHAOS_CXX_STANDARD_PRIVATE() > KHAOS_STANDARD_##standard##_PRIVATE())  /* //NOSONAR */
   #define LANGUAGE_IS_GREATER_EQUAL(standard) (KHAOS_CXX_STANDARD_PRIVATE() >= KHAOS_STANDARD_##standard##_PRIVATE()) /* //NOSONAR */
   #define LANGUAGE_IS_EQUAL(standard)         (KHAOS_CXX_STANDARD_PRIVATE() == KHAOS_STANDARD_##standard##_PRIVATE()) /* //NOSONAR */
   #define LANGUAGE_IS_LOWER_EQUAL(standard)   (KHAOS_CXX_STANDARD_PRIVATE() <= KHAOS_STANDARD_##standard##_PRIVATE()) /* //NOSONAR */
-  #define LANGUAGE_IS_LOWER(standard)         (KHAOS_CXX_STANDARD_PRIVATE() < KHAOS_STANDARD_##standard##_PRIVATE()) /* //NOSONAR */
+  #define LANGUAGE_IS_LOWER(standard)         (KHAOS_CXX_STANDARD_PRIVATE() < KHAOS_STANDARD_##standard##_PRIVATE())  /* //NOSONAR */
 #else
   #define LANGUAGE_IS_GREATER(standard)       (0L)
   #define LANGUAGE_IS_GREATER_EQUAL(standard) (0L)

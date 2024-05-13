@@ -10,7 +10,7 @@
 /* Copyright 2022 flagarde */
 
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "Khaos/CXXStandards.h"
+#include "Khaos/details/languages/CXXStandards.h"
 
 // NOLINTBEGIN
 #include "doctest/doctest.h"

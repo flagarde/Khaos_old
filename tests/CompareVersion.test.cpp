@@ -9,7 +9,8 @@
 
 /* Copyright 2022 flagarde */
 
-#include "Khaos/CompareVersionMacros.h"
+#include "Khaos/CompareVersions.h"
+
 #include "Khaos/KhaosVersion.h"
 
 // NOLINTBEGIN

@@ -1,5 +1,0 @@
-add_library(Khaos INTERFACE)
-target_compile_options(Khaos INTERFACE $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:-Wall> $<$<CXX_COMPILER_ID:MSVC>:/W4>)
-configure_file(KhaosVersion.h.in "${PROJECT_BINARY_DIR}/include/Khaos/KhaosVersion.h" @ONLY)
-target_include_directories(Khaos INTERFACE "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include/>" "$<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include/>" "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
-add_library(Khaos::Khaos ALIAS Khaos)

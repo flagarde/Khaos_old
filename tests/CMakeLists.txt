@@ -7,6 +7,7 @@ if(CPP_STANDARD_FOUND STREQUAL "-1" OR ((CMAKE_CXX_COMPILER_ID STREQUAL "GNU") A
   missive(ERROR "Tests disabled")
   return()
 else()
+  set(doctest_DOCTEST_NO_INSTALL TRUE)
   include(Doctest)
 endif()
 
@@ -33,15 +34,15 @@ target_link_libraries(KhaosVersion.test PRIVATE Khaos::Khaos doctest_with_main K
 target_compile_definitions(KhaosVersion.test PRIVATE "-DMAJOR=${Khaos_VERSION_MAJOR}" "-DMINOR=${Khaos_VERSION_MINOR}" "-DPATCH=${Khaos_VERSION_PATCH}" "-DTWEAK=${Khaos_VERSION_TWEAK}")
 doctest_discover_tests(KhaosVersion.test)
 
-add_executable(VersionMacros.test VersionMacros.test.cpp)
-target_link_libraries(VersionMacros.test PRIVATE Khaos::Khaos doctest_with_main KhaosTestFlags)
-target_compile_definitions(VersionMacros.test PRIVATE "-DMAJOR=${Khaos_VERSION_MAJOR}" "-DMINOR=${Khaos_VERSION_MINOR}" "-DPATCH=${Khaos_VERSION_PATCH}" "-DTWEAK=${Khaos_VERSION_TWEAK}")
-doctest_discover_tests(VersionMacros.test)
+add_executable(Version.test Version.test.cpp)
+target_link_libraries(Version.test PRIVATE Khaos::Khaos doctest_with_main KhaosTestFlags)
+target_compile_definitions(Version.test PRIVATE "-DMAJOR=${Khaos_VERSION_MAJOR}" "-DMINOR=${Khaos_VERSION_MINOR}" "-DPATCH=${Khaos_VERSION_PATCH}" "-DTWEAK=${Khaos_VERSION_TWEAK}")
+doctest_discover_tests(Version.test)
 
-add_executable(CompareVersionMacros.test CompareVersionMacros.test.cpp)
-target_link_libraries(CompareVersionMacros.test PRIVATE Khaos::Khaos doctest_with_main KhaosTestFlags)
-target_compile_definitions(CompareVersionMacros.test PRIVATE "-DMAJOR=${Khaos_VERSION_MAJOR}" "-DMINOR=${Khaos_VERSION_MINOR}" "-DPATCH=${Khaos_VERSION_PATCH}" "-DTWEAK=${Khaos_VERSION_TWEAK}")
-doctest_discover_tests(CompareVersionMacros.test)
+add_executable(CompareVersion.test CompareVersion.test.cpp)
+target_link_libraries(CompareVersion.test PRIVATE Khaos::Khaos doctest_with_main KhaosTestFlags)
+target_compile_definitions(CompareVersion.test PRIVATE "-DMAJOR=${Khaos_VERSION_MAJOR}" "-DMINOR=${Khaos_VERSION_MINOR}" "-DPATCH=${Khaos_VERSION_PATCH}" "-DTWEAK=${Khaos_VERSION_TWEAK}")
+doctest_discover_tests(CompareVersion.test)
 
 add_executable(CStandards.test CStandards.test.cpp)
 target_link_libraries(CStandards.test PRIVATE Khaos::Khaos doctest_with_main KhaosTestFlags)

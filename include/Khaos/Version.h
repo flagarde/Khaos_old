@@ -7,10 +7,10 @@
 * SPDX-License-Identifier: MIT
 */
 
-#ifndef KHAOS_VERSIONMACROS_H_
-#define KHAOS_VERSIONMACROS_H_
+#ifndef KHAOS_VERSION_H_
+#define KHAOS_VERSION_H_
 
-/** \file VersionMacros.h
+/** \file Version.h
  *  \brief Define macros to set, get versions.
  *  \note Use these macros only if you need preprocessor version checking.
  *  \note For example :
@@ -41,7 +41,7 @@
  *  #define KHAOS_DEFINE_name_VERSION_PRIVATE() SET_VERSION(2,3,4,5)
  *  \endcode
  */
-#define SET_VERSION(major, minor, patch, tweak) ((((major)*1ULL % (1<<16)) << 48) + (((minor)*1ULL % (1<<16)) << 32) + (((patch)*1ULL % (1<<16)) << 16) + ((tweak)*1ULL % (1<<16))) /* //NOSONAR */
+#define SET_VERSION(major, minor, patch, tweak) ((((major)*1ULL % (1 << 16)) << 48) + (((minor)*1ULL % (1 << 16)) << 32) + (((patch)*1ULL % (1 << 16)) << 16) + ((tweak)*1ULL % (1 << 16))) /* //NOSONAR */
 
 /** \hideinitializer
  *  \brief Get the major version numbers.
@@ -49,7 +49,7 @@
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_MAJOR(name) ((((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) >> 48) % (1<<16)) /* //NOSONAR */
+#define GET_VERSION_MAJOR(name) ((((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) >> 48) % (1 << 16)) /* //NOSONAR */
 
 /** \hideinitializer
  *  \brief Get the minor version numbers.
@@ -57,7 +57,7 @@
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_MINOR(name) ((((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) >> 32) % (1<<16)) /* //NOSONAR */
+#define GET_VERSION_MINOR(name) ((((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) >> 32) % (1 << 16)) /* //NOSONAR */
 
 /** \hideinitializer
  *  \brief Get the patch version numbers.
@@ -65,7 +65,7 @@
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_PATCH(name) ((((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) >> 16) % (1<<16)) /* //NOSONAR */
+#define GET_VERSION_PATCH(name) ((((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) >> 16) % (1 << 16)) /* //NOSONAR */
 
 /** \hideinitializer
  *  \brief Get the tweak version numbers.
@@ -73,6 +73,6 @@
  *
  *  \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
  */
-#define GET_VERSION_TWEAK(name) (((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) % (1<<16)) /* //NOSONAR */
+#define GET_VERSION_TWEAK(name) (((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) % (1 << 16)) /* //NOSONAR */
 
-#endif /* KHAOS_VERSIONMACROS_H_ */
+#endif /* KHAOS_VERSION_H_ */

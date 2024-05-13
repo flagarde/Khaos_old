@@ -24,9 +24,9 @@
  *  \endcode
  */
 
-#ifndef KHAOS_KHAOSVERSION_H_
-#define KHAOS_KHAOSVERSION_H_
-#include "Khaos/VersionMacros.h"
+#ifndef KHAOS_KHAOS_VERSION_H_
+#define KHAOS_KHAOS_VERSION_H_
+#include "Khaos/Version.h"
 
 /*!
   \brief Khaos version. \hideinitializer
@@ -37,4 +37,4 @@
 #define KHAOS_DEFINE_Khaos_VERSION_PRIVATE()       SET_VERSION(@Khaos_VERSION_MAJOR@ULL,@Khaos_VERSION_MINOR@ULL,@Khaos_VERSION_PATCH@ULL,@Khaos_VERSION_TWEAK@ULL)
 /* clang-format on */
 
-#endif  /* KHAOS_KHAOSVERSION_H_ */
+#endif  /* KHAOS_KHAOS_VERSION_H_ */
