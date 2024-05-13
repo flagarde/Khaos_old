@@ -1127,6 +1127,7 @@
   #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__PATHCC__, __PATHCC_MINOR__, __PATHCC_PATCHLEVEL__, 0)
   #define KHAOS_COMPILER_EKOPath_PRIVATE()        (1L)
 #elif defined(__EMSCRIPTEN__)
+  #include<emscripten/version.h>
   #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__EMSCRIPTEN_major__, __EMSCRIPTEN_minor__, __EMSCRIPTEN_tiny__, 0)
   #define KHAOS_COMPILER_Emscripten_PRIVATE()     (1L)
 #elif defined(__FCC_VERSION)
