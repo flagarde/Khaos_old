@@ -40,7 +40,7 @@ If you want to use the traditional (legacy) preprocessor for C11 or C17, you mus
 Setting the /Zc:preprocessor- option may lead to unexpected behavior, and isn't recommended.
 */
 
-#if defined(__STRICT_ANSI__) || (defined(_MSC_VER) && (defined(__STDC__) || defined(__STDC_VERSION__)))
+#if defined(__STRICT_ANSI__) || (defined(_MSC_VER) && !defined(_MSC_EXTENSIONS)) || defined(__ANSI__) || defined(NO_EXT_KEYS)
   #define KHAOS_LANGUAGE_ISO_PRIVATE()        (1L) /* //NOSONAR !< 1 if strict ISO, 0 otherwise */
   #define KHAOS_LANGUAGE_Extensions_PRIVATE() (0L) /* //NOSONAR !< 0 if strict ISO, 1 otherwise */
 #else
