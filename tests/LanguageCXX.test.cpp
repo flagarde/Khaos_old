@@ -7,8 +7,8 @@
 * SPDX-License-Identifier: MIT
 */
 
-/* Copyright 2022 flagarde */
-/* doctest need c++11 so disable it to test C++98 */
+/* Copyright 2022 flagarde*/
+/* doctest need c++11 so disable it to test C++98*/
 
 #include "Khaos/Language.h"
 
@@ -123,7 +123,7 @@ TEST_CASE("Test LANGUAGE_IS(x)")
   #endif
 }
 
-  #if CPP_STANDARD == 11 && !defined(_MSC_VER) && !defined(__clang__) /* MSVC will never been c++11 only */
+  #if CPP_STANDARD == 11 && !defined(_MSC_VER) && !defined(__clang__) /* MSVC will never been c++11 only*/
     #if CPP_EXTENSIONS == 0
 TEST_CASE("Test the language CXX11 extensions OFF")
     #else

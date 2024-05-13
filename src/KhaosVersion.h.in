@@ -8,21 +8,21 @@
 */
 
 /** \file KhaosVersion.h
- *
- *  \brief Macros providing the Khaos version.
- *
- *  \details Contain the macros to obtain the version and version tweak of Khaos.
- *
- *  \note Use these macros only if you need preprocessor version checking.
- *  \note For example :
- *  \code{.cpp}
- *  #if GET_VERSION_MAJOR(Khaos) == 2
- *    ...
- *  #else
- *    ...
- *  #endif
- *  \endcode
- */
+*
+*  \brief Macros providing the Khaos version.
+*
+*  \details Contain the macros to obtain the version and version tweak of Khaos.
+*
+*  \note Use these macros only if you need preprocessor version checking.
+*  \note For example :
+*  \code{.cpp}
+*  #if GET_VERSION_MAJOR(Khaos) == 2
+*    ...
+*  #else
+*    ...
+*  #endif
+*  \endcode
+*/
 
 #ifndef KHAOS_KHAOS_VERSION_H_
 #define KHAOS_KHAOS_VERSION_H_
@@ -33,8 +33,8 @@
   \returns Khaos version in integer literal UL form.
   \note Use #GET_VERSION_MAJOR(Khaos), #GET_VERSION_MINOR(Khaos), #GET_VERSION_PATCH(Khaos) to parse it.
 */
-/* clang-format off */
+/* clang-format off*/
 #define KHAOS_DEFINE_Khaos_VERSION_PRIVATE()       SET_VERSION(@Khaos_VERSION_MAJOR@ULL,@Khaos_VERSION_MINOR@ULL,@Khaos_VERSION_PATCH@ULL,@Khaos_VERSION_TWEAK@ULL)
-/* clang-format on */
+/* clang-format on*/
 
-#endif  /* KHAOS_KHAOS_VERSION_H_ */
+#endif  /* KHAOS_KHAOS_VERSION_H_*/

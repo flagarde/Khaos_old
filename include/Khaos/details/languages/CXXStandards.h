@@ -10,10 +10,11 @@
 #ifndef KHAOS_CXX_STANDARDS_H_
 #define KHAOS_CXX_STANDARDS_H_
 
-/*! \file CXXStandards.h
-*  \brief Define the version of the C++ standard.
-*  Define macros that expand to the integer constant of type \b long whose value are the version of the C++ standard.
-*  Official values for the \b __cplusplus macro.
+/*!
+* \file CXXStandards.h
+* \brief Define the version of the C++ standard.
+* Define macros that expand to the integer constant of type \b long whose value are the version of the C++ standard.
+* Official values for the \b __cplusplus macro.
 */
 
 #define KHAOS_STANDARD_CXX98_PRIVATE() (199711L) /* //NOSONAR !< Value for the C++97 standard */

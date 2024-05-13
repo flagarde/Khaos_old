@@ -7,7 +7,7 @@
 * SPDX-License-Identifier: MIT
 */
 
-/* Copyright 2022 flagarde */
+/* Copyright 2022 flagarde*/
 #include "Khaos/KhaosVersion.h"
 
 #include <cmath>
