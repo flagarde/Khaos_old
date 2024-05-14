@@ -101,11 +101,14 @@ foreach(CXX_STANDARD IN LISTS CXX_STANDARDS)
   endforeach()
 endforeach()
 
-if(MSVC)
+if(WIN32 AND "${CMAKE_CXX_COMPILER_ID}:${CMAKE_CXX_COMPILER_FRONTEND_VARIANT}" STREQUAL "Clang:GNU")
+  set(C_EXTENSIONS "ON") #Clang on windows with GNU frontend can't disable extensions 
+elseif(WIN32 AND "${CMAKE_CXX_COMPILER_ID}:${CMAKE_CXX_COMPILER_FRONTEND_VARIANT}" STREQUAL "Clang:MSVC")
+  set(C_EXTENSIONS "ON") #Clang on windows with GNU frontend can't disable extensions 
+  list(REMOVE_ITEM C_STANDARDS "c_std_90" "c_std_99" "c_std_11") #MSVC has no c99 option
+elseif(MSVC)
   set(C_EXTENSIONS "ON")
   list(REMOVE_ITEM C_STANDARDS "c_std_99") #MSVC has no c99 option
-elseif(WIN32 AND "${CMAKE_CXX_COMPILER_ID}:${CMAKE_CXX_COMPILER_FRONTEND_VARIANT}" STREQUAL "Clang:GNU")
-  set(C_EXTENSIONS "ON") #Clang on windows with GNU frontend can't disable extensions 
 else()
   set(C_EXTENSIONS "ON;OFF")
 endif()
