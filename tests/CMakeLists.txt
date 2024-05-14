@@ -74,6 +74,8 @@ message(STATUS "Compiler support C : ${C_STANDARDS}")
 if(MSVC)
   set(CXX_EXTENSIONS "ON")
   list(REMOVE_ITEM CXX_STANDARDS "cxx_std_98" "cxx_std_11") #MSVC has no c++98 c++11 options
+elseif(WIN32 AND "${CMAKE_CXX_COMPILER_ID}:${CMAKE_CXX_COMPILER_FRONTEND_VARIANT}" STREQUAL "Clang:GNU")
+  list(REMOVE_ITEM CXX_STANDARDS "cxx_std_98")
 else()
   set(CXX_EXTENSIONS "ON;OFF")
 endif()
