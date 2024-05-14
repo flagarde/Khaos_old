@@ -25,7 +25,7 @@
 */
 
 #if defined(__clang__)
-  #define KHAOS_PUSH_WARNING_CXX98_COMPAT_PEDANTIC() _Pragma("clang diagnostic push")_Pragma("clang diagnostic ignored \"-Wc++98-compat-pedantic\"")
+  #define KHAOS_PUSH_WARNING_CXX98_COMPAT_PEDANTIC() _Pragma("clang diagnostic push") _Pragma("clang diagnostic ignored \"-Wc++98-compat-pedantic\"")
   #define KHAOS_POP_WARNING_CXX98_COMPAT_PEDANTIC()  _Pragma("clang diagnostic pop")
 #else
   #define KHAOS_PUSH_WARNING_CXX98_COMPAT_PEDANTIC()
@@ -51,7 +51,8 @@
 * #define KHAOS_DEFINE_name_VERSION_PRIVATE() SET_VERSION(2,3,4,5)
 * \endcode
 */
-#define SET_VERSION(major, minor, patch, tweak) (KHAOS_PUSH_WARNING_CXX98_COMPAT_PEDANTIC()(((major)*1ULL % (1 << 16)) << 48) + (((minor)*1ULL % (1 << 16)) << 32) + (((patch)*1ULL % (1 << 16)) << 16) + ((tweak)*1ULL % (1 << 16))KHAOS_POP_WARNING_CXX98_COMPAT_PEDANTIC()) /* //NOSONAR */
+#define SET_VERSION(major, minor, patch, tweak) \
+  (KHAOS_PUSH_WARNING_CXX98_COMPAT_PEDANTIC()(((major) * 1ULL % (1 << 16)) << 48) + (((minor) * 1ULL % (1 << 16)) << 32) + (((patch) * 1ULL % (1 << 16)) << 16) + ((tweak) * 1ULL % (1 << 16)) KHAOS_POP_WARNING_CXX98_COMPAT_PEDANTIC()) /* //NOSONAR */
 
 /*!
 * \hideinitializer
@@ -60,7 +61,7 @@
 *
 * \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
 */
-#define GET_VERSION_MAJOR(name) (KHAOS_PUSH_WARNING_CXX98_COMPAT_PEDANTIC()(((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) >> 48) % (1 << 16)KHAOS_POP_WARNING_CXX98_COMPAT_PEDANTIC()) /* //NOSONAR */
+#define GET_VERSION_MAJOR(name) (KHAOS_PUSH_WARNING_CXX98_COMPAT_PEDANTIC()(((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) >> 48) % (1 << 16) KHAOS_POP_WARNING_CXX98_COMPAT_PEDANTIC()) /* //NOSONAR */
 
 /*!
 * \hideinitializer
@@ -69,7 +70,7 @@
 *
 * \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
 */
-#define GET_VERSION_MINOR(name) (KHAOS_PUSH_WARNING_CXX98_COMPAT_PEDANTIC()(((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) >> 32) % (1 << 16)KHAOS_POP_WARNING_CXX98_COMPAT_PEDANTIC()) /* //NOSONAR */
+#define GET_VERSION_MINOR(name) (KHAOS_PUSH_WARNING_CXX98_COMPAT_PEDANTIC()(((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) >> 32) % (1 << 16) KHAOS_POP_WARNING_CXX98_COMPAT_PEDANTIC()) /* //NOSONAR */
 
 /*!
 * \hideinitializer
@@ -78,7 +79,7 @@
 *
 * \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
 */
-#define GET_VERSION_PATCH(name) (KHAOS_PUSH_WARNING_CXX98_COMPAT_PEDANTIC()(((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) >> 16) % (1 << 16)KHAOS_POP_WARNING_CXX98_COMPAT_PEDANTIC()) /* //NOSONAR */
+#define GET_VERSION_PATCH(name) (KHAOS_PUSH_WARNING_CXX98_COMPAT_PEDANTIC()(((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) >> 16) % (1 << 16) KHAOS_POP_WARNING_CXX98_COMPAT_PEDANTIC()) /* //NOSONAR */
 
 /*!
 * \hideinitializer
@@ -87,6 +88,6 @@
 *
 * \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
 */
-#define GET_VERSION_TWEAK(name) (KHAOS_PUSH_WARNING_CXX98_COMPAT_PEDANTIC()((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) % (1 << 16)KHAOS_POP_WARNING_CXX98_COMPAT_PEDANTIC()) /* //NOSONAR */
+#define GET_VERSION_TWEAK(name) (KHAOS_PUSH_WARNING_CXX98_COMPAT_PEDANTIC()((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) % (1 << 16) KHAOS_POP_WARNING_CXX98_COMPAT_PEDANTIC()) /* //NOSONAR */
 
 #endif /* KHAOS_VERSION_H_ */

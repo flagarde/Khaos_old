@@ -1046,10 +1046,10 @@
   #define KHAOS_COMPILER_AmsterdamPRIVATE() (1L)
 #elif defined(__CC_ARM)
   #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__ARMCC_VERSION / 100000) % 10, ((__ARMCC_VERSION) / 10000) % 10, (__ARMCC_VERSION / 1000) % 10, __ARMCC_VERSION % 1000)
-  #define KHAOS_COMPILER_ARM_PRIVATE() (1L)
+  #define KHAOS_COMPILER_ARM_PRIVATE()            (1L)
 #elif defined(AZTEC_C) || defined(__AZTEC_C__)
   #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__VERSION) / 100) % 10, (__VERSION) % 100, 0, 0)
-  #define KHAOS_COMPILER_Aztec_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Aztec_PRIVATE()          (1L)
 #elif defined(__BORLANDC__) || defined(__CODEGEARC__)
   #if defined(__CODEGEARC__)
     #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__CODEGEARC__ & 0xFF00) >> 8, (__CODEGEARC__ & 0xF0) >> 4, (__CODEGEARC__ & 0xF), 0)
@@ -1101,7 +1101,7 @@
   #define KHAOS_COMPILER_EKOPath_PRIVATE()        (1L)
 #elif defined(__EMSCRIPTEN__)
   #if !defined(__EMSCRIPTEN_major__) || !defined(__EMSCRIPTEN_minor__) || !defined(__EMSCRIPTEN_tiny__)
-    #include<emscripten/version.h>
+    #include <emscripten/version.h>
   #endif
   #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__EMSCRIPTEN_major__, __EMSCRIPTEN_minor__, __EMSCRIPTEN_tiny__, 0)
   #define KHAOS_COMPILER_Emscripten_PRIVATE()     (1L)
