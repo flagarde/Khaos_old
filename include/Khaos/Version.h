@@ -12,6 +12,7 @@
 
 #if defined(__clang__)
   #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
 #endif
 
 /*!
@@ -86,7 +87,6 @@
 #define GET_VERSION_TWEAK(name) (((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) % (1 << 16)) /* //NOSONAR */
 
 #if defined(__clang__)
-  #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
   #pragma clang diagnostic pop
 #endif
 
