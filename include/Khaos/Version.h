@@ -12,7 +12,7 @@
 
 #if defined(__clang__)
   #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+  #pragma clang diagnostic ignored "-Wnoc++98-compat-pedantic"
 #endif
 
 /*!
