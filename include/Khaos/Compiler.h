@@ -1027,73 +1027,49 @@
 // Put all compiler first then MSVC clang llvm gcc as some mimic others.
 
 #if defined(_ACC_)
-
   #define KHAOS_COMPILER_ACC_PRIVATE() (1L)
-
 #elif defined(__CMB__)
-
   #if defined(__BUILD__)
     #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__BUILD__ / 1000000) % 10, ((__BUILD__) / 1000) % 1000, __BUILD__ % 1000, 0)
   #else
     #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__VERSION__ / 1000) % 10, __VERSION__ % 1000, __REVISION__, 0)
   #endif
-
   #define KHAOS_COMPILER_AltiumMicroblaze_PRIVATE() (1L)
-
 #elif defined(__CHC__)
-
   #if defined(__BUILD__)
     #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__BUILD__ / 1000000) % 10, ((__BUILD__) / 1000) % 1000, __BUILD__ % 1000, 0)
   #else
     #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__VERSION__ / 1000) % 10, __VERSION__ % 1000, __REVISION__, 0)
   #endif
-
   #define KHAOS_COMPILER_Altium_PRIVATE() (1L)
-
 #elif defined(__ACK__)
-
   #define KHAOS_COMPILER_AmsterdamPRIVATE() (1L)
-
 #elif defined(__CC_ARM)
-
   #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__ARMCC_VERSION / 100000) % 10, ((__ARMCC_VERSION) / 10000) % 10, (__ARMCC_VERSION / 1000) % 10, __ARMCC_VERSION % 1000)
-
   #define KHAOS_COMPILER_ARM_PRIVATE() (1L)
-
 #elif defined(AZTEC_C) || defined(__AZTEC_C__)
-
   #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__VERSION) / 100) % 10, (__VERSION) % 100, 0, 0)
-
   #define KHAOS_COMPILER_Aztec_PRIVATE() (1L)
-
 #elif defined(__BORLANDC__) || defined(__CODEGEARC__)
-
   #if defined(__CODEGEARC__)
     #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__CODEGEARC__ & 0xFF00) >> 8, (__CODEGEARC__ & 0xF0) >> 4, (__CODEGEARC__ & 0xF), 0)
   #elif defined(__BORLANDC__)
     #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__BORLANDC__ & 0xFF00) >> 8, (__BORLANDC__ & 0xF0) >> 4, (__BORLANDC__ & 0xF), 0)
   #endif
   #define KHAOS_COMPILER_Borland_PRIVATE() (1L)
-
 #elif defined(__CC65__)
-
   #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__CC65__ & 0xF00) >> 8, (__CC65__ & 0xF0) >> 4, (__CC65__ & 0xF), 0)
   #define KHAOS_COMPILER_CC65_PRIVATE()           (1L)
-
 #elif defined(__COMO__)
-
   #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__COMO_VERSION__ & 0xF00) >> 8, (__COMO_VERSION__ & 0xF0) >> 4, (__COMO_VERSION__ & 0xF), 0)
   #define KHAOS_COMPILER_Comeau_PRIVATE()         (1L)
-
 #elif defined(__DECC) || defined(__DECCXX) || defined(__VAXC) || defined(VAXC)
-
   #if defined(__DECCXX_VER)
     #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__DECCXX_VER) / 10000000) % 100, ((__DECCXX_VER) / 100000) % 100, ((__DECCXX_VER) / 100) % 100, 0)
   #elif defined(__DECC_VER)
     #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__DECC_VER) / 10000000) % 100, ((__DECC_VER) / 100000) % 100, ((__DECC_VER) / 100) % 100, 0)
   #endif
   #define KHAOS_COMPILER_Compaq_PRIVATE() (1L)
-
 #elif defined(__convexc__)
   #define KHAOS_COMPILER_Convex_PRIVATE() (1L)
 #elif defined(__COMPCERT__)
@@ -1101,10 +1077,8 @@
 #elif defined(__COVERITY__)
   #define KHAOS_COMPILER_Coverity_PRIVATE() (1L)
 #elif defined(_CRAYC)
-
   #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(_RELEASE, _RELEASE_MINOR, 0, 0)
   #define KHAOS_COMPILER_CrayC_PRIVATE()          (1L)
-
 #elif defined(__DCC__)
   #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__VERSION_NUMBER__) / 1000) % 10, ((__VERSION_NUMBER__) / 100) % 10, (__VERSION_NUMBER__) % 100, 0)
   #define KHAOS_COMPILER_Diab_PRIVATE()           (1L)
@@ -1117,7 +1091,6 @@
   #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__SYSC_VER__) / 10000) % 10, ((__SYSC_VER__) / 100) % 100, (__SYSC_VER__) % 100, 0)
   #define KHAOS_COMPILER_Dignus_PRIVATE()         (1L)
 #elif defined(__DJGPP__) || defined(__GO32__)
-
   #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__DJGPP__, __DJGPP_MINOR__, 0, 0)
   #define KHAOS_COMPILER_DJGPP_PRIVATE()          (1L)
 #elif defined(__EDG__)
@@ -1206,7 +1179,6 @@
   #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__KCC_VERSION & 0xF000) >> 12, (__KCC_VERSION & 0xF00) >> 8, (__KCC_VERSION & 0xFF), 0)
   #define KHAOS_COMPILER_Kai_PRIVATE()            (1L)
 #elif defined(__CA__) || defined(__KEIL__)
-
   #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__CA__) / 100) % 10, (__CA__) % 100, 0, 0)
   #define KHAOS_COMPILER_KeilCarm_PRIVATE()       (1L)
 #elif defined(__C166__)
