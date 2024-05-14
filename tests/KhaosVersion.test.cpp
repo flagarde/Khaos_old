@@ -16,4 +16,7 @@
 #include "doctest/doctest.h"
 // NOLINTEND
 
-TEST_CASE("Test KHAOS_VERSION") { CHECK_EQ((((MAJOR) % 65536) * pow(2, 48)) + (((MINOR) % 65536) * pow(2, 32)) + (((PATCH) % 65536) * pow(2, 16)) + ((TWEAK) % 65536), KHAOS_DEFINE_Khaos_VERSION_PRIVATE()); }
+TEST_CASE("Test KHAOS_VERSION")
+{
+  CHECK_EQ((((MAJOR) % 65536) * pow(2, 48)) + (((MINOR) % 65536) * pow(2, 32)) + (((PATCH) % 65536) * pow(2, 16)) + ((TWEAK) % 65536), KHAOS_DEFINE_Khaos_VERSION_PRIVATE());
+}

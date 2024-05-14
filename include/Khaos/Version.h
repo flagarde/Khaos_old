@@ -10,11 +10,6 @@
 #ifndef KHAOS_VERSION_H_
 #define KHAOS_VERSION_H_
 
-#if defined(__clang__)
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wnoc++98-compat-pedantic"
-#endif
-
 /*!
 * \file Version.h
 * \brief Define macros to set, get versions.
@@ -85,9 +80,5 @@
 * \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
 */
 #define GET_VERSION_TWEAK(name) (((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) % (1 << 16)) /* //NOSONAR */
-
-#if defined(__clang__)
-  #pragma clang diagnostic pop
-#endif
 
 #endif /* KHAOS_VERSION_H_ */

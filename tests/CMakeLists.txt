@@ -18,12 +18,12 @@ endif()
 add_library(KhaosTestFlags INTERFACE)
 
 target_compile_options(KhaosTestFlags INTERFACE
-  $<$<CXX_COMPILER_ID:Clang>:-Wall -Weverything -pedantic>
+  $<$<CXX_COMPILER_ID:Clang>:-Wall -Weverything -pedantic -Wnoc++98-compat-pedantic>
   $<$<CXX_COMPILER_ID:GNU>:-Wall -Wextra -pedantic>
   $<$<CXX_COMPILER_ID:Intel>:-Wall -Wextra -pedantic>
   $<$<CXX_COMPILER_ID:IntelLLVM>:-Wall -Wextra -pedantic>
   $<$<CXX_COMPILER_ID:MSVC>:/W4>
-  $<$<C_COMPILER_ID:Clang>:-Wall -Weverything -pedantic>
+  $<$<C_COMPILER_ID:Clang>:-Wall -Weverything -pedantic -Wnoc++98-compat-pedantic>
   $<$<C_COMPILER_ID:GNU>:-Wall -Wextra -pedantic>
   $<$<C_COMPILER_ID:IntelLLVM>:-Wall -Wextra -pedantic>
   $<$<C_COMPILER_ID:Intel>:-Wall -Wextra -pedantic>
