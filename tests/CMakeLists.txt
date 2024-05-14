@@ -73,6 +73,7 @@ message(STATUS "Compiler support CXX :${CXX_STANDARDS}")
 message(STATUS "Compiler support C : ${C_STANDARDS}")
 if(MSVC)
   set(CXX_EXTENSIONS "ON")
+  list(REMOVE_ITEM CXX_STANDARDS "cxx_std_98" "cxx_std_11") #MSVC has no c++98 c++11 options
 else()
   set(CXX_EXTENSIONS "ON;OFF")
 endif()
