@@ -101,6 +101,7 @@ endforeach()
 
 if(MSVC)
   set(C_EXTENSIONS "ON")
+  list(REMOVE_ITEM CXX_STANDARDS "c_std_99") #MSVC has no c99 option
 else()
   set(C_EXTENSIONS "ON;OFF")
 endif()
