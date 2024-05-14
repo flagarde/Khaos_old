@@ -36,7 +36,7 @@
   #define KHAOS_CXX_STANDARD_PRIVATE() (__cplusplus) /* //NOSONAR !< defined as __cplusplus */
 #endif
 
-#if defined(__STRICT_ANSI__)
+#if defined(__STRICT_ANSI__) || (defined(_MSC_VER) && !defined(_MSC_EXTENSIONS)) || defined(__ANSI__) || defined(NO_EXT_KEYS)
   #define KHAOS_LANGUAGE_ISO_PRIVATE()        (1L) /* //NOSONAR !< 1 if strict ISO, 0 otherwise */
   #define KHAOS_LANGUAGE_Extensions_PRIVATE() (0L) /* //NOSONAR !< 0 if strict ISO, 1 otherwise */
 #else
