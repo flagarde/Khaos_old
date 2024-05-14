@@ -11,64 +11,61 @@
 
 #include "Khaos/Language.h"
 
-#include <string>
-
 #if defined(_WIN32) && !defined(__MINGW32__) && !defined(__MINGW64__)
   #pragma warning(disable : 4702 4805)
 #endif
 
-int CXX98()
-{
-#if LANGUAGE_IS_GREATER(CXX98)
-  return -1;
-#endif
-
-#if !LANGUAGE_IS_GREATER_EQUAL(CXX98)
-  return -1;
-#endif
-
-#if !LANGUAGE_IS_EQUAL(CXX98)
-  return -1;
-#endif
-
-#if !LANGUAGE_IS_LOWER_EQUAL(CXX98)
-  return -1;
-#endif
-
-#if LANGUAGE_IS_LOWER(CXX98)
-  return -1;
-#endif
-
-#if LANGUAGE_IS(C) || LANGUAGE_IS(Cuda) || LANGUAGE_IS(ClangCuda) || LANGUAGE_IS(ObjCPP) || LANGUAGE_IS(ObjC) || LANGUAGE_IS(Assembler) || LANGUAGE_IS(Fortran)
-  return -1;
-#endif
-
-#if !LANGUAGE_IS(CXX)
-  return -1;
-#endif
-
-#if CPP_EXTENSIONS == 0
-  #if !LANGUAGE_IS(ISO)
-  return -1;
-  #endif
-
-  #if LANGUAGE_IS(Extensions)
-  return -1;
-  #endif
-#else
-  #if LANGUAGE_IS(ISO)
-  return -1;
-  #endif
-  #if !LANGUAGE_IS(Extensions)
-  return -1;
-  #endif
-#endif
-  return 0;
-}
-
 #if CPP_STANDARD == 98
 const int  standard       = 8;  //HACK to simplify he check
 const char standard_str[] = "C++98";
+static int CXX98()
+{
+  #if LANGUAGE_IS_GREATER(CXX98)
+  return -1;
+  #endif
+
+  #if !LANGUAGE_IS_GREATER_EQUAL(CXX98)
+  return -1;
+  #endif
+
+  #if !LANGUAGE_IS_EQUAL(CXX98)
+  return -1;
+  #endif
+
+  #if !LANGUAGE_IS_LOWER_EQUAL(CXX98)
+  return -1;
+  #endif
+
+  #if LANGUAGE_IS_LOWER(CXX98)
+  return -1;
+  #endif
+
+  #if LANGUAGE_IS(C) || LANGUAGE_IS(Cuda) || LANGUAGE_IS(ClangCuda) || LANGUAGE_IS(ObjCPP) || LANGUAGE_IS(ObjC) || LANGUAGE_IS(Assembler) || LANGUAGE_IS(Fortran)
+  return -1;
+  #endif
+
+  #if !LANGUAGE_IS(CXX)
+  return -1;
+  #endif
+
+  #if CPP_EXTENSIONS == 0
+    #if !LANGUAGE_IS(ISO)
+  return -1;
+    #endif
+
+    #if LANGUAGE_IS(Extensions)
+  return -1;
+    #endif
+  #else
+    #if LANGUAGE_IS(ISO)
+  return -1;
+    #endif
+    #if !LANGUAGE_IS(Extensions)
+  return -1;
+    #endif
+  #endif
+  return 0;
+}
 #elif CPP_STANDARD == 11
 const int  standard       = 11;
 const char standard_str[] = "C++11";
@@ -95,11 +92,7 @@ const char str[] = "(Extension)";
 #endif
 
 #if CPP_STANDARD == 98
-  #if(!defined(_MSC_VER) && !defined(__clang__)) || defined(__MINGW32__) || defined(__MINGW64__)
 int main() { return CXX98(); }
-  #else
-int main() { return 0; }
-  #endif
 #else
   #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
   // NOLINTBEGIN
