@@ -34,7 +34,7 @@
   \note Use #GET_VERSION_MAJOR(Khaos), #GET_VERSION_MINOR(Khaos), #GET_VERSION_PATCH(Khaos) to parse it.
 */
 /* clang-format off*/
-#define KHAOS_DEFINE_Khaos_VERSION_PRIVATE()       SET_VERSION(@Khaos_VERSION_MAJOR@ULL,@Khaos_VERSION_MINOR@ULL,@Khaos_VERSION_PATCH@ULL,@Khaos_VERSION_TWEAK@ULL)
+#define KHAOS_DEFINE_Khaos_VERSION_PRIVATE()       SET_VERSION(@Khaos_VERSION_MAJOR@UL,@Khaos_VERSION_MINOR@UL,@Khaos_VERSION_PATCH@UL,@Khaos_VERSION_TWEAK@UL)
 /* clang-format on*/
 
 #endif  /* KHAOS_KHAOS_VERSION_H_*/
