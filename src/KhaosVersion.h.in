@@ -26,6 +26,12 @@
 
 #ifndef KHAOS_KHAOS_VERSION_H_
 #define KHAOS_KHAOS_VERSION_H_
+
+#if defined(__clang__)
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#endif
+
 #include "Khaos/Version.h"
 
 /*!
@@ -34,7 +40,11 @@
   \note Use #GET_VERSION_MAJOR(Khaos), #GET_VERSION_MINOR(Khaos), #GET_VERSION_PATCH(Khaos) to parse it.
 */
 /* clang-format off*/
-#define KHAOS_DEFINE_Khaos_VERSION_PRIVATE()       SET_VERSION(@Khaos_VERSION_MAJOR@UL,@Khaos_VERSION_MINOR@UL,@Khaos_VERSION_PATCH@UL,@Khaos_VERSION_TWEAK@UL)
+#define KHAOS_DEFINE_Khaos_VERSION_PRIVATE()       SET_VERSION(@Khaos_VERSION_MAJOR@ULL,@Khaos_VERSION_MINOR@ULL,@Khaos_VERSION_PATCH@ULL,@Khaos_VERSION_TWEAK@ULL)
 /* clang-format on*/
+
+#if defined(__clang__)
+  #pragma clang diagnostic pop
+#endif
 
 #endif  /* KHAOS_KHAOS_VERSION_H_*/

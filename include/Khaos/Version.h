@@ -10,6 +10,11 @@
 #ifndef KHAOS_VERSION_H_
 #define KHAOS_VERSION_H_
 
+#if defined(__clang__)
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#endif
+
 /*!
 * \file Version.h
 * \brief Define macros to set, get versions.
@@ -43,7 +48,7 @@
 * #define KHAOS_DEFINE_name_VERSION_PRIVATE() SET_VERSION(2,3,4,5)
 * \endcode
 */
-#define SET_VERSION(major, minor, patch, tweak) ((((major)*1UL % (1 << 16)) << 48) + (((minor)*1UL % (1 << 16)) << 32) + (((patch)*1UL % (1 << 16)) << 16) + ((tweak)*1UL % (1 << 16))) /* //NOSONAR */
+#define SET_VERSION(major, minor, patch, tweak) ((((major)*1ULL % (1 << 16)) << 48) + (((minor)*1ULL % (1 << 16)) << 32) + (((patch)*1ULL % (1 << 16)) << 16) + ((tweak)*1ULL % (1 << 16))) /* //NOSONAR */
 
 /*!
 * \hideinitializer
@@ -52,7 +57,7 @@
 *
 * \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
 */
-#define GET_VERSION_MAJOR(name) ((((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1UL) >> 48) % (1 << 16)) /* //NOSONAR */
+#define GET_VERSION_MAJOR(name) ((((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) >> 48) % (1 << 16)) /* //NOSONAR */
 
 /*!
 * \hideinitializer
@@ -61,7 +66,7 @@
 *
 * \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
 */
-#define GET_VERSION_MINOR(name) ((((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1UL) >> 32) % (1 << 16)) /* //NOSONAR */
+#define GET_VERSION_MINOR(name) ((((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) >> 32) % (1 << 16)) /* //NOSONAR */
 
 /*!
 * \hideinitializer
@@ -70,7 +75,7 @@
 *
 * \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
 */
-#define GET_VERSION_PATCH(name) ((((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1UL) >> 16) % (1 << 16)) /* //NOSONAR */
+#define GET_VERSION_PATCH(name) ((((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) >> 16) % (1 << 16)) /* //NOSONAR */
 
 /*!
 * \hideinitializer
@@ -79,6 +84,10 @@
 *
 * \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
 */
-#define GET_VERSION_TWEAK(name) (((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1UL) % (1 << 16)) /* //NOSONAR */
+#define GET_VERSION_TWEAK(name) (((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) % (1 << 16)) /* //NOSONAR */
+
+#if defined(__clang__)
+  #pragma clang diagnostic pop
+#endif
 
 #endif /* KHAOS_VERSION_H_ */
