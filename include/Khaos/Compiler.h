@@ -501,6 +501,17 @@
 *
 * \note check with Intel
 *
+* Intellisense
+* ------------
+*
+* [Intellisense]
+*
+* | Macros                        |     Type      |  Value     |
+* | :---------------------------: | :-----------: |  :---:     |
+* | `__INTELLISENSE__`            |**detection**  |            |
+*
+* \note check with Intellisense
+*
 * Kai C++ compiler
 * ----------------
 *
@@ -922,7 +933,7 @@
 * | :----:     | :-----------: |
 * | __TINYC__  |**detection** |
 *
-* \note check with Tiny
+* \note check with TinyC
 *
 * Turbo C/C++
 * -------------------
@@ -1043,7 +1054,7 @@
   #endif
   #define KHAOS_COMPILER_Altium_PRIVATE() (1L)
 #elif defined(__ACK__)
-  #define KHAOS_COMPILER_AmsterdamPRIVATE() (1L)
+  #define KHAOS_COMPILER_Amsterdam_PRIVATE() (1L)
 #elif defined(__CC_ARM)
   #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__ARMCC_VERSION / 100000) % 10, ((__ARMCC_VERSION) / 10000) % 10, (__ARMCC_VERSION / 1000) % 10, __ARMCC_VERSION % 1000)
   #define KHAOS_COMPILER_ARM_PRIVATE()            (1L)
@@ -1177,6 +1188,8 @@
     #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__INTEL_COMPILER) / 100) % 100, (__INTEL_COMPILER) % 100, 0, 0)
   #endif
   #define KHAOS_COMPILER_Intel_PRIVATE() (1L)
+#elif defined(__INTELLISENSE__)
+  #define KHAOS_COMPILER_Intellisense_PRIVATE() (1L)
 #elif defined(__KCC)
   #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__KCC_VERSION & 0xF000) >> 12, (__KCC_VERSION & 0xF00) >> 8, (__KCC_VERSION & 0xFF), 0)
   #define KHAOS_COMPILER_Kai_PRIVATE()            (1L)
@@ -1232,11 +1245,10 @@
 #elif defined(__sgi) || defined(sgi)
   #if defined(_SGI_COMPILER_VERSION)
     #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((_SGI_COMPILER_VERSION) / 100) % 10, ((_SGI_COMPILER_VERSION) / 10) % 10, (_SGI_COMPILER_VERSION) % 10, 0)
-    #define KHAOS_COMPILER_MIPSpro_PRIVATE()        (1L)
   #elif defined(_COMPILER_VERSION)
     #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((_COMPILER_VERSION) / 100) % 10, ((_COMPILER_VERSION) / 10) % 10, (_COMPILER_VERSION) % 10, 0)
-    #define KHAOS_COMPILER_MIPSpro_PRIVATE()        (1L)
   #endif
+  #define KHAOS_COMPILER_MIPSpro_PRIVATE() (1L)
 #elif defined(MIRACLE)
   #define KHAOS_COMPILER_Miracle_PRIVATE() (1L)
 #elif defined(__MRC__) || defined(MPW_C) || defined(MPW_CPLUS)
@@ -1423,8 +1435,7 @@
   #define KHAOS_COMPILER_LLVMEmulated_PRIVATE()       (1L)
   #define KHAOS_DEFINE_LLVMEmulated_VERSION_PRIVATE() SET_VERSION(0, 0, 0, 0)
 #else
-  #define KHAOS_COMPILER_LLVMEmulated_PRIVATE()       (0L)
-  #define KHAOS_DEFINE_LLVMEmulated_VERSION_PRIVATE() SET_VERSION(0, 0, 0, 0)
+  #define KHAOS_COMPILER_LLVMEmulated_PRIVATE() (0L)
 #endif
 
 //Set to 0 to avoid warning
@@ -1538,6 +1549,9 @@
 #endif
 #if !defined(KHAOS_COMPILER_Intel_PRIVATE)
   #define KHAOS_COMPILER_Intel_PRIVATE() (0L)
+#endif
+#if !defined(KHAOS_COMPILER_Intellisense_PRIVATE)
+  #define KHAOS_COMPILER_Intellisense_PRIVATE() (0L)
 #endif
 #if !defined(KHAOS_COMPILER_Kai_PRIVATE)
   #define KHAOS_COMPILER_Kai_PRIVATE() (0L)

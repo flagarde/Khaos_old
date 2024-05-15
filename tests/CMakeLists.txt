@@ -102,9 +102,9 @@ foreach(CXX_STANDARD IN LISTS CXX_STANDARDS)
 endforeach()
 
 if(WIN32 AND "${CMAKE_CXX_COMPILER_ID}:${CMAKE_CXX_COMPILER_FRONTEND_VARIANT}" STREQUAL "Clang:GNU")
-  set(C_EXTENSIONS "ON") #Clang on windows with GNU frontend can't disable extensions 
+  set(C_EXTENSIONS "ON") #Clang on windows with GNU frontend can't disable extensions
 elseif(WIN32 AND "${CMAKE_CXX_COMPILER_ID}:${CMAKE_CXX_COMPILER_FRONTEND_VARIANT}" STREQUAL "Clang:MSVC")
-  set(C_EXTENSIONS "ON") #Clang on windows with GNU frontend can't disable extensions 
+  set(C_EXTENSIONS "ON") #Clang on windows with GNU frontend can't disable extensions
   list(REMOVE_ITEM C_STANDARDS "c_std_90" "c_std_99" "c_std_11") #MSVC has no c99 option
 elseif(MSVC)
   set(C_EXTENSIONS "ON")
@@ -128,3 +128,7 @@ foreach(C_STANDARD IN LISTS C_STANDARDS)
     add_test(NAME "Test the language ${C_STANDARD} extensions ${C_EXTENSION}" COMMAND "Language_${C_STANDARD}_extensions_${C_EXTENSION}.test")
   endforeach()
 endforeach()
+
+add_executable(Compiler.test Compiler.test.cpp)
+target_link_libraries(Compiler.test PRIVATE Khaos::Khaos doctest_with_main KhaosTestFlags)
+doctest_discover_tests(Compiler.test)
