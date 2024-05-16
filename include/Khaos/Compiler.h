@@ -1440,256 +1440,256 @@
 
 //Set to 0 to avoid warning
 #if !defined(KHAOS_COMPILER_ACC_PRIVATE)
-  #define KHAOS_COMPILER_ACC_PRIVATE() (0L)
+  #define KHAOS_COMPILER_ACC_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_AltiumMicroblaze_PRIVATE)
-  #define KHAOS_COMPILER_AltiumMicroblaze_PRIVATE() (0L)
+  #define KHAOS_COMPILER_AltiumMicroblaze_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Altium_PRIVATE)
-  #define KHAOS_COMPILER_Altium_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Altium_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Amsterdam_PRIVATE)
-  #define KHAOS_COMPILER_Amsterdam_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Amsterdam_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_ARM_PRIVATE)
-  #define KHAOS_COMPILER_ARM_PRIVATE() (0L)
+  #define KHAOS_COMPILER_ARM_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Aztec_PRIVATE)
-  #define KHAOS_COMPILER_Aztec_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Aztec_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Borland_PRIVATE)
-  #define KHAOS_COMPILER_Borland_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Borland_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_CC65_PRIVATE)
-  #define KHAOS_COMPILER_CC65_PRIVATE() (0L)
+  #define KHAOS_COMPILER_CC65_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Comeau_PRIVATE)
-  #define KHAOS_COMPILER_Comeau_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Comeau_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Compaq_PRIVATE)
-  #define KHAOS_COMPILER_Compaq_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Compaq_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Convex_PRIVATE)
-  #define KHAOS_COMPILER_Convex_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Convex_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Compcert_PRIVATE)
-  #define KHAOS_COMPILER_Compcert_PRIVATE() (0)
+  #define KHAOS_COMPILER_Compcert_PRIVATE() (0) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Coverity_PRIVATE)
-  #define KHAOS_COMPILER_Coverity_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Coverity_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_CrayC_PRIVATE)
-  #define KHAOS_COMPILER_CrayC_PRIVATE() (0L)
+  #define KHAOS_COMPILER_CrayC_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Diab_PRIVATE)
-  #define KHAOS_COMPILER_Diab_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Diab_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_DICE_PRIVATE)
-  #define KHAOS_COMPILER_DICE_PRIVATE() (0L)
+  #define KHAOS_COMPILER_DICE_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_DigitalMars_PRIVATE)
-  #define KHAOS_COMPILER_DigitalMars_PRIVATE() (0L)
+  #define KHAOS_COMPILER_DigitalMars_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Dignus_PRIVATE)
-  #define KHAOS_COMPILER_Dignus_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Dignus_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_DJGPP_PRIVATE)
-  #define KHAOS_COMPILER_DJGPP_PRIVATE() (0L)
+  #define KHAOS_COMPILER_DJGPP_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_EDG_PRIVATE)
-  #define KHAOS_COMPILER_EDG_PRIVATE() (0L)
+  #define KHAOS_COMPILER_EDG_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_EKOPath_PRIVATE)
-  #define KHAOS_COMPILER_EKOPath_PRIVATE() (0L)
+  #define KHAOS_COMPILER_EKOPath_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Emscripten_PRIVATE)
-  #define KHAOS_COMPILER_Emscripten_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Emscripten_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Fujitsu_PRIVATE)
-  #define KHAOS_COMPILER_Fujitsu_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Fujitsu_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_GCCXML_PRIVATE)
-  #define KHAOS_COMPILER_GCCXML_PRIVATE() (0L)
+  #define KHAOS_COMPILER_GCCXML_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_GreenHills_PRIVATE)
-  #define KHAOS_COMPILER_GreenHills_PRIVATE() (0L)
+  #define KHAOS_COMPILER_GreenHills_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_HPCC_PRIVATE)
-  #define KHAOS_COMPILER_HPCC_PRIVATE() (0L)
+  #define KHAOS_COMPILER_HPCC_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_HPaCC_PRIVATE)
-  #define KHAOS_COMPILER_HPaCC_PRIVATE() (0L)
+  #define KHAOS_COMPILER_HPaCC_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_IAR_PRIVATE)
-  #define KHAOS_COMPILER_IAR_PRIVATE() (0L)
+  #define KHAOS_COMPILER_IAR_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_IBM_PRIVATE)
-  #define KHAOS_COMPILER_IBM_PRIVATE() (0L)
+  #define KHAOS_COMPILER_IBM_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_IBMClang_PRIVATE)
-  #define KHAOS_COMPILER_IBMClang_PRIVATE() (0L)
+  #define KHAOS_COMPILER_IBMClang_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_IBMLegacy_PRIVATE)
-  #define KHAOS_COMPILER_IBMLegacy_PRIVATE() (0L)
+  #define KHAOS_COMPILER_IBMLegacy_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_IBMC370_PRIVATE)
-  #define KHAOS_COMPILER_IBMC370_PRIVATE() (0L)
+  #define KHAOS_COMPILER_IBMC370_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_IBMMVS_PRIVATE)
-  #define KHAOS_COMPILER_IBMMVS_PRIVATE() (0L)
+  #define KHAOS_COMPILER_IBMMVS_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_IBMOS390_PRIVATE)
-  #define KHAOS_COMPILER_IBMOS390_PRIVATE() (0L)
+  #define KHAOS_COMPILER_IBMOS390_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_IBMZOS_PRIVATE)
-  #define KHAOS_COMPILER_IBMZOS_PRIVATE() (0L)
+  #define KHAOS_COMPILER_IBMZOS_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_ImageCraft_PRIVATE)
-  #define KHAOS_COMPILER_ImageCraft_PRIVATE() (0L)
+  #define KHAOS_COMPILER_ImageCraft_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Intel_PRIVATE)
-  #define KHAOS_COMPILER_Intel_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Intel_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Intellisense_PRIVATE)
-  #define KHAOS_COMPILER_Intellisense_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Intellisense_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Kai_PRIVATE)
-  #define KHAOS_COMPILER_Kai_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Kai_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_KeilCarm_PRIVATE)
-  #define KHAOS_COMPILER_KeilCarm_PRIVATE() (0L)
+  #define KHAOS_COMPILER_KeilCarm_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_KeilC166_PRIVATE)
-  #define KHAOS_COMPILER_KeilC166_PRIVATE() (0L)
+  #define KHAOS_COMPILER_KeilC166_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_KeilC51_PRIVATE)
-  #define KHAOS_COMPILER_KeilC51_PRIVATE() (0L)
+  #define KHAOS_COMPILER_KeilC51_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_LCC_PRIVATE)
-  #define KHAOS_COMPILER_LCC_PRIVATE() (0L)
+  #define KHAOS_COMPILER_LCC_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Metaware_PRIVATE)
-  #define KHAOS_COMPILER_Metaware_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Metaware_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Metrowerks_PRIVATE)
-  #define KHAOS_COMPILER_Metrowerks_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Metrowerks_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_MSVC_PRIVATE)
-  #define KHAOS_COMPILER_MSVC_PRIVATE() (0L)
+  #define KHAOS_COMPILER_MSVC_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Microtec_PRIVATE)
-  #define KHAOS_COMPILER_Microtec_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Microtec_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Microway_PRIVATE)
-  #define KHAOS_COMPILER_Microway_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Microway_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_MIPSpro_PRIVATE)
-  #define KHAOS_COMPILER_MIPSpro_PRIVATE() (0L)
+  #define KHAOS_COMPILER_MIPSpro_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Miracle_PRIVATE)
-  #define KHAOS_COMPILER_Miracle_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Miracle_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_MPW_PRIVATE)
-  #define KHAOS_COMPILER_MPW_PRIVATE() (0L)
+  #define KHAOS_COMPILER_MPW_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Norcroft_PRIVATE)
-  #define KHAOS_COMPILER_Norcroft_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Norcroft_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_NWCC_PRIVATE)
-  #define KHAOS_COMPILER_NWCC_PRIVATE() (0)
+  #define KHAOS_COMPILER_NWCC_PRIVATE() (0) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Open64_PRIVATE)
-  #define KHAOS_COMPILER_Open64_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Open64_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Oracle_PRIVATE)
-  #define KHAOS_COMPILER_Oracle_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Oracle_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Solaris_PRIVATE)
-  #define KHAOS_COMPILER_Solaris_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Solaris_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Pacific_PRIVATE)
-  #define KHAOS_COMPILER_Pacific_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Pacific_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Palm_PRIVATE)
-  #define KHAOS_COMPILER_Palm_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Palm_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Pelles_PRIVATE)
-  #define KHAOS_COMPILER_Pelles_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Pelles_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Portland_PRIVATE)
-  #define KHAOS_COMPILER_Portland_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Portland_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Renesas_PRIVATE)
-  #define KHAOS_COMPILER_Renesas_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Renesas_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_SASC_PRIVATE)
-  #define KHAOS_COMPILER_SASC_PRIVATE() (0L)
+  #define KHAOS_COMPILER_SASC_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_SCO_PRIVATE)
-  #define KHAOS_COMPILER_SCO_PRIVATE() (0L)
+  #define KHAOS_COMPILER_SCO_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_SDCC_PRIVATE)
-  #define KHAOS_COMPILER_SDCC_PRIVATE() (0L)
+  #define KHAOS_COMPILER_SDCC_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_SNC_PRIVATE)
-  #define KHAOS_COMPILER_SNC_PRIVATE() (0L)
+  #define KHAOS_COMPILER_SNC_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Stratus_PRIVATE)
-  #define KHAOS_COMPILER_Stratus_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Stratus_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_StratusKR_PRIVATE)
-  #define KHAOS_COMPILER_StratusKR_PRIVATE() (0L)
+  #define KHAOS_COMPILER_StratusKR_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_StratusANSI_PRIVATE)
-  #define KHAOS_COMPILER_StratusANSI_PRIVATE() (0L)
+  #define KHAOS_COMPILER_StratusANSI_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Symantec_PRIVATE)
-  #define KHAOS_COMPILER_Symantec_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Symantec_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Tendra_PRIVATE)
-  #define KHAOS_COMPILER_Tendra_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Tendra_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_TI_PRIVATE)
-  #define KHAOS_COMPILER_TI_PRIVATE() (0L)
+  #define KHAOS_COMPILER_TI_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Think_PRIVATE)
-  #define KHAOS_COMPILER_Think_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Think_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_TinyC_PRIVATE)
-  #define KHAOS_COMPILER_TinyC_PRIVATE() (0L)
+  #define KHAOS_COMPILER_TinyC_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Turbo_PRIVATE)
-  #define KHAOS_COMPILER_Turbo_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Turbo_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Ultimate_PRIVATE)
-  #define KHAOS_COMPILER_Ultimate_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Ultimate_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_USLC_PRIVATE)
-  #define KHAOS_COMPILER_USLC_PRIVATE() (0L)
+  #define KHAOS_COMPILER_USLC_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_VBCC_PRIVATE)
-  #define KHAOS_COMPILER_VBCC_PRIVATE() (0L)
+  #define KHAOS_COMPILER_VBCC_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Watcom_PRIVATE)
-  #define KHAOS_COMPILER_Watcom_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Watcom_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Zortech_PRIVATE)
-  #define KHAOS_COMPILER_Zortech_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Zortech_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_AppleClang_PRIVATE)
-  #define KHAOS_COMPILER_AppleClang_PRIVATE() (0L)
+  #define KHAOS_COMPILER_AppleClang_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Clang_PRIVATE)
-  #define KHAOS_COMPILER_Clang_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Clang_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_LLVM_PRIVATE)
-  #define KHAOS_COMPILER_LLVM_PRIVATE() (0L)
+  #define KHAOS_COMPILER_LLVM_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_GCC_PRIVATE)
-  #define KHAOS_COMPILER_GCC_PRIVATE() (0L)
+  #define KHAOS_COMPILER_GCC_PRIVATE() (0L) /* //NOSONAR */
 #endif
 #if !defined(KHAOS_COMPILER_Unknown_PRIVATE)
-  #define KHAOS_COMPILER_Unknown_PRIVATE() (0L)
+  #define KHAOS_COMPILER_Unknown_PRIVATE() (0L) /* //NOSONAR */
 #endif
 
 #define COMPILER_IS(compiler) KHAOS_COMPILER_##compiler##_PRIVATE()
