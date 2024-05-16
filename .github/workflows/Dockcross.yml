@@ -38,7 +38,7 @@ jobs:
   #    - name: ⚙️ Build
   #      run: ./dockcross-${{ matrix.image_name }} cmake --build ${{ env.CMAKE_BINARY_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel ${{ env.CMAKE_NUMBER_JOBS }}
   #    - name: 🧪 Test
-  #      run: ./dockcross-${{ matrix.image_name }} ctest --test-dir ${{ env.CMAKE_BINARY_PREFIX }} -C ${{ env.CMAKE_BUILD_TYPE }} --output-on-failure
+  #      run: ./dockcross-${{ matrix.image_name }} ctest --test-dir ${{ env.CMAKE_BINARY_PREFIX }} -C ${{ env.CMAKE_BUILD_TYPE }} --output-on-failure ${{ env.CTEST_VERBOSITY }}
   #    - name: 🎉 Install
   #      run: ./dockcross-${{ matrix.image_name }} cmake --install ${{ env.CMAKE_BINARY_PREFIX }} --prefix ${{ env.CMAKE_INSTALL_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }}
 
@@ -70,7 +70,7 @@ jobs:
     - name: ⚙️ Build
       run: ./dockcross-${{ matrix.image_name }} cmake --build ${{ env.CMAKE_BINARY_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel ${{ env.CMAKE_NUMBER_JOBS }}
     - name: 🧪 Test
-      run: ./dockcross-${{ matrix.image_name }} ctest --test-dir ${{ env.CMAKE_BINARY_PREFIX }} -C ${{ env.CMAKE_BUILD_TYPE }} --output-on-failure
+      run: ./dockcross-${{ matrix.image_name }} ctest --test-dir ${{ env.CMAKE_BINARY_PREFIX }} -C ${{ env.CMAKE_BUILD_TYPE }} --output-on-failure ${{ env.CTEST_VERBOSITY }}
     - name: 🎉 Install
       run: ./dockcross-${{ matrix.image_name }} cmake --install ${{ env.CMAKE_BINARY_PREFIX }} --prefix ${{ env.CMAKE_INSTALL_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }}
 
@@ -103,7 +103,7 @@ jobs:
     - name: ⚙️ Build
       run: ./dockcross-${{ matrix.image_name }} cmake --build ${{ env.CMAKE_BINARY_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel ${{ env.CMAKE_NUMBER_JOBS }}
     - name: 🧪 Test
-      run: ./dockcross-${{ matrix.image_name }} ctest --test-dir ${{ env.CMAKE_BINARY_PREFIX }} -C ${{ env.CMAKE_BUILD_TYPE }} --output-on-failure
+      run: ./dockcross-${{ matrix.image_name }} ctest --test-dir ${{ env.CMAKE_BINARY_PREFIX }} -C ${{ env.CMAKE_BUILD_TYPE }} --output-on-failure ${{ env.CTEST_VERBOSITY }}
     - name: 🎉 Install
       run: ./dockcross-${{ matrix.image_name }} cmake --install ${{ env.CMAKE_BINARY_PREFIX }} --prefix ${{ env.CMAKE_INSTALL_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }}
 
@@ -136,6 +136,6 @@ jobs:
     - name: ⚙️ Build
       run: ./dockcross-${{ matrix.image_name }} cmake --build ${{ env.CMAKE_BINARY_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel ${{ env.CMAKE_NUMBER_JOBS }}
       #- name: 🧪 Test
-      #  run: ./dockcross-${{ matrix.image_name }} ctest --test-dir ${{ env.CMAKE_BINARY_PREFIX }} -C ${{ env.CMAKE_BUILD_TYPE }} --output-on-failure
+      #  run: ./dockcross-${{ matrix.image_name }} ctest --test-dir ${{ env.CMAKE_BINARY_PREFIX }} -C ${{ env.CMAKE_BUILD_TYPE }} --output-on-failure ${{ env.CTEST_VERBOSITY }}
     - name: 🎉 Install
       run: ./dockcross-${{ matrix.image_name }} cmake --install ${{ env.CMAKE_BINARY_PREFIX }} --prefix ${{ env.CMAKE_INSTALL_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }}

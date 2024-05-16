@@ -28,7 +28,7 @@ jobs:
     - name: Build
       run: cmake --build build --parallel 2
     - name: Test
-      run: cd build ; ctest -C Debug --output-on-failure
+      run: cd build ; ctest -C Debug --output-on-failure ${{ env.CTEST_VERBOSITY }}
 
   macos-12:
     runs-on: macos-12
@@ -46,7 +46,7 @@ jobs:
     - name: Build
       run: cmake --build build --parallel 2
     - name: Test
-      run: cd build ; ctest -C Debug --output-on-failure
+      run: cd build ; ctest -C Debug --output-on-failure ${{ env.CTEST_VERBOSITY }}
 
   gcc:
     runs-on: macos-11
@@ -65,4 +65,4 @@ jobs:
     - name: Build
       run: cmake --build build --parallel 2
     - name: Test
-      run: cd build ; ctest -C Debug --output-on-failure
+      run: cd build ; ctest -C Debug --output-on-failure ${{ env.CTEST_VERBOSITY }}

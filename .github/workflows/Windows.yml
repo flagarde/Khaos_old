@@ -42,7 +42,7 @@ jobs:
     - name: Build
       run: cmake --build build --parallel 2
     - name: Test
-      run: cd build ; ctest -C Debug --output-on-failure
+      run: cd build ; ctest -C Debug --output-on-failure ${{ env.CTEST_VERBOSITY }}
 
   msvc2019:
     runs-on: windows-2019
@@ -61,7 +61,7 @@ jobs:
     - name: Build
       run: cmake --build build --config Debug --parallel 2
     - name: Test
-      run: cd build ; ctest -C Debug --output-on-failure
+      run: cd build ; ctest -C Debug --output-on-failure ${{ env.CTEST_VERBOSITY }}
 
   msvc2022:
     runs-on: windows-2022
@@ -80,14 +80,14 @@ jobs:
     - name: Build
       run: cmake --build build --config Debug --parallel 2
     - name: Test
-      run: cd build ; ctest -C Debug --output-on-failure
+      run: cd build ; ctest -C Debug --output-on-failure ${{ env.CTEST_VERBOSITY }}
 
   clang:
     runs-on: windows-2019
     strategy:
       fail-fast: false
       matrix:
-        version: [11.1.0, 12.0.1, 13.0.1, 14.0.6, 15.0.2]
+        version: [7.1.0, 8.0.1, 9.0.1, 10.0.1, 11.0.1, 11.1.0, 12.0.1, 13.0.1, 14.0.6, 15.0.7, 16.0.6, 17.0.6, 18.1.4]
 
     steps:
     - uses: actions/checkout@v4
@@ -98,7 +98,7 @@ jobs:
     - name: Build
       run: cmake --build build --parallel 2
     - name: Test
-      run: cd build ; ctest -C Debug --output-on-failure
+      run: cd build ; ctest -C Debug --output-on-failure ${{ env.CTEST_VERBOSITY }}
 
   clang-cl-11:
     runs-on: windows-2019
@@ -114,4 +114,4 @@ jobs:
     - name: Build
       run: cmake --build build --config Debug --parallel 2
     - name: Test
-      run: cd build ; ctest -C Debug --output-on-failure
+      run: cd build ; ctest -C Debug --output-on-failure ${{ env.CTEST_VERBOSITY }}

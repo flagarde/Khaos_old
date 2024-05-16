@@ -71,7 +71,7 @@ jobs:
     - name: Build
       run: cmake --build build --parallel 2
     - name: Test
-      run: cd build ; ctest -C Debug --output-on-failure
+      run: cd build ; ctest -C Debug --output-on-failure ${{ env.CTEST_VERBOSITY }}
 
   intel:
 
@@ -104,4 +104,4 @@ jobs:
     - name: Build
       run: cmake --build build --parallel 2
     - name: Test
-      run: cd build ; ctest -C Debug --output-on-failure
+      run: cd build ; ctest -C Debug --output-on-failure ${{ env.CTEST_VERBOSITY }}
