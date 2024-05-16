@@ -1026,199 +1026,199 @@
 #if defined(__NVCC__)
   // /warn https://github.com/boostorg/predef/blob/develop/include/boost/predef/compiler/nvcc.h
   #if defined(__CUDACC_VER_MAJOR__) && defined(__CUDACC_VER_MINOR__) && defined(__CUDACC_VER_BUILD__)
-    #define KHAOS_DEFINE_NVCC_VERSION_PRIVATE() SET_VERSION(__CUDACC_VER_MAJOR__, __CUDACC_VER_MINOR__, __CUDACC_VER_BUILD__, 0)
+    #define KHAOS_DEFINE_NVCC_VERSION_PRIVATE() SET_VERSION(__CUDACC_VER_MAJOR__, __CUDACC_VER_MINOR__, __CUDACC_VER_BUILD__, 0) /* //NOSONAR */
   #else
-    #define KHAOS_DEFINE_NVCC_VERSION_PRIVATE() (0L)
+    #define KHAOS_DEFINE_NVCC_VERSION_PRIVATE() (0L) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_NVCC_PRIVATE() (1L)
+  #define KHAOS_COMPILER_NVCC_PRIVATE() (1L) /* //NOSONAR */
 #else
-  #define KHAOS_COMPILER_NVCC_PRIVATE() (0L)
+  #define KHAOS_COMPILER_NVCC_PRIVATE() (0L) /* //NOSONAR */
 #endif
 
 // Put all compiler first then MSVC clang llvm gcc as some mimic others.
 
 #if defined(_ACC_)
-  #define KHAOS_COMPILER_ACC_PRIVATE() (1L)
+  #define KHAOS_COMPILER_ACC_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__CMB__)
   #if defined(__BUILD__)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__BUILD__ / 1000000) % 10, ((__BUILD__) / 1000) % 1000, __BUILD__ % 1000, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__BUILD__ / 1000000) % 10, ((__BUILD__) / 1000) % 1000, __BUILD__ % 1000, 0) /* //NOSONAR */
   #else
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__VERSION__ / 1000) % 10, __VERSION__ % 1000, __REVISION__, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__VERSION__ / 1000) % 10, __VERSION__ % 1000, __REVISION__, 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_AltiumMicroblaze_PRIVATE() (1L)
+  #define KHAOS_COMPILER_AltiumMicroblaze_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__CHC__)
   #if defined(__BUILD__)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__BUILD__ / 1000000) % 10, ((__BUILD__) / 1000) % 1000, __BUILD__ % 1000, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__BUILD__ / 1000000) % 10, ((__BUILD__) / 1000) % 1000, __BUILD__ % 1000, 0) /* //NOSONAR */
   #else
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__VERSION__ / 1000) % 10, __VERSION__ % 1000, __REVISION__, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__VERSION__ / 1000) % 10, __VERSION__ % 1000, __REVISION__, 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_Altium_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Altium_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__ACK__)
-  #define KHAOS_COMPILER_Amsterdam_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Amsterdam_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__CC_ARM)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__ARMCC_VERSION / 100000) % 10, ((__ARMCC_VERSION) / 10000) % 10, (__ARMCC_VERSION / 1000) % 10, __ARMCC_VERSION % 1000)
-  #define KHAOS_COMPILER_ARM_PRIVATE()            (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__ARMCC_VERSION / 100000) % 10, ((__ARMCC_VERSION) / 10000) % 10, (__ARMCC_VERSION / 1000) % 10, __ARMCC_VERSION % 1000) /* //NOSONAR */
+  #define KHAOS_COMPILER_ARM_PRIVATE()            (1L)                                                                                                                                  /* //NOSONAR */
 #elif defined(AZTEC_C) || defined(__AZTEC_C__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__VERSION) / 100) % 10, (__VERSION) % 100, 0, 0)
-  #define KHAOS_COMPILER_Aztec_PRIVATE()          (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__VERSION) / 100) % 10, (__VERSION) % 100, 0, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_Aztec_PRIVATE()          (1L)                                                           /* //NOSONAR */
 #elif defined(__BORLANDC__) || defined(__CODEGEARC__)
   #if defined(__CODEGEARC__)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__CODEGEARC__ & 0xFF00) >> 8, (__CODEGEARC__ & 0xF0) >> 4, (__CODEGEARC__ & 0xF), 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__CODEGEARC__ & 0xFF00) >> 8, (__CODEGEARC__ & 0xF0) >> 4, (__CODEGEARC__ & 0xF), 0) /* //NOSONAR */
   #elif defined(__BORLANDC__)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__BORLANDC__ & 0xFF00) >> 8, (__BORLANDC__ & 0xF0) >> 4, (__BORLANDC__ & 0xF), 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__BORLANDC__ & 0xFF00) >> 8, (__BORLANDC__ & 0xF0) >> 4, (__BORLANDC__ & 0xF), 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_Borland_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Borland_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__CC65__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__CC65__ & 0xF00) >> 8, (__CC65__ & 0xF0) >> 4, (__CC65__ & 0xF), 0)
-  #define KHAOS_COMPILER_CC65_PRIVATE()           (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__CC65__ & 0xF00) >> 8, (__CC65__ & 0xF0) >> 4, (__CC65__ & 0xF), 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_CC65_PRIVATE()           (1L)                                                                              /* //NOSONAR */
 #elif defined(__COMO__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__COMO_VERSION__ & 0xF00) >> 8, (__COMO_VERSION__ & 0xF0) >> 4, (__COMO_VERSION__ & 0xF), 0)
-  #define KHAOS_COMPILER_Comeau_PRIVATE()         (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__COMO_VERSION__ & 0xF00) >> 8, (__COMO_VERSION__ & 0xF0) >> 4, (__COMO_VERSION__ & 0xF), 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_Comeau_PRIVATE()         (1L)                                                                                                      /* //NOSONAR */
 #elif defined(__DECC) || defined(__DECCXX) || defined(__VAXC) || defined(VAXC)
   #if defined(__DECCXX_VER)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__DECCXX_VER) / 10000000) % 100, ((__DECCXX_VER) / 100000) % 100, ((__DECCXX_VER) / 100) % 100, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__DECCXX_VER) / 10000000) % 100, ((__DECCXX_VER) / 100000) % 100, ((__DECCXX_VER) / 100) % 100, 0) /* //NOSONAR */
   #elif defined(__DECC_VER)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__DECC_VER) / 10000000) % 100, ((__DECC_VER) / 100000) % 100, ((__DECC_VER) / 100) % 100, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__DECC_VER) / 10000000) % 100, ((__DECC_VER) / 100000) % 100, ((__DECC_VER) / 100) % 100, 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_Compaq_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Compaq_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__convexc__)
-  #define KHAOS_COMPILER_Convex_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Convex_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__COMPCERT__)
-  #define KHAOS_COMPILER_Compcert_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Compcert_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__COVERITY__)
-  #define KHAOS_COMPILER_Coverity_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Coverity_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(_CRAYC)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(_RELEASE, _RELEASE_MINOR, 0, 0)
-  #define KHAOS_COMPILER_CrayC_PRIVATE()          (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(_RELEASE, _RELEASE_MINOR, 0, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_CrayC_PRIVATE()          (1L)                                        /* //NOSONAR */
 #elif defined(__DCC__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__VERSION_NUMBER__) / 1000) % 10, ((__VERSION_NUMBER__) / 100) % 10, (__VERSION_NUMBER__) % 100, 0)
-  #define KHAOS_COMPILER_Diab_PRIVATE()           (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__VERSION_NUMBER__) / 1000) % 10, ((__VERSION_NUMBER__) / 100) % 10, (__VERSION_NUMBER__) % 100, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_Diab_PRIVATE()           (1L)                                                                                                              /* //NOSONAR */
 #elif defined(_DICE)
   #define KHAOS_COMPILER_DICE_PRIVATE() (1L)
 #elif defined(__DMC__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__DMC__ & 0xF00) >> 8, (__DMC__ & 0xF0) >> 4, (__DMC__ & 0xF), 0)
-  #define KHAOS_COMPILER_DigitalMars_PRIVATE()    (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__DMC__ & 0xF00) >> 8, (__DMC__ & 0xF0) >> 4, (__DMC__ & 0xF), 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_DigitalMars_PRIVATE()    (1L)                                                                           /* //NOSONAR */
 #elif defined(__SYSC__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__SYSC_VER__) / 10000) % 10, ((__SYSC_VER__) / 100) % 100, (__SYSC_VER__) % 100, 0)
-  #define KHAOS_COMPILER_Dignus_PRIVATE()         (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__SYSC_VER__) / 10000) % 10, ((__SYSC_VER__) / 100) % 100, (__SYSC_VER__) % 100, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_Dignus_PRIVATE()         (1L)                                                                                              /* //NOSONAR */
 #elif defined(__DJGPP__) || defined(__GO32__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__DJGPP__, __DJGPP_MINOR__, 0, 0)
-  #define KHAOS_COMPILER_DJGPP_PRIVATE()          (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__DJGPP__, __DJGPP_MINOR__, 0, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_DJGPP_PRIVATE()          (1L)                                          /* //NOSONAR */
 #elif defined(__EDG__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__EDG_VERSION__) / 100000) % 10, ((__EDG_VERSION__) / 1000) % 100, 0, 0)
-  #define KHAOS_COMPILER_EDG_PRIVATE()            (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__EDG_VERSION__) / 100000) % 10, ((__EDG_VERSION__) / 1000) % 100, 0, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_EDG_PRIVATE()            (1L)                                                                                   /* //NOSONAR */
 #elif defined(__PATHCC__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__PATHCC__, __PATHCC_MINOR__, __PATHCC_PATCHLEVEL__, 0)
-  #define KHAOS_COMPILER_EKOPath_PRIVATE()        (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__PATHCC__, __PATHCC_MINOR__, __PATHCC_PATCHLEVEL__, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_EKOPath_PRIVATE()        (1L)                                                                /* //NOSONAR */
 #elif defined(__EMSCRIPTEN__)
   #if !defined(__EMSCRIPTEN_major__) || !defined(__EMSCRIPTEN_minor__) || !defined(__EMSCRIPTEN_tiny__)
     #include <emscripten/version.h>
   #endif
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__EMSCRIPTEN_major__, __EMSCRIPTEN_minor__, __EMSCRIPTEN_tiny__, 0)
-  #define KHAOS_COMPILER_Emscripten_PRIVATE()     (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__EMSCRIPTEN_major__, __EMSCRIPTEN_minor__, __EMSCRIPTEN_tiny__, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_Emscripten_PRIVATE()     (1L)                                                                            /* //NOSONAR */
 #elif defined(__FCC_VERSION)
-  #define KHAOS_COMPILER_Fujitsu_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Fujitsu_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__GCCXML__)
-  #define KHAOS_COMPILER_GCCXML_PRIVATE() (1L)
+  #define KHAOS_COMPILER_GCCXML_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__ghs) || defined(__ghs__)
   #if defined(__GHS_VERSION_NUMBER__)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__GHS_VERSION_NUMBER__) / 100) % 10, ((__GHS_VERSION_NUMBER__) / 10) % 10, (__GHS_VERSION_NUMBER__) % 10, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__GHS_VERSION_NUMBER__) / 100) % 10, ((__GHS_VERSION_NUMBER__) / 10) % 10, (__GHS_VERSION_NUMBER__) % 10, 0) /* //NOSONAR */
   #elif defined(__ghs)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__ghs) / 100) % 10, ((__ghs) / 10) % 10, (__ghs) % 10, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__ghs) / 100) % 10, ((__ghs) / 10) % 10, (__ghs) % 10, 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_GreenHills_PRIVATE() (1L)
+  #define KHAOS_COMPILER_GreenHills_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__HP_cc)
-  #define KHAOS_COMPILER_HPCC_PRIVATE() (1L)
+  #define KHAOS_COMPILER_HPCC_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__HP_aCC)
   #if __HP_aCC > 1
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__HP_aCC) / 10000) % 100, ((__HP_aCC) / 100) % 100, (__HP_aCC) % 100, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__HP_aCC) / 10000) % 100, ((__HP_aCC) / 100) % 100, (__HP_aCC) % 100, 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_HPaCC_PRIVATE() (1L)
+  #define KHAOS_COMPILER_HPaCC_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__IAR_SYSTEMS_ICC__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__VER__) / 100) % 100, (__VER__) % 100, 0, 0)
-  #define KHAOS_COMPILER_IAR_PRIVATE()            (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__VER__) / 100) % 100, (__VER__) % 100, 0, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_IAR_PRIVATE()            (1L)                                                        /* //NOSONAR */
 #elif defined(__ibmxl__) && defined(__clang__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__ibmxl_version__, __ibmxl_release__, __ibmxl_modification__, __ibmxl_ptf_fix_level__)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__ibmxl_version__, __ibmxl_release__, __ibmxl_modification__, __ibmxl_ptf_fix_level__) /* //NOSONAR */
   //Should be include before clang as it defined some macro of Clang
-  #define KHAOS_COMPILER_IBM_PRIVATE()            (1L)
-  #define KHAOS_COMPILER_IBMClang_PRIVATE()       (1L)
+  #define KHAOS_COMPILER_IBM_PRIVATE()            (1L)                                                                                               /* //NOSONAR */
+  #define KHAOS_COMPILER_IBMClang_PRIVATE()       (1L)                                                                                               /* //NOSONAR */
 #elif defined(__xlC__)
   #if defined(__IBMC__)
     #if defined(__xlc__)
-      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__IBMC__ & 0xFF0000) >> 16, (__IBMC__ & 0xFF00) >> 8, (__IBMC__ & 0xFF), (__xlc__ & 0xFF) % 100)
+      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__IBMC__ & 0xFF0000) >> 16, (__IBMC__ & 0xFF00) >> 8, (__IBMC__ & 0xFF), (__xlc__ & 0xFF) % 100) /* //NOSONAR */
     #elif defined(__xlC_ver__)
-      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__IBMC__ & 0xFF0000) >> 16, (__IBMC__ & 0xFF00) >> 8, (__IBMC__ & 0xFF), (__xlC_ver__ & 0xFF) % 100)
+      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__IBMC__ & 0xFF0000) >> 16, (__IBMC__ & 0xFF00) >> 8, (__IBMC__ & 0xFF), (__xlC_ver__ & 0xFF) % 100) /* //NOSONAR */
     #else
-      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__IBMC__ & 0xFF0000) >> 16, (__IBMC__ & 0xFF00) >> 8, (__IBMC__ & 0xFF), 0)
+      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__IBMC__ & 0xFF0000) >> 16, (__IBMC__ & 0xFF00) >> 8, (__IBMC__ & 0xFF), 0) /* //NOSONAR */
     #endif
   #elif defined(__IBMCPP__)
     #if defined(__xlc__)
-      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__IBMCPP__ & 0xFF0000) >> 16, (__IBMCPP__ & 0xFF00) >> 8, (__IBMCPP__ & 0xFF), (__xlc__ & 0xFF) % 100)
+      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__IBMCPP__ & 0xFF0000) >> 16, (__IBMCPP__ & 0xFF00) >> 8, (__IBMCPP__ & 0xFF), (__xlc__ & 0xFF) % 100) /* //NOSONAR */
     #elif defined(__xlC_ver__)
-      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__IBMCPP__ & 0xFF0000) >> 16, (__IBMCPP__ & 0xFF00) >> 8, (__IBMCPP__ & 0xFF), (__xlC_ver__ & 0xFF) % 100)
+      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__IBMCPP__ & 0xFF0000) >> 16, (__IBMCPP__ & 0xFF00) >> 8, (__IBMCPP__ & 0xFF), (__xlC_ver__ & 0xFF) % 100) /* //NOSONAR */
     #else
-      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__IBMCPP__ & 0xFF0000) >> 16, (__IBMCPP__ & 0xFF00) >> 8, (__IBMCPP__ & 0xFF), 0)
+      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__IBMCPP__ & 0xFF0000) >> 16, (__IBMCPP__ & 0xFF00) >> 8, (__IBMCPP__ & 0xFF), 0) /* //NOSONAR */
     #endif
   #endif
-  #define KHAOS_COMPILER_IBM_PRIVATE()       (1L)
-  #define KHAOS_COMPILER_IBMLegacy_PRIVATE() (1L)
+  #define KHAOS_COMPILER_IBM_PRIVATE()       (1L) /* //NOSONAR */
+  #define KHAOS_COMPILER_IBMLegacy_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__IBMC__) || defined(__IBMCPP__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__COMPILER_VER__ & 0xF000000) >> 24, (__COMPILER_VER__ & 0xFF0000) >> 16, (__COMPILER_VER__ & 0xFF00) >> 8, (__COMPILER_VER__ & 0xFF))
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__COMPILER_VER__ & 0xF000000) >> 24, (__COMPILER_VER__ & 0xFF0000) >> 16, (__COMPILER_VER__ & 0xFF00) >> 8, (__COMPILER_VER__ & 0xFF)) /* //NOSONAR */
   #if __COMPILER_VER__ & 0xF0000000)>> 28 == 0
-    #define KHAOS_COMPILER_IBMC370_PRIVATE() (1L)
+    #define KHAOS_COMPILER_IBMC370_PRIVATE() (1L) /* //NOSONAR */
   #elif __COMPILER_VER__ & 0xF0000000)>> 28 == 1
-    #define KHAOS_COMPILER_IBMMVS_PRIVATE() (1L)
+    #define KHAOS_COMPILER_IBMMVS_PRIVATE() (1L) /* //NOSONAR */
   #elif __COMPILER_VER__ & 0xF0000000)>> 28 == 2
-    #define KHAOS_COMPILER_IBMOS390_PRIVATE() (1L)
+    #define KHAOS_COMPILER_IBMOS390_PRIVATE() (1L) /* //NOSONAR */
   #elif __COMPILER_VER__ & 0xF0000000)>> 28 == 4
-    #define KHAOS_COMPILER_IBMZOS_PRIVATE() (1L)
+    #define KHAOS_COMPILER_IBMZOS_PRIVATE() (1L) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_IBM_PRIVATE() (1L)
+  #define KHAOS_COMPILER_IBM_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__IMAGECRAFT__)
-  #define KHAOS_COMPILER_ImageCraft_PRIVATE() (1L)
+  #define KHAOS_COMPILER_ImageCraft_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__INTEL_COMPILER) || defined(__ICL) || defined(__ICC) || defined(__ECC)
   /**
   * \note Because of an Intel mistake in the release version numbering when `__INTEL_COMPILER` is `9999` it is detected as version 12.1.0.
   */
   #if defined(__INTEL_COMPILER) && (__INTEL_COMPILER == 9999)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(12, 1, 0, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(12, 1, 0, 0) /* //NOSONAR */
   #elif defined(__INTEL_COMPILER) && defined(__INTEL_COMPILER_UPDATE)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__INTEL_COMPILER) / 100) % 100, (__INTEL_COMPILER) % 100, __INTEL_COMPILER_UPDATE, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__INTEL_COMPILER) / 100) % 100, (__INTEL_COMPILER) % 100, __INTEL_COMPILER_UPDATE, 0) /* //NOSONAR */
   #elif defined(__INTEL_COMPILER)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__INTEL_COMPILER) / 100) % 100, (__INTEL_COMPILER) % 100, 0, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__INTEL_COMPILER) / 100) % 100, (__INTEL_COMPILER) % 100, 0, 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_Intel_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Intel_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__INTELLISENSE__)
-  #define KHAOS_COMPILER_Intellisense_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Intellisense_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__KCC)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__KCC_VERSION & 0xF000) >> 12, (__KCC_VERSION & 0xF00) >> 8, (__KCC_VERSION & 0xFF), 0)
-  #define KHAOS_COMPILER_Kai_PRIVATE()            (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__KCC_VERSION & 0xF000) >> 12, (__KCC_VERSION & 0xF00) >> 8, (__KCC_VERSION & 0xFF), 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_Kai_PRIVATE()            (1L)                                                                                                 /* //NOSONAR */
 #elif defined(__CA__) || defined(__KEIL__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__CA__) / 100) % 10, (__CA__) % 100, 0, 0)
-  #define KHAOS_COMPILER_KeilCarm_PRIVATE()       (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__CA__) / 100) % 10, (__CA__) % 100, 0, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_KeilCarm_PRIVATE()       (1L)                                                     /* //NOSONAR */
 #elif defined(__C166__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__C166__) / 100) % 10, (__C166__) % 100, 0, 0)
-  #define KHAOS_COMPILER_KeilC166_PRIVATE()       (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__C166__) / 100) % 10, (__C166__) % 100, 0, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_KeilC166_PRIVATE()       (1L)                                                         /* //NOSONAR */
 #elif defined(__C51__) || defined(__CX51__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__C51__) / 100) % 10, (__C51__) % 100, 0, 0)
-  #define KHAOS_COMPILER_KeilC51_PRIVATE()        (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__C51__) / 100) % 10, (__C51__) % 100, 0, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_KeilC51_PRIVATE()        (1L)                                                       /* //NOSONAR */
 #elif defined(__LCC__)
-  #define KHAOS_COMPILER_LCC_PRIVATE() (1L)
+  #define KHAOS_COMPILER_LCC_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__HIGHC__)
-  #define KHAOS_COMPILER_Metaware_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Metaware_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__MWERKS__) || defined(__CWCC__)
   #if defined(__CWCC__)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__CWCC__ & 0xF000) >> 12, (__CWCC__ & 0xF00) >> 8, (__CWCC__ & 0xFF), 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__CWCC__ & 0xF000) >> 12, (__CWCC__ & 0xF00) >> 8, (__CWCC__ & 0xFF), 0) /* //NOSONAR */
   #elif(__MWERKS__ >= 0x4200)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__MWERKS__ & 0xF000) >> 12, (__MWERKS__ & 0xF00) >> 8, (__MWERKS__ & 0xFF), 0)
-  #elif(__MWERKS__ >= 0x3204)  // note the "skip": 04->9.3
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(9, (__MWERKS__) % 100 - 1, 0, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__MWERKS__ & 0xF000) >> 12, (__MWERKS__ & 0xF00) >> 8, (__MWERKS__ & 0xFF), 0) /* //NOSONAR */
+  #elif(__MWERKS__ >= 0x3204)                                                                                                                   // note the "skip": 04->9.3
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(9, (__MWERKS__) % 100 - 1, 0, 0)                                                /* //NOSONAR */
   #elif(__MWERKS__ >= 0x3200)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(9, (__MWERKS__) % 100, 0, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(9, (__MWERKS__) % 100, 0, 0) /* //NOSONAR */
   #elif(__MWERKS__ >= 0x3000)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(8, (__MWERKS__) % 100, 0, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(8, (__MWERKS__) % 100, 0, 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_Metrowerks_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Metrowerks_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(_MSC_VER)
   // how many digits does the build number have?
   #if defined(_MSC_FULL_VER)
@@ -1233,162 +1233,162 @@
     #define COMP_MSVC_BUILD_PATCH_PRIVATE() (0L)
   #endif
   #if defined(_MSC_BUILD)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((_MSC_VER / 100) % 1000, (_MSC_VER) % 1000, COMP_MSVC_BUILD_PATCH_PRIVATE(), _MSC_BUILD)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((_MSC_VER / 100) % 1000, (_MSC_VER) % 1000, COMP_MSVC_BUILD_PATCH_PRIVATE(), _MSC_BUILD) /* //NOSONAR */
   #else
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((_MSC_VER / 100) % 1000, (_MSC_VER) % 1000, COMP_MSVC_BUILD_PATCH_PRIVATE(), 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((_MSC_VER / 100) % 1000, (_MSC_VER) % 1000, COMP_MSVC_BUILD_PATCH_PRIVATE(), 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_MSVC_PRIVATE() (1L)
+  #define KHAOS_COMPILER_MSVC_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(_MRI)
-  #define KHAOS_COMPILER_Microtec_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Microtec_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__NDPC__) || defined(__NDPX__)
-  #define KHAOS_COMPILER_Microway_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Microway_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__sgi) || defined(sgi)
   #if defined(_SGI_COMPILER_VERSION)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((_SGI_COMPILER_VERSION) / 100) % 10, ((_SGI_COMPILER_VERSION) / 10) % 10, (_SGI_COMPILER_VERSION) % 10, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((_SGI_COMPILER_VERSION) / 100) % 10, ((_SGI_COMPILER_VERSION) / 10) % 10, (_SGI_COMPILER_VERSION) % 10, 0) /* //NOSONAR */
   #elif defined(_COMPILER_VERSION)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((_COMPILER_VERSION) / 100) % 10, ((_COMPILER_VERSION) / 10) % 10, (_COMPILER_VERSION) % 10, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((_COMPILER_VERSION) / 100) % 10, ((_COMPILER_VERSION) / 10) % 10, (_COMPILER_VERSION) % 10, 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_MIPSpro_PRIVATE() (1L)
+  #define KHAOS_COMPILER_MIPSpro_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(MIRACLE)
-  #define KHAOS_COMPILER_Miracle_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Miracle_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__MRC__) || defined(MPW_C) || defined(MPW_CPLUS)
   #if defined(__MRC__)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__MRC__ & 0xFF00) >> 8, (__MRC__ & 0xFF), 0, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__MRC__ & 0xFF00) >> 8, (__MRC__ & 0xFF), 0, 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_MPW_PRIVATE() (1L)
+  #define KHAOS_COMPILER_MPW_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__CC_NORCROFT)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__ARMCC_VERSION * 100) / 100), (__ARMCC_VERSION * 100) % 100, 0, 0)
-  #define KHAOS_COMPILER_Norcroft_PRIVATE()       (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__ARMCC_VERSION * 100) / 100), (__ARMCC_VERSION * 100) % 100, 0, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_Norcroft_PRIVATE()       (1L)                                                                              /* //NOSONAR */
 #elif defined(__NWCC__)
-  #define KHAOS_COMPILER_NWCC_PRIVATE() (1L)
+  #define KHAOS_COMPILER_NWCC_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__OPEN64__) || defined(__OPENCC__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__OPENCC__, __OPENCC_MINOR__, (_OPENCC_PATCHLEVEL__ * 10) / 10, (_OPENCC_PATCHLEVEL__ * 10) % 10)
-  #define KHAOS_COMPILER_Open64_PRIVATE()         (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__OPENCC__, __OPENCC_MINOR__, (_OPENCC_PATCHLEVEL__ * 10) / 10, (_OPENCC_PATCHLEVEL__ * 10) % 10) /* //NOSONAR */
+  #define KHAOS_COMPILER_Open64_PRIVATE()         (1L)                                                                                                          /* //NOSONAR */
 #elif defined(ORA_PROC)
-  #define KHAOS_COMPILER_Oracle_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Oracle_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__SUNPRO_CC) || defined(__SUNPRO_C)
   #if defined(__SUNPRO_CC)
     #if(__SUNPRO_CC < 0x5100)
-      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__SUNPRO_CC & 0xF00) >> 8, (__SUNPRO_CC & 0xF0) >> 4, (__SUNPRO_CC & 0xF), 0)
+      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__SUNPRO_CC & 0xF00) >> 8, (__SUNPRO_CC & 0xF0) >> 4, (__SUNPRO_CC & 0xF), 0) /* //NOSONAR */
     #else
-      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__SUNPRO_CC & 0xFF000) >> 12, (__SUNPRO_CC & 0xFF0) >> 4, (__SUNPRO_CC & 0xF), 0)
+      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__SUNPRO_CC & 0xFF000) >> 12, (__SUNPRO_CC & 0xFF0) >> 4, (__SUNPRO_CC & 0xF), 0) /* //NOSONAR */
     #endif
   #elif defined(__SUNPRO_C)
     #if(__SUNPRO_C < 0x5100)
-      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__SUNPRO_C & 0xF00) >> 8, (__SUNPRO_C & 0xF0) >> 4, (__SUNPRO_C & 0xF), 0)
+      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__SUNPRO_C & 0xF00) >> 8, (__SUNPRO_C & 0xF0) >> 4, (__SUNPRO_C & 0xF), 0) /* //NOSONAR */
     #else
-      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__SUNPRO_C & 0xFF000) >> 12, (__SUNPRO_C & 0xFF0) >> 4, (__SUNPRO_C & 0xF), 0)
+      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__SUNPRO_C & 0xFF000) >> 12, (__SUNPRO_C & 0xFF0) >> 4, (__SUNPRO_C & 0xF), 0) /* //NOSONAR */
     #endif
   #endif
-  #define KHAOS_COMPILER_Solaris_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Solaris_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__PACIFIC__)
-  #define KHAOS_COMPILER_Pacific_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Pacific_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(_PACC_VER)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((_PACC_VER & 0xF0000000) >> 28, (_PACC_VER & 0xFF00000) >> 20, (_PACC_VER & 0xFF000) >> 12, (_PACC_VER & 0xFFF))
-  #define KHAOS_COMPILER_Palm_PRIVATE()           (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((_PACC_VER & 0xF0000000) >> 28, (_PACC_VER & 0xFF00000) >> 20, (_PACC_VER & 0xFF000) >> 12, (_PACC_VER & 0xFFF)) /* //NOSONAR */
+  #define KHAOS_COMPILER_Palm_PRIVATE()           (1L)                                                                                                                         /* //NOSONAR */
 #elif defined(__POCC__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__POCC__) / 100) % 10, (__POCC__) % 100, 0, 0)
-  #define KHAOS_COMPILER_Pelles_PRIVATE()         (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__POCC__) / 100) % 10, (__POCC__) % 100, 0, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_Pelles_PRIVATE()         (1L)                                                         /* //NOSONAR */
 #elif defined(__PGI)
   #if defined(__PGIC__) && defined(__PGIC_MINOR__) && defined(__PGIC_PATCHLEVEL__)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__PGIC__, __PGIC_MINOR__, __PGIC_PATCHLEVEL__, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__PGIC__, __PGIC_MINOR__, __PGIC_PATCHLEVEL__, 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_Portland_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Portland_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__RENESAS__) || defined(__HITACHI__)
   #if defined(__RENESAS_VERSION__)
     #if __RENESAS_VERSION__ >= 0x1000000
-      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__RENESAS_VERSION__ & 0xFF000000) >> 24, (__RENESAS_VERSION__ & 0xFF0000) >> 16, (__RENESAS_VERSION__ & 0xFF00) >> 8, 0)
+      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__RENESAS_VERSION__ & 0xFF000000) >> 24, (__RENESAS_VERSION__ & 0xFF0000) >> 16, (__RENESAS_VERSION__ & 0xFF00) >> 8, 0) /* //NOSONAR */
     #else
-      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__RENESAS_VERSION__ & 0xFF00) >> 8, (__RENESAS_VERSION__ & 0xFF), 0, 0)
+      #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__RENESAS_VERSION__ & 0xFF00) >> 8, (__RENESAS_VERSION__ & 0xFF), 0, 0) /* //NOSONAR */
     #endif
   #elif defined(__HITACHI_VERSION__)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__HITACHI_VERSION__ & 0xFF00) >> 8, (__HITACHI_VERSION__ & 0xFF), 0, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__HITACHI_VERSION__ & 0xFF00) >> 8, (__HITACHI_VERSION__ & 0xFF), 0, 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_Renesas_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Renesas_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(SASC) || defined(__SASC) || defined(__SASC__)
   #if defined(__SASC__)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__SASC__) / 100) % 10, (__SASC__) % 100, 0, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__SASC__) / 100) % 10, (__SASC__) % 100, 0, 0) /* //NOSONAR */
   #elif defined(__VERSION__)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__VERSION__, __REVISION__, 0, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__VERSION__, __REVISION__, 0, 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_SASC_PRIVATE() (1L)
+  #define KHAOS_COMPILER_SASC_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(_SCO_DS)
-  #define KHAOS_COMPILER_SCO_PRIVATE() (1L)
+  #define KHAOS_COMPILER_SCO_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(SDCC)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((SDCC) / 100) % 10, ((SDCC) / 10) % 10, (SDCC) % 10, 0)
-  #define KHAOS_COMPILER_SDCC_PRIVATE()           (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((SDCC) / 100) % 10, ((SDCC) / 10) % 10, (SDCC) % 10, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_SDCC_PRIVATE()           (1L)                                                                 /* //NOSONAR */
 #elif defined(__SNC__)
-  #define KHAOS_COMPILER_SNC_PRIVATE() (1L)
+  #define KHAOS_COMPILER_SNC_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__VOSC__)
-  #define KHAOS_COMPILER_Stratus_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Stratus_PRIVATE() (1L) /* //NOSONAR */
   #if __VOSC__ == 0
-    #define KHAOS_COMPILER_StratusKR_PRIVATE() (1L)
+    #define KHAOS_COMPILER_StratusKR_PRIVATE() (1L) /* //NOSONAR */
   #elif __VOSC__ == 1
-    #define KHAOS_COMPILER_StratusANSI_PRIVATE() (1L)
+    #define KHAOS_COMPILER_StratusANSI_PRIVATE() (1L) /* //NOSONAR */
   #endif
 #elif defined(__SC__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__SC__ & 0xFF00) >> 8, (__SC__ & 0xFF), 0, 0)
-  #define KHAOS_COMPILER_Symantec_PRIVATE()       (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__SC__ & 0xFF00) >> 8, (__SC__ & 0xFF), 0, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_Symantec_PRIVATE()       (1L)                                                       /* //NOSONAR */
 #elif defined(__TenDRA__)
-  #define KHAOS_COMPILER_Tendra_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Tendra_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__TI_COMPILER_VERSION__) || defined(_TMS320C6X)
   #if defined(__TI_COMPILER_VERSION__)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__TI_COMPILER_VERSION__ / 1000000) % 1000, (__TI_COMPILER_VERSION__ / 1000) % 1000, __TI_COMPILER_VERSION__ % 1000, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__TI_COMPILER_VERSION__ / 1000000) % 1000, (__TI_COMPILER_VERSION__ / 1000) % 1000, __TI_COMPILER_VERSION__ % 1000, 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_TI_PRIVATE() (1L)
+  #define KHAOS_COMPILER_TI_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(THINKC3) || defined(THINKC4)
   #if defined(THINKC3)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(3, 0, 0, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(3, 0, 0, 0) /* //NOSONAR */
   #elif defined(THINKC4)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(4, 0, 0, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(4, 0, 0, 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_Think_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Think_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__TINYC__)
-  #define KHAOS_COMPILER_TinyC_PRIVATE() (1L)
+  #define KHAOS_COMPILER_TinyC_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__TURBOC__)
   #if __TURBOC__ < 0x295 || __TURBOC__ > 0x400
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__TURBOC__ & 0xFF00) >> 8, (__TURBOC__ & 0xFF), 0, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__TURBOC__ & 0xFF00) >> 8, (__TURBOC__ & 0xFF), 0, 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_Turbo_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Turbo_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(_UCC)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(_MAJOR_REV, _MINOR_REV, 0, 0)
-  #define KHAOS_COMPILER_Ultimate_PRIVATE()       (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(_MAJOR_REV, _MINOR_REV, 0, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_Ultimate_PRIVATE()       (1L)                                      /* //NOSONAR */
 #elif defined(__USLC__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__SCO_VERSION__ / 10000000), (__SCO_VERSION__ / 100000) % 100, 0, 0)
-  #define KHAOS_COMPILER_USLC_PRIVATE()
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__SCO_VERSION__ / 10000000), (__SCO_VERSION__ / 100000) % 100, 0, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_USLC_PRIVATE()           (1L)                                                                              /* //NOSONAR */
 #elif defined(__VBCC__)
-  #define KHAOS_COMPILER_VBCC_PRIVATE() (1L)
+  #define KHAOS_COMPILER_VBCC_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__WATCOMC__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__WATCOMC__) / 100) % 100, (__WATCOMC__) % 100, 0, 0)
-  #define KHAOS_COMPILER_Watcom_PRIVATE()         (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(((__WATCOMC__) / 100) % 100, (__WATCOMC__) % 100, 0, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_Watcom_PRIVATE()         (1L)                                                                /* //NOSONAR */
 #elif defined(__ZTC__)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__ZTC__ & 0xF00) >> 8, (__ZTC__ & 0xF0) >> 4, (__ZTC__ & 0xF), 0)
-  #define KHAOS_COMPILER_Zortech_PRIVATE()        (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION((__ZTC__ & 0xF00) >> 8, (__ZTC__ & 0xF0) >> 4, (__ZTC__ & 0xF), 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_Zortech_PRIVATE()        (1L)                                                                           /* //NOSONAR */
 #elif defined(__clang__)
   //Should be include before gcc as it defined some macro of GCC and MSVC
   //Note that marketing version numbers should not be used to check for language features, as different vendors use different numbering schemes. Instead, use the Feature Checking Macros.
   #if defined(__apple_build_version__)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__clang_major__, __clang_minor__, __clang_patchlevel__, 0)
-    #define KHAOS_COMPILER_AppleClang_PRIVATE()     (1L)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__clang_major__, __clang_minor__, __clang_patchlevel__, 0) /* //NOSONAR */
+    #define KHAOS_COMPILER_AppleClang_PRIVATE()     (1L)                                                                   /* //NOSONAR */
   #endif
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__clang_major__, __clang_minor__, __clang_patchlevel__, 0)
-  #define KHAOS_COMPILER_Clang_PRIVATE()          (1L)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__clang_major__, __clang_minor__, __clang_patchlevel__, 0) /* //NOSONAR */
+  #define KHAOS_COMPILER_Clang_PRIVATE()          (1L)                                                                   /* //NOSONAR */
 #elif defined(__llvm__)
   //Should be after clang because clang mimic llvm
-  #define KHAOS_COMPILER_LLVM_PRIVATE() (1L)
+  #define KHAOS_COMPILER_LLVM_PRIVATE() (1L) /* //NOSONAR */
 #elif defined(__GNUC__) || defined(__GNUG__)
   #if defined(__GNUC_PATCHLEVEL__)
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__, 0) /* //NOSONAR */
   #else
-    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__GNUC__, __GNUC_MINOR__, 0, 0)
+    #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(__GNUC__, __GNUC_MINOR__, 0, 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_GCC_PRIVATE() (1L)
+  #define KHAOS_COMPILER_GCC_PRIVATE() (1L) /* //NOSONAR */
 #else
-  #define KHAOS_COMPILER_Unknown_PRIVATE() (1L)
+  #define KHAOS_COMPILER_Unknown_PRIVATE() (1L) /* //NOSONAR */
 #endif
 
 #if !defined(KHAOS_DEFINE_Compiler_VERSION_PRIVATE)
-  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(0, 0, 0, 0)
+  #define KHAOS_DEFINE_Compiler_VERSION_PRIVATE() SET_VERSION(0, 0, 0, 0) /* //NOSONAR */
 #endif
 
 /**
@@ -1411,31 +1411,31 @@
 **/
 #if defined(__clang__) && !defined(KHAOS_COMPILER_Clang_PRIVATE)
   #if defined(__clang_major__)
-    #define KHAOS_DEFINE_ClangEmulated_VERSION_PRIVATE() SET_VERSION(__clang_major__, __clang_minor__, __clang_patchlevel__, 0)
+    #define KHAOS_DEFINE_ClangEmulated_VERSION_PRIVATE() SET_VERSION(__clang_major__, __clang_minor__, __clang_patchlevel__, 0) /* //NOSONAR */
   #else
-    #define KHAOS_DEFINE_ClangEmulated_VERSION_PRIVATE() SET_VERSION(0, 0, 0, 0)
+    #define KHAOS_DEFINE_ClangEmulated_VERSION_PRIVATE() SET_VERSION(0, 0, 0, 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_ClangEmulated_PRIVATE() (1L)
+  #define KHAOS_COMPILER_ClangEmulated_PRIVATE() (1L) /* //NOSONAR */
 #else
-  #define KHAOS_COMPILER_ClangEmulated_PRIVATE() (0L)
+  #define KHAOS_COMPILER_ClangEmulated_PRIVATE() (0L) /* //NOSONAR */
 #endif
 
 #if(defined(__GNUC__) || defined(__GNUG__)) && !defined(KHAOS_COMPILER_GCC_PRIVATE)
   #if defined(__GNUC_PATCHLEVEL__)
-    #define KHAOS_DEFINE_GCCEmulated_VERSION_PRIVATE() SET_VERSION(__GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__, 0)
+    #define KHAOS_DEFINE_GCCEmulated_VERSION_PRIVATE() SET_VERSION(__GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__, 0) /* //NOSONAR */
   #else
-    #define KHAOS_DEFINE_GCCEmulated_VERSION_PRIVATE() SET_VERSION(__GNUC__, __GNUC_MINOR__, 0, 0)
+    #define KHAOS_DEFINE_GCCEmulated_VERSION_PRIVATE() SET_VERSION(__GNUC__, __GNUC_MINOR__, 0, 0) /* //NOSONAR */
   #endif
-  #define KHAOS_COMPILER_GCCEmulated_PRIVATE() (1L)
+  #define KHAOS_COMPILER_GCCEmulated_PRIVATE() (1L) /* //NOSONAR */
 #else
-  #define KHAOS_COMPILER_GCCEmulated_PRIVATE() (0L)
+  #define KHAOS_COMPILER_GCCEmulated_PRIVATE() (0L) /* //NOSONAR */
 #endif
 
 #if defined(__llvm__) && !defined(KHAOS_COMPILER_LLVM_PRIVATE)
-  #define KHAOS_COMPILER_LLVMEmulated_PRIVATE()       (1L)
-  #define KHAOS_DEFINE_LLVMEmulated_VERSION_PRIVATE() SET_VERSION(0, 0, 0, 0)
+  #define KHAOS_COMPILER_LLVMEmulated_PRIVATE()       (1L)                    /* //NOSONAR */
+  #define KHAOS_DEFINE_LLVMEmulated_VERSION_PRIVATE() SET_VERSION(0, 0, 0, 0) /* //NOSONAR */
 #else
-  #define KHAOS_COMPILER_LLVMEmulated_PRIVATE() (0L)
+  #define KHAOS_COMPILER_LLVMEmulated_PRIVATE() (0L) /* //NOSONAR */
 #endif
 
 //Set to 0 to avoid warning
