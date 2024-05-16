@@ -10,7 +10,9 @@ set(KHAOS_PUBLIC_HEADERS
     "${PROJECT_SOURCE_DIR}/include/Khaos/details/languages/CStandards.h"
     "${PROJECT_SOURCE_DIR}/include/Khaos/details/languages/CXX.h"
     "${PROJECT_SOURCE_DIR}/include/Khaos/details/languages/CXXStandards.h"
+    "${PROJECT_SOURCE_DIR}/include/Khaos/details/languages/Extensions.h"
     "${PROJECT_SOURCE_DIR}/include/Khaos/CompareVersions.h"
+    "${PROJECT_SOURCE_DIR}/include/Khaos/Compiler.h"
     "${PROJECT_SOURCE_DIR}/include/Khaos/Language.h"
     "${PROJECT_SOURCE_DIR}/include/Khaos/Preprocessor.h"
     "${PROJECT_SOURCE_DIR}/include/Khaos/Version.h")
