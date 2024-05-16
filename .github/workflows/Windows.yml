@@ -53,7 +53,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - uses: ilammy/msvc-dev-cmd@v1.13.0
+    - uses: TheMrMilchmann/setup-msvc-dev@v3
       with:
         arch: ${{ matrix.architecture }}
     - name: Run CMake
@@ -72,7 +72,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - uses: ilammy/msvc-dev-cmd@v1.13.0
+    - uses: TheMrMilchmann/setup-msvc-dev@v3
       with:
         arch: ${{ matrix.architecture }}
     - name: Run CMake
@@ -91,6 +91,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - uses: TheMrMilchmann/setup-msvc-dev@v3
     - name: Install Clang
       run: curl -fsSL -o LLVM${{ matrix.version }}.exe https://github.com/llvm/llvm-project/releases/download/llvmorg-${{ matrix.version }}/LLVM-${{ matrix.version }}-win64.exe ; 7z x LLVM${{ matrix.version }}.exe -y -o"C:/Program Files/LLVM"
     - name: Run CMake
@@ -106,11 +107,15 @@ jobs:
       fail-fast: false
       matrix:
         architecture: [Win32, x64]
+        version: [7.1.0, 8.0.1, 9.0.1, 10.0.1, 11.0.1, 11.1.0, 12.0.1, 13.0.1, 14.0.6, 15.0.7, 16.0.6, 17.0.6, 18.1.4]
 
     steps:
     - uses: actions/checkout@v4
+    - uses: TheMrMilchmann/setup-msvc-dev@v3
+    - name: Install Clang
+      run: curl -fsSL -o LLVM${{ matrix.version }}.exe https://github.com/llvm/llvm-project/releases/download/llvmorg-${{ matrix.version }}/LLVM-${{ matrix.version }}-win64.exe ; 7z x LLVM${{ matrix.version }}.exe -y -o"C:/Program Files/LLVM"
     - name: Run CMake
-      run: cmake -S . -B build -G "Visual Studio 16 2019" -A ${{ matrix.architecture }} -T ClangCL
+      run: cmake -S . -B build -DCMAKE_CXX_COMPILER="C:/Program Files/LLVM/bin/clang++.exe" -DCMAKE_C_COMPILER="C:/Program Files/LLVM/bin/clang.exe" -G "Visual Studio 16 2019" -A ${{ matrix.architecture }} -T ClangCL
     - name: Build
       run: cmake --build build --config Debug --parallel 2
     - name: Test
