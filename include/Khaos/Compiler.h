@@ -1438,7 +1438,7 @@
   #define KHAOS_COMPILER_LLVMEmulated_PRIVATE() (0L) /* //NOSONAR */
 #endif
 
-//Set to 0 to avoid warning
+/* Set to 0 to avoid warning */
 #if !defined(KHAOS_COMPILER_ACC_PRIVATE)
   #define KHAOS_COMPILER_ACC_PRIVATE() (0L) /* //NOSONAR */
 #endif
@@ -1692,6 +1692,6 @@
   #define KHAOS_COMPILER_Unknown_PRIVATE() (0L) /* //NOSONAR */
 #endif
 
-#define COMPILER_IS(compiler) KHAOS_COMPILER_##compiler##_PRIVATE()
+#define COMPILER_IS(compiler) KHAOS_COMPILER_##compiler##_PRIVATE() /* //NOSONAR */
 
 #endif /* KHAOS_COMPILER_MACROS_H */

@@ -25,11 +25,11 @@
 */
 
 #if defined(__clang__)
-  #define KHAOS_PUSH_WARNING_CXX98_COMPAT_PEDANTIC() _Pragma("clang diagnostic push") _Pragma("clang diagnostic ignored \"-Wc++98-compat-pedantic\"")
-  #define KHAOS_POP_WARNING_CXX98_COMPAT_PEDANTIC()  _Pragma("clang diagnostic pop")
+  #define KHAOS_PUSH_WARNING_CXX98_COMPAT_PEDANTIC() _Pragma("clang diagnostic push") _Pragma("clang diagnostic ignored \"-Wc++98-compat-pedantic\"") /* //NOSONAR */
+  #define KHAOS_POP_WARNING_CXX98_COMPAT_PEDANTIC()  _Pragma("clang diagnostic pop")                                                                  /* //NOSONAR */
 #else
-  #define KHAOS_PUSH_WARNING_CXX98_COMPAT_PEDANTIC()
-  #define KHAOS_POP_WARNING_CXX98_COMPAT_PEDANTIC()
+  #define KHAOS_PUSH_WARNING_CXX98_COMPAT_PEDANTIC() /* //NOSONAR */
+  #define KHAOS_POP_WARNING_CXX98_COMPAT_PEDANTIC()  /* //NOSONAR */
 #endif
 
 /*!
