@@ -22,7 +22,11 @@ jobs:
     container: flagarde/ci-ubuntu-gcc-${{ matrix.image }}-x86_64:latest
 
     steps:
-
+    - name: 📂 Load .env file
+      if: hashFiles('.github/workflows/.env') != ''
+      uses: xom9ikk/dotenv@v2
+      with:
+        path: .github/workflows
     - name: Install git
       run: apt-get update; apt-get install --no-install-recommends -y git
 
@@ -53,7 +57,11 @@ jobs:
     container: flagarde/ci-ubuntu-clang-${{ matrix.image }}-x86_64:latest
 
     steps:
-
+    - name: 📂 Load .env file
+      if: hashFiles('.github/workflows/.env') != ''
+      uses: xom9ikk/dotenv@v2
+      with:
+        path: .github/workflows
     - name: Install git
       run: apt-get update; apt-get install --no-install-recommends -y git
 
@@ -80,7 +88,11 @@ jobs:
     container: flagarde/ci-ubuntu-gcc-11-x86_64:latest
 
     steps:
-
+    - name: 📂 Load .env file
+      if: hashFiles('.github/workflows/.env') != ''
+      uses: xom9ikk/dotenv@v2
+      with:
+        path: .github/workflows
     - name: Install git
       run: apt-get update; apt-get install --no-install-recommends -y git
 

@@ -23,6 +23,11 @@ jobs:
         shell: msys2 {0}
 
     steps:
+    - name: 📂 Load .env file
+      if: hashFiles('.github/workflows/.env') != ''
+      uses: xom9ikk/dotenv@v2
+      with:
+        path: .github/workflows
     - name: Checkout
       uses: actions/checkout@v4
 
@@ -52,6 +57,11 @@ jobs:
         architecture: [win32, x64]
 
     steps:
+    - name: 📂 Load .env file
+      if: hashFiles('.github/workflows/.env') != ''
+      uses: xom9ikk/dotenv@v2
+      with:
+        path: .github/workflows
     - uses: actions/checkout@v4
     - uses: TheMrMilchmann/setup-msvc-dev@v3
       with:
@@ -71,6 +81,11 @@ jobs:
         architecture: [win32, x64]
 
     steps:
+    - name: 📂 Load .env file
+      if: hashFiles('.github/workflows/.env') != ''
+      uses: xom9ikk/dotenv@v2
+      with:
+        path: .github/workflows
     - uses: actions/checkout@v4
     - uses: TheMrMilchmann/setup-msvc-dev@v3
       with:
@@ -90,8 +105,15 @@ jobs:
         version: [7.1.0, 8.0.1, 9.0.1, 10.0.1, 11.0.1, 11.1.0, 12.0.1, 13.0.1, 14.0.6, 15.0.7, 16.0.6, 17.0.6, 18.1.4]
 
     steps:
+    - name: 📂 Load .env file
+      if: hashFiles('.github/workflows/.env') != ''
+      uses: xom9ikk/dotenv@v2
+      with:
+        path: .github/workflows
     - uses: actions/checkout@v4
     - uses: TheMrMilchmann/setup-msvc-dev@v3
+      with:
+        arch: ${{ matrix.architecture }}
     - name: Install Clang
       run: curl -fsSL -o LLVM${{ matrix.version }}.exe https://github.com/llvm/llvm-project/releases/download/llvmorg-${{ matrix.version }}/LLVM-${{ matrix.version }}-win64.exe ; 7z x LLVM${{ matrix.version }}.exe -y -o"C:/Program Files/LLVM"
     - name: Run CMake
@@ -110,8 +132,15 @@ jobs:
         version: [7.1.0, 8.0.1, 9.0.1, 10.0.1, 11.0.1, 11.1.0, 12.0.1, 13.0.1, 14.0.6, 15.0.7, 16.0.6, 17.0.6, 18.1.4]
 
     steps:
+    - name: 📂 Load .env file
+      if: hashFiles('.github/workflows/.env') != ''
+      uses: xom9ikk/dotenv@v2
+      with:
+        path: .github/workflows
     - uses: actions/checkout@v4
     - uses: TheMrMilchmann/setup-msvc-dev@v3
+      with:
+        arch: ${{ matrix.architecture }}
     - name: Install Clang
       run: curl -fsSL -o LLVM${{ matrix.version }}.exe https://github.com/llvm/llvm-project/releases/download/llvmorg-${{ matrix.version }}/LLVM-${{ matrix.version }}-win64.exe ; 7z x LLVM${{ matrix.version }}.exe -y -o"C:/Program Files/LLVM"
     - name: Run CMake
