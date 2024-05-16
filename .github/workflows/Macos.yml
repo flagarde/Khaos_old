@@ -22,12 +22,12 @@ jobs:
       DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
 
     steps:
+    - uses: actions/checkout@v4
     - name: 📂 Load .env file
       if: hashFiles('.github/workflows/.env') != ''
       uses: xom9ikk/dotenv@v2
       with:
         path: .github/workflows
-    - uses: actions/checkout@v4
     - name: Run CMake
       run: cmake -S . -B build -D CMAKE_BUILD_TYPE=Debug
     - name: Build
@@ -45,12 +45,12 @@ jobs:
       DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
 
     steps:
+    - uses: actions/checkout@v4
     - name: 📂 Load .env file
       if: hashFiles('.github/workflows/.env') != ''
       uses: xom9ikk/dotenv@v2
       with:
         path: .github/workflows
-    - uses: actions/checkout@v4
     - name: Run CMake
       run: cmake -S . -B build -D CMAKE_BUILD_TYPE=Debug
     - name: Build
@@ -66,12 +66,12 @@ jobs:
         gcc: [10, 11, 12, 13]
 
     steps:
+    - uses: actions/checkout@v4
     - name: 📂 Load .env file
       if: hashFiles('.github/workflows/.env') != ''
       uses: xom9ikk/dotenv@v2
       with:
         path: .github/workflows
-    - uses: actions/checkout@v4
     - name: Run CMake
       env:
         CC: gcc-${{matrix.gcc}}

@@ -23,13 +23,12 @@ jobs:
         shell: msys2 {0}
 
     steps:
+    - uses: actions/checkout@v4
     - name: 📂 Load .env file
       if: hashFiles('.github/workflows/.env') != ''
       uses: xom9ikk/dotenv@v2
       with:
         path: .github/workflows
-    - name: Checkout
-      uses: actions/checkout@v4
 
     - name: Setup MSYS2
       uses: msys2/setup-msys2@v2
@@ -57,12 +56,12 @@ jobs:
         architecture: [win32, x64]
 
     steps:
+    - uses: actions/checkout@v4
     - name: 📂 Load .env file
       if: hashFiles('.github/workflows/.env') != ''
       uses: xom9ikk/dotenv@v2
       with:
         path: .github/workflows
-    - uses: actions/checkout@v4
     - uses: TheMrMilchmann/setup-msvc-dev@v3
       with:
         arch: ${{ matrix.architecture }}
@@ -81,12 +80,12 @@ jobs:
         architecture: [win32, x64]
 
     steps:
+    - uses: actions/checkout@v4
     - name: 📂 Load .env file
       if: hashFiles('.github/workflows/.env') != ''
       uses: xom9ikk/dotenv@v2
       with:
         path: .github/workflows
-    - uses: actions/checkout@v4
     - uses: TheMrMilchmann/setup-msvc-dev@v3
       with:
         arch: ${{ matrix.architecture }}
@@ -106,12 +105,12 @@ jobs:
         architecture: [win32, x64]
 
     steps:
+    - uses: actions/checkout@v4
     - name: 📂 Load .env file
       if: hashFiles('.github/workflows/.env') != ''
       uses: xom9ikk/dotenv@v2
       with:
         path: .github/workflows
-    - uses: actions/checkout@v4
     - uses: TheMrMilchmann/setup-msvc-dev@v3
       with:
         arch: ${{ matrix.architecture }}
@@ -133,12 +132,12 @@ jobs:
         version: [7.1.0, 8.0.1, 9.0.1, 10.0.1, 11.0.1, 11.1.0, 12.0.1, 13.0.1, 14.0.6, 15.0.7, 16.0.6, 17.0.6, 18.1.4]
 
     steps:
+    - uses: actions/checkout@v4
     - name: 📂 Load .env file
       if: hashFiles('.github/workflows/.env') != ''
       uses: xom9ikk/dotenv@v2
       with:
         path: .github/workflows
-    - uses: actions/checkout@v4
     - uses: TheMrMilchmann/setup-msvc-dev@v3
       with:
         arch: ${{ matrix.architecture }}

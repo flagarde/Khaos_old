@@ -22,17 +22,16 @@ jobs:
     container: flagarde/ci-ubuntu-gcc-${{ matrix.image }}-x86_64:latest
 
     steps:
-    - name: 📂 Load .env file
-      if: hashFiles('.github/workflows/.env') != ''
-      uses: xom9ikk/dotenv@v2
-      with:
-        path: .github/workflows
     - name: Install git
       run: apt-get update; apt-get install --no-install-recommends -y git
 
     - name: Checkout
       uses: actions/checkout@v4
-
+    - name: 📂 Load .env file
+      if: hashFiles('.github/workflows/.env') != ''
+      uses: xom9ikk/dotenv@v2
+      with:
+        path: .github/workflows
     - name: Setup CMake
       uses: jwlawson/actions-setup-cmake@v2.0
       with:
@@ -57,17 +56,16 @@ jobs:
     container: flagarde/ci-ubuntu-clang-${{ matrix.image }}-x86_64:latest
 
     steps:
-    - name: 📂 Load .env file
-      if: hashFiles('.github/workflows/.env') != ''
-      uses: xom9ikk/dotenv@v2
-      with:
-        path: .github/workflows
     - name: Install git
       run: apt-get update; apt-get install --no-install-recommends -y git
 
     - name: Checkout
       uses: actions/checkout@v4
-
+    - name: 📂 Load .env file
+      if: hashFiles('.github/workflows/.env') != ''
+      uses: xom9ikk/dotenv@v2
+      with:
+        path: .github/workflows
     - name: Setup CMake
       uses: jwlawson/actions-setup-cmake@v2.0
       with:
@@ -88,17 +86,16 @@ jobs:
     container: flagarde/ci-ubuntu-gcc-11-x86_64:latest
 
     steps:
-    - name: 📂 Load .env file
-      if: hashFiles('.github/workflows/.env') != ''
-      uses: xom9ikk/dotenv@v2
-      with:
-        path: .github/workflows
     - name: Install git
       run: apt-get update; apt-get install --no-install-recommends -y git
 
     - name: Checkout
       uses: actions/checkout@v4
-
+    - name: 📂 Load .env file
+      if: hashFiles('.github/workflows/.env') != ''
+      uses: xom9ikk/dotenv@v2
+      with:
+        path: .github/workflows
     - name: Setup CMake
       uses: jwlawson/actions-setup-cmake@v2.0
       with:
