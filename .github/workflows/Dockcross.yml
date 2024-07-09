@@ -28,7 +28,7 @@ jobs:
   #        fetch-depth: 0
   #    - name: 📂 Load .env file
   #      if: hashFiles('.github/workflows/.env') != ''
-  #      uses: xom9ikk/dotenv@v2
+  #      uses: xom9ikk/dotenv@v2.3
   #      with:
   #        path: .github/workflows
   #    - name: ✨ Make script dockcross-${{ matrix.image_name }}
@@ -59,7 +59,7 @@ jobs:
         fetch-depth: 0
     - name: 📂 Load .env file
       if: hashFiles('.github/workflows/.env') != ''
-      uses: xom9ikk/dotenv@v2
+      uses: xom9ikk/dotenv@v2.3
       with:
         path: .github/workflows
     - name: ✨ Make script dockcross-${{ matrix.image_name }}
@@ -92,7 +92,7 @@ jobs:
         fetch-depth: 0
     - name: 📂 Load .env file
       if: hashFiles('.github/workflows/.env') != ''
-      uses: xom9ikk/dotenv@v2
+      uses: xom9ikk/dotenv@v2.3
       with:
         path: .github/workflows
     - name: ✨ Make script dockcross-${{ matrix.image_name }}
@@ -125,7 +125,7 @@ jobs:
         fetch-depth: 0
     - name: 📂 Load .env file
       if: hashFiles('.github/workflows/.env') != ''
-      uses: xom9ikk/dotenv@v2
+      uses: xom9ikk/dotenv@v2.3
       with:
         path: .github/workflows
     - name: ✨ Make script dockcross-${{ matrix.image_name }}
