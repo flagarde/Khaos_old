@@ -113,48 +113,48 @@ jobs:
     runs-on: macos-14
     strategy:
       fail-fast: false
-    matrix:
-      version: [12, 13, 14, 15, 16, 17]
+      matrix:
+        version: [12, 13, 14, 15, 16, 17]
 
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-        - name: 📂 Load .env file
-          if: hashFiles('.github/workflows/.env') != ''
-          uses: xom9ikk/dotenv@v2
-          with:
-            path: .github/workflows
+      - name: 📂 Load .env file
+        if: hashFiles('.github/workflows/.env') != ''
+        uses: xom9ikk/dotenv@v2
+        with:
+          path: .github/workflows
 
-        - name: ⬇️ Setup CMake
-          uses: lukka/get-cmake@latest
-          with:
-            cmakeVersion: ^3
-            ninjaVersion: ^1
+      - name: ⬇️ Setup CMake
+        uses: lukka/get-cmake@latest
+        with:
+          cmakeVersion: ^3
+          ninjaVersion: ^1
 
-        - name:  ⬇️ Setup Clang
-          run: brew install llvm@${{matrix.version}}
+      - name:  ⬇️ Setup Clang
+        run: brew install llvm@${{matrix.version}}
 
-        - name: ⚙️ run-cmake (configure)
-          env:
-            CC: clang-${{matrix.version}}
-            CXX: clang++-${{matrix.version}}
-          uses: cmake-tools/run-cmake@v0-alpha
-          id: 'configure'
-          with:
-            mode: configure
-            generator: 'Ninja'
-            install_prefix: '../install'
-            binary_dir: '../build'
+      - name: ⚙️ run-cmake (configure)
+        env:
+          CC: clang-${{matrix.version}}
+          CXX: clang++-${{matrix.version}}
+        uses: cmake-tools/run-cmake@v0-alpha
+        id: 'configure'
+        with:
+          mode: configure
+          generator: 'Ninja'
+          install_prefix: '../install'
+          binary_dir: '../build'
 
-        - name: 🛠️ run-cmake (build)
-          uses: cmake-tools/run-cmake@v0-alpha
-          id: build
-          with:
-            mode: build
+      - name: 🛠️ run-cmake (build)
+        uses: cmake-tools/run-cmake@v0-alpha
+        id: build
+        with:
+          mode: build
 
-        - name: 🧪 run-ctest
-          uses: cmake-tools/run-ctest@v0-alpha
-          id: test
-          with:
-            build_config: Debug
+      - name: 🧪 run-ctest
+        uses: cmake-tools/run-ctest@v0-alpha
+        id: test
+        with:
+          build_config: Debug
