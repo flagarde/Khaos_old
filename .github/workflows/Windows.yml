@@ -42,6 +42,7 @@ jobs:
         pacboy: >-
           gcc:p
           cmake:p
+          ninja:p
 
     - name: ⚙️ run-cmake (configure)
       uses: cmake-tools/run-cmake@v0-alpha
@@ -172,7 +173,6 @@ jobs:
       fail-fast: false
       matrix:
         version: [7.1.0, 8.0.1, 9.0.1, 10.0.0, 11.0.1, 11.1.0, 12.0.1, 13.0.1, 14.0.6, 15.0.7, 16.0.6, 17.0.6, 18.1.4]
-        architecture: [x64_x86, x64]
 
     steps:
     - name: Checkout
@@ -202,7 +202,6 @@ jobs:
       id: 'configure'
       with:
         mode: configure
-        platform: ${{ matrix.architecture }}
         install_prefix: '../install'
         binary_dir: '../build'
         variables: |
