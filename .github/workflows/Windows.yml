@@ -42,14 +42,12 @@ jobs:
         pacboy: >-
           gcc:p
           cmake:p
-          ninja:p
 
     - name: ⚙️ run-cmake (configure)
       uses: cmake-tools/run-cmake@v0-alpha
       id: 'configure'
       with:
         mode: configure
-        generator: 'Ninja'
         install_prefix: '../install'
         binary_dir: '../build'
         variables: |
