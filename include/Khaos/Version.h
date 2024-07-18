@@ -61,7 +61,7 @@
 *
 * \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
 */
-#define GET_VERSION_MAJOR(name) (KHAOS_PUSH_CXX98_COMPAT_PEDANTIC()(((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) >> 48) % (1 << 16) KHAOS_POP_CXX98_COMPAT_PEDANTIC()) /* //NOSONAR */
+#define GET_VERSION_MAJOR(name) (KHAOS_PUSH_CXX98_COMPAT_PEDANTIC()((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) >> 48) % (1 << 16) KHAOS_POP_CXX98_COMPAT_PEDANTIC()) /* //NOSONAR */
 
 /*!
 * \hideinitializer
@@ -70,7 +70,7 @@
 *
 * \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
 */
-#define GET_VERSION_MINOR(name) (KHAOS_PUSH_CXX98_COMPAT_PEDANTIC()(((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) >> 32) % (1 << 16) KHAOS_POP_CXX98_COMPAT_PEDANTIC()) /* //NOSONAR */
+#define GET_VERSION_MINOR(name) (KHAOS_PUSH_CXX98_COMPAT_PEDANTIC()((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) >> 32) % (1 << 16) KHAOS_POP_CXX98_COMPAT_PEDANTIC()) /* //NOSONAR */
 
 /*!
 * \hideinitializer
@@ -79,7 +79,7 @@
 *
 * \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
 */
-#define GET_VERSION_PATCH(name) (KHAOS_PUSH_CXX98_COMPAT_PEDANTIC()(((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) >> 16) % (1 << 16) KHAOS_POP_CXX98_COMPAT_PEDANTIC()) /* //NOSONAR */
+#define GET_VERSION_PATCH(name) (KHAOS_PUSH_CXX98_COMPAT_PEDANTIC()((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) >> 16) % (1 << 16) KHAOS_POP_CXX98_COMPAT_PEDANTIC()) /* //NOSONAR */
 
 /*!
 * \hideinitializer
@@ -88,6 +88,6 @@
 *
 * \note Value can be directly used in both preprocessor and compiler expressions for comparison to other similarly defined values.
 */
-#define GET_VERSION_TWEAK(name) (KHAOS_PUSH_CXX98_COMPAT_PEDANTIC()((KHAOS_DEFINE_##name##_VERSION_PRIVATE()) * 1ULL) % (1 << 16) KHAOS_POP_CXX98_COMPAT_PEDANTIC()) /* //NOSONAR */
+#define GET_VERSION_TWEAK(name) (KHAOS_PUSH_CXX98_COMPAT_PEDANTIC()(KHAOS_DEFINE_##name##_VERSION_PRIVATE()) % (1 << 16) KHAOS_POP_CXX98_COMPAT_PEDANTIC()) /* //NOSONAR */
 
 #endif /* KHAOS_VERSION_H_ */
