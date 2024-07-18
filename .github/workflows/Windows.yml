@@ -1,267 +1,202 @@
 ---
-name: Windows
+  name: Windows
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-  workflow_dispatch:
+  on:
+    push:
+    pull_request:
+    workflow_dispatch:
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
-  cancel-in-progress: true
+  concurrency:
+    group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+    cancel-in-progress: true
 
-jobs:
-  msys2:
-    runs-on: windows-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        sys: [mingw32, mingw64, ucrt64, clang64, clang32]
-    defaults:
-      run:
-        shell: msys2 {0}
+  jobs:
+    msys2:
+      runs-on: windows-latest
+      name: ${{ matrix.sys }}
+      strategy:
+        fail-fast: false
+        matrix:
+          # https://www.msys2.org/docs/environments/
+          # TODO Try to add msys
+          sys: [ ucrt64 , clang64, clang32, mingw64, mingw32 ]
+      defaults:
+        run:
+          shell: msys2 {0}
 
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      steps:
+        - uses: ammaraskar/gcc-problem-matcher
+        - name: 📥 Checkout
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+        - name: ⬇️ Setup CMake
+          uses: lukka/get-cmake@latest
+          with:
+            cmakeVersion: ^3
+            ninjaVersion: ^1.11.1
+        - name: 📂 Load .env file
+          if: hashFiles('.github/workflows/.env') != ''
+          uses: xom9ikk/dotenv@v2
+          with:
+            path: .github/workflows
+        - name: ✨ Setup MSYS2
+          uses: msys2/setup-msys2@v2
+          with:
+            msystem: ${{matrix.sys}}
+            path-type: minimal
+            release: true
+            update: true
+            pacboy: >-
+              gcc:p
+              cmake:p
+        - name: 🔧 Configure
+          run: cmake -S ${{ env.CMAKE_SOURCE_PREFIX }} -B ${{ env.CMAKE_BINARY_PREFIX }} -D CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }} -D CMAKE_CXX_STANDARD=${{ matrix.standard }} -D CMAKE_INSTALL_PREFIX=${{ env.CMAKE_INSTALL_PREFIX }} -D CPPTERMINAL_ENABLE_DOCS=OFF
+        - name: ⚙️ Build
+          run: cmake --build ${{ env.CMAKE_BINARY_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel ${{ env.CMAKE_NUMBER_JOBS }}
+        - name: 🧪 Test
+          run: ctest --test-dir ${{ env.CMAKE_BINARY_PREFIX }} -C ${{ env.CMAKE_BUILD_TYPE }} --output-on-failure
+        - name: 🎉 Install
+          run: cmake --install ${{ env.CMAKE_BINARY_PREFIX }} --prefix ${{ env.CMAKE_INSTALL_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }}
 
-    - name: 📂 Load .env file
-      if: hashFiles('.github/workflows/.env') != ''
-      uses: xom9ikk/dotenv@v2
-      with:
-        path: .github/workflows
+    msvc2019:
+      runs-on: windows-2019
+      name: msvc2019 ${{ matrix.architecture }}
+      strategy:
+        fail-fast: false
+        matrix:
+          architecture: [ win32, x64 ]
 
-    - name: Setup MSYS2
-      uses: msys2/setup-msys2@v2
-      with:
-        msystem: ${{matrix.sys}}
-        path-type: minimal
-        release: true
-        update: true
-        pacboy: >-
-          gcc:p
-          cmake:p
+      steps:
+        - uses: ammaraskar/msvc-problem-matcher
+        - name: 📥 Checkout
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+        - name: ⬇️ Setup CMake
+          uses: lukka/get-cmake@latest
+          with:
+            cmakeVersion: ^3
+            ninjaVersion: ^1.11.1
+        - name: 📂 Load .env file
+          if: hashFiles('.github/workflows/.env') != ''
+          uses: xom9ikk/dotenv@v2
+          with:
+            path: .github/workflows
+        - name: ✨ Setup MSVC
+          uses: ilammy/msvc-dev-cmd@v1.13.0
+          with:
+            arch: ${{ matrix.architecture }}
+        - name: 🔧 Configure
+          run: cmake -S ${{ env.CMAKE_SOURCE_PREFIX }} -B ${{ env.CMAKE_BINARY_PREFIX }} -G "Visual Studio 16 2019" -A ${{ matrix.architecture }} -D CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }} -D CMAKE_CXX_STANDARD=${{ matrix.standard }} -D CMAKE_INSTALL_PREFIX=${{ env.CMAKE_INSTALL_PREFIX }} -D CPPTERMINAL_ENABLE_DOCS=OFF
+        - name: ⚙️ Build
+          run: cmake --build ${{ env.CMAKE_BINARY_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel ${{ env.CMAKE_NUMBER_JOBS }}
+        - name: 🧪 Test
+          run: ctest --test-dir ${{ env.CMAKE_BINARY_PREFIX }} -C ${{ env.CMAKE_BUILD_TYPE }} --output-on-failure
+        - name: 🎉 Install
+          run: cmake --install ${{ env.CMAKE_BINARY_PREFIX }} --prefix ${{ env.CMAKE_INSTALL_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }}
 
-    - name: ⚙️ run-cmake (configure)
-      uses: cmake-tools/run-cmake@v0-alpha
-      id: 'configure'
-      with:
-        mode: configure
-        install_prefix: '../install'
-        binary_dir: '../build'
-        variables: |
-          CMAKE_BUILD_TYPE=Debug
+    msvc2022:
+      runs-on: windows-2022
+      name: msvc2022 ${{ matrix.architecture }}
+      strategy:
+        fail-fast: false
+        matrix:
+          architecture: [ win32, x64 ]
 
-    - name: 🛠️ run-cmake (build)
-      uses: cmake-tools/run-cmake@v0-alpha
-      id: build
-      with:
-        mode: build
-        config: Debug
+      steps:
+        - uses: ammaraskar/msvc-problem-matcher
+        - name: 📥 Checkout
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+        - name: ⬇️ Setup CMake
+          uses: lukka/get-cmake@latest
+          with:
+            cmakeVersion: ^3
+            ninjaVersion: ^1.11.1
+        - name: 📂 Load .env file
+          if: hashFiles('.github/workflows/.env') != ''
+          uses: xom9ikk/dotenv@v2
+          with:
+            path: .github/workflows
+        - name: ✨ Setup MSVC
+          uses: ilammy/msvc-dev-cmd@v1.13.0
+          with:
+            arch: ${{ matrix.architecture }}
+        - name: 🔧 Configure
+          run: cmake -S ${{ env.CMAKE_SOURCE_PREFIX }} -B ${{ env.CMAKE_BINARY_PREFIX }} -G "Visual Studio 17 2022" -A ${{ matrix.architecture }} -D CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }} -D CMAKE_CXX_STANDARD=${{ matrix.standard }} -D CMAKE_INSTALL_PREFIX=${{ env.CMAKE_INSTALL_PREFIX }} -D CPPTERMINAL_ENABLE_DOCS=OFF
+        - name: ⚙️ Build
+          run: cmake --build ${{ env.CMAKE_BINARY_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel ${{ env.CMAKE_NUMBER_JOBS }}
+        - name: 🧪 Test
+          run: ctest --test-dir ${{ env.CMAKE_BINARY_PREFIX }} -C ${{ env.CMAKE_BUILD_TYPE }} --output-on-failure
+        - name: 🎉 Install
+          run: cmake --install ${{ env.CMAKE_BINARY_PREFIX }} --prefix ${{ env.CMAKE_INSTALL_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }}
 
-    - name: 🧪 run-ctest
-      uses: cmake-tools/run-ctest@v0-alpha
-      id: test
-      with:
-        build_config: Debug
+    clang:
+      runs-on: windows-2019
+      name: windows-2019 clang-${{ matrix.version }}
+      strategy:
+        fail-fast: false
+        matrix:
+          version: [ 11.1.0, 12.0.1, 13.0.1, 14.0.6, 15.0.2 ]
 
-  msvc2019:
-    runs-on: windows-2019
-    strategy:
-      fail-fast: false
+      steps:
+        - uses: ammaraskar/gcc-problem-matcher
+        - name: 📥 Checkout
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+        - name: ⬇️ Setup CMake
+          uses: lukka/get-cmake@latest
+          with:
+            cmakeVersion: ^3
+            ninjaVersion: ^1.11.1
+        - name: 📂 Load .env file
+          if: hashFiles('.github/workflows/.env') != ''
+          uses: xom9ikk/dotenv@v2
+          with:
+            path: .github/workflows
+        - name: ⬇️ Install Clang
+          run: curl -fsSL -o LLVM${{ matrix.version }}.exe https://github.com/llvm/llvm-project/releases/download/llvmorg-${{ matrix.version }}/LLVM-${{ matrix.version }}-win64.exe ; 7z x LLVM${{ matrix.version }}.exe -y -o"C:/Program Files/LLVM"
+        - name: 🔧 Configure
+          run: cmake -S ${{ env.CMAKE_SOURCE_PREFIX }} -B ${{ env.CMAKE_BINARY_PREFIX }} -D CMAKE_CXX_COMPILER="C:/Program Files/LLVM/bin/clang++.exe" -D CMAKE_C_COMPILER="C:/Program Files/LLVM/bin/clang.exe" -G "MinGW Makefiles" -D CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }} -D CMAKE_CXX_STANDARD=${{ matrix.standard }} -D CMAKE_INSTALL_PREFIX=${{ env.CMAKE_INSTALL_PREFIX }} -D CPPTERMINAL_ENABLE_DOCS=OFF
+        - name: ⚙️ Build
+          run: cmake --build ${{ env.CMAKE_BINARY_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel ${{ env.CMAKE_NUMBER_JOBS }}
+        - name: 🧪 Test
+          run: ctest --test-dir ${{ env.CMAKE_BINARY_PREFIX }} -C ${{ env.CMAKE_BUILD_TYPE }} --output-on-failure
+        - name: 🎉 Install
+          run: cmake --install ${{ env.CMAKE_BINARY_PREFIX }} --prefix ${{ env.CMAKE_INSTALL_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }}
 
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+    clang-cl-11:
+      runs-on: windows-2019
+      name: windows-2019 clang-cl-11 ${{ matrix.architecture }}
+      strategy:
+        fail-fast: false
+        matrix:
+          architecture: [ Win32, x64 ]
 
-    - name: 📂 Load .env file
-      if: hashFiles('.github/workflows/.env') != ''
-      uses: xom9ikk/dotenv@v2
-      with:
-        path: .github/workflows
-    - uses: TheMrMilchmann/setup-msvc-dev@v3
-
-    - name: ⬇️ Setup CMake
-      uses: lukka/get-cmake@latest
-      with:
-        cmakeVersion: ^3
-        ninjaVersion: ^1
-
-    - name: ⚙️ run-cmake (configure)
-      uses: cmake-tools/run-cmake@v0-alpha
-      id: 'configure'
-      with:
-        mode: configure
-        generator: 'Visual Studio 16 2019'
-        install_prefix: '../install'
-        binary_dir: '../build'
-
-    - name: 🛠️ run-cmake (build)
-      uses: cmake-tools/run-cmake@v0-alpha
-      id: build
-      with:
-        mode: build
-        config: Debug
-
-    - name: 🧪 run-ctest
-      uses: cmake-tools/run-ctest@v0-alpha
-      id: test
-      with:
-        build_config: Debug
-
-  msvc2022:
-    runs-on: windows-2022
-    strategy:
-      fail-fast: false
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-
-    - name: 📂 Load .env file
-      if: hashFiles('.github/workflows/.env') != ''
-      uses: xom9ikk/dotenv@v2
-      with:
-        path: .github/workflows
-
-    - uses: TheMrMilchmann/setup-msvc-dev@v3
-
-    - name: ⬇️ Setup CMake
-      uses: lukka/get-cmake@latest
-      with:
-        cmakeVersion: ^3
-        ninjaVersion: ^1
-
-    - name: ⚙️ run-cmake (configure)
-      uses: cmake-tools/run-cmake@v0-alpha
-      id: 'configure'
-      with:
-        mode: configure
-        generator: 'Visual Studio 17 2022'
-        install_prefix: '../install'
-        binary_dir: '../build'
-
-    - name: 🛠️ run-cmake (build)
-      uses: cmake-tools/run-cmake@v0-alpha
-      id: build
-      with:
-        mode: build
-        config: Debug
-
-    - name: 🧪 run-ctest
-      uses: cmake-tools/run-ctest@v0-alpha
-      id: test
-      with:
-        build_config: Debug
-
-  clang:
-    runs-on: windows-2022
-    strategy:
-      fail-fast: false
-      matrix:
-        version: [7.1.0, 8.0.1, 9.0.1, 10.0.0, 11.0.1, 11.1.0, 12.0.1, 13.0.1, 14.0.6, 15.0.7, 16.0.6, 17.0.6, 18.1.4]
-        architecture: [x64_x86, x64]
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-
-    - name: 📂 Load .env file
-      if: hashFiles('.github/workflows/.env') != ''
-      uses: xom9ikk/dotenv@v2
-      with:
-        path: .github/workflows
-
-    - uses: TheMrMilchmann/setup-msvc-dev@v3
-      with:
-        arch: ${{ matrix.architecture }}
-
-    - name: Install Clang
-      run: curl -fsSL -o LLVM${{ matrix.version }}.exe https://github.com/llvm/llvm-project/releases/download/llvmorg-${{ matrix.version }}/LLVM-${{ matrix.version }}-win64.exe ; 7z x LLVM${{ matrix.version }}.exe -y -o"C:/Program Files/LLVM"
-
-    - name: ⬇️ Setup CMake
-      uses: lukka/get-cmake@latest
-      with:
-        cmakeVersion: ^3
-        ninjaVersion: ^1
-
-    - name: ⚙️ run-cmake (configure)
-      uses: cmake-tools/run-cmake@v0-alpha
-      id: 'configure'
-      with:
-        mode: configure
-        install_prefix: '../install'
-        binary_dir: '../build'
-        variables: |
-          CMAKE_CXX_COMPILER:PATH=C:/Program Files/LLVM/bin/clang++.exe
-          CMAKE_C_COMPILER:PATH=C:/Program Files/LLVM/bin/clang.exe
-
-    - name: 🛠️ run-cmake (build)
-      uses: cmake-tools/run-cmake@v0-alpha
-      id: build
-      with:
-        mode: build
-
-    - name: 🧪 run-ctest
-      uses: cmake-tools/run-ctest@v0-alpha
-      id: test
-      with:
-        build_config: Debug
-
-  clang-cl:
-    runs-on: windows-2022
-    strategy:
-      fail-fast: false
-      matrix:
-        architecture: [x64_x86, x64]
-        version: [7.1.0, 8.0.1, 9.0.1, 10.0.0, 11.0.1, 11.1.0, 12.0.1, 13.0.1, 14.0.6, 15.0.7, 16.0.6, 17.0.6, 18.1.4]
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-
-    - name: 📂 Load .env file
-      if: hashFiles('.github/workflows/.env') != ''
-      uses: xom9ikk/dotenv@v2
-      with:
-        path: .github/workflows
-
-    - uses: TheMrMilchmann/setup-msvc-dev@v3
-      with:
-        arch: ${{ matrix.architecture }}
-    - name: Install Clang
-      run: curl -fsSL -o LLVM${{ matrix.version }}.exe https://github.com/llvm/llvm-project/releases/download/llvmorg-${{ matrix.version }}/LLVM-${{ matrix.version }}-win64.exe ; 7z x LLVM${{ matrix.version }}.exe -y -o"C:/Program Files/LLVM"
-
-    - name: ⬇️ Setup CMake
-      uses: lukka/get-cmake@latest
-      with:
-        cmakeVersion: ^3
-        ninjaVersion: ^1
-
-    - name: ⚙️ run-cmake (configure)
-      uses: cmake-tools/run-cmake@v0-alpha
-      id: 'configure'
-      with:
-        mode: configure
-        generator: 'Visual Studio 17 2022'
-        toolset: ClangCL
-        platform: ${{ matrix.architecture }}
-        install_prefix: '../install'
-        binary_dir: '../build'
-        variables: |
-          CMAKE_CXX_COMPILER:PATH=C:/Program Files/LLVM/bin/clang++.exe
-          CMAKE_C_COMPILER:PATH=C:/Program Files/LLVM/bin/clang.exe
-
-    - name: 🛠️ run-cmake (build)
-      uses: cmake-tools/run-cmake@v0-alpha
-      id: build
-      with:
-        mode: build
-        config: Debug
-
-    - name: 🧪 run-ctest
-      uses: cmake-tools/run-ctest@v0-alpha
-      id: test
-      with:
-        build_config: Debug
+      steps:
+        - uses: ammaraskar/msvc-problem-matcher
+        - name: 📥 Checkout
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+        - name: ⬇️ Setup CMake
+          uses: lukka/get-cmake@latest
+          with:
+            cmakeVersion: ^3
+            ninjaVersion: ^1.11.1
+        - name: 📂 Load .env file
+          if: hashFiles('.github/workflows/.env') != ''
+          uses: xom9ikk/dotenv@v2
+          with:
+            path: .github/workflows
+        - name: 🔧 Configure
+          run: cmake -S ${{ env.CMAKE_SOURCE_PREFIX }} -B ${{ env.CMAKE_BINARY_PREFIX }} -G "Visual Studio 16 2019" -A ${{ matrix.architecture }} -T ClangCL -D CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }} -D CMAKE_CXX_STANDARD=${{ matrix.standard }} -D CMAKE_INSTALL_PREFIX=${{ env.CMAKE_INSTALL_PREFIX }} -D CPPTERMINAL_ENABLE_DOCS=OFF
+        - name: ⚙️ Build
+          run: cmake --build ${{ env.CMAKE_BINARY_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel ${{ env.CMAKE_NUMBER_JOBS }}
+        - name: 🧪 Test
+          run: ctest --test-dir ${{ env.CMAKE_BINARY_PREFIX }} -C ${{ env.CMAKE_BUILD_TYPE }} --output-on-failure
+        - name: 🎉 Install
+          run: cmake --install ${{ env.CMAKE_BINARY_PREFIX }} --prefix ${{ env.CMAKE_INSTALL_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }}
