@@ -58,8 +58,11 @@ jobs:
         mode: build
         clean_first: true
 
-    - name: Test
-      run: cd build ; ctest -C Debug --output-on-failure
+    - name: 🧪 run-ctest
+      uses: cmake-tools/run-ctest@v0-alpha
+      id: test
+      with:
+        build_config: Debug
 
   clang:
 
@@ -108,8 +111,11 @@ jobs:
         mode: build
         clean_first: true
 
-    - name: Test
-      run: cd build ; ctest -C Debug --output-on-failure ${{ env.CTEST_VERBOSITY }}
+    - name: 🧪 run-ctest
+      uses: cmake-tools/run-ctest@v0-alpha
+      id: test
+      with:
+        build_config: Debug
 
   intel:
     runs-on: ubuntu-latest
@@ -158,5 +164,8 @@ jobs:
         mode: build
         clean_first: true
 
-    - name: Test
-      run: cd build ; ctest -C Debug --output-on-failure ${{ env.CTEST_VERBOSITY }}
+    - name: 🧪 run-ctest
+      uses: cmake-tools/run-ctest@v0-alpha
+      id: test
+      with:
+        build_config: Debug
