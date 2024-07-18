@@ -38,8 +38,16 @@ jobs:
         cmake-version: 3.24.x
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: 🔧 Configure
-      run: cmake -S . -B ./build -D CMAKE_BUILD_TYPE=Debug
+    - name: ⚙️ run-cmake (configure)
+      uses: cmake-tools/run-cmake@v0-alpha
+      id: 'configure'
+      with:
+        mode: configure
+        generator: 'Ninja'
+        install_prefix: '../install'
+        binary_dir: '../build'
+        variables: |
+          CMAKE_BUILD_TYPE=Debug
     - name: Build
       run: cmake --build build --parallel 2
     - name: Test
@@ -72,8 +80,16 @@ jobs:
         cmake-version: 3.24.x
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: 🔧 Configure
-      run: cmake -S . -B ./build -D CMAKE_BUILD_TYPE=Debug
+    - name: ⚙️ run-cmake (configure)
+      uses: cmake-tools/run-cmake@v0-alpha
+      id: 'configure'
+      with:
+        mode: configure
+        generator: 'Ninja'
+        install_prefix: '../install'
+        binary_dir: '../build'
+        variables: |
+          CMAKE_BUILD_TYPE=Debug
     - name: Build
       run: cmake --build build --parallel 2
     - name: Test
@@ -103,13 +119,22 @@ jobs:
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Install intel-onepai
-      run: apt install --no-install-recommends -y intel-oneapi-compiler-dpcpp-cpp
+      run: apt install --no-install-recommends -y intel-oneapi-compiler-dpcpp-cpp; . /opt/intel/oneapi/setvars.sh
 
-    - name: 🔧 Configure
+    - name: ⚙️ run-cmake (configure)
       env:
         CC: icx
         CXX: icpx
-      run: . /opt/intel/oneapi/setvars.sh ; cmake -S . -B ./build -D CMAKE_BUILD_TYPE=Debug
+      uses: cmake-tools/run-cmake@v0-alpha
+      id: 'configure'
+      with:
+        mode: configure
+        generator: 'Ninja'
+        install_prefix: '../install'
+        binary_dir: '../build'
+        variables: |
+          CMAKE_BUILD_TYPE=Debug
+
     - name: Build
       run: cmake --build build --parallel 2
     - name: Test

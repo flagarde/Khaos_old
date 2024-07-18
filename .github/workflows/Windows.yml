@@ -41,6 +41,17 @@ jobs:
           gcc:p
           cmake:p
 
+    - name: ⚙️ run-cmake (configure)
+      uses: cmake-tools/run-cmake@v0-alpha
+      id: 'configure'
+      with:
+        mode: configure
+        generator: 'Ninja'
+        install_prefix: '../install'
+        binary_dir: '../build'
+        variables: |
+          CMAKE_BUILD_TYPE=Debug
+
     - name: Run CMake
       run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
     - name: Build
@@ -65,8 +76,17 @@ jobs:
     - uses: TheMrMilchmann/setup-msvc-dev@v3
       with:
         arch: ${{ matrix.architecture }}
-    - name: Run CMake
-      run: cmake -S . -B build -G "Visual Studio 16 2019" -A ${{ matrix.architecture }}
+
+    - name: ⚙️ run-cmake (configure)
+      uses: cmake-tools/run-cmake@v0-alpha
+      id: 'configure'
+      with:
+        mode: configure
+        generator: 'Visual Studio 16 2019'
+        platform: ${{ matrix.architecture }}
+        install_prefix: '../install'
+        binary_dir: '../build'
+
     - name: Build
       run: cmake --build build --config Debug --parallel 2
     - name: Test
@@ -89,8 +109,16 @@ jobs:
     - uses: TheMrMilchmann/setup-msvc-dev@v3
       with:
         arch: ${{ matrix.architecture }}
-    - name: Run CMake
-      run: cmake -S . -B build -G "Visual Studio 17 2022" -A ${{ matrix.architecture }}
+    - name: ⚙️ run-cmake (configure)
+      uses: cmake-tools/run-cmake@v0-alpha
+      id: 'configure'
+      with:
+        mode: configure
+        generator: 'Visual Studio 17 2022'
+        platform: ${{ matrix.architecture }}
+        install_prefix: '../install'
+        binary_dir: '../build'
+
     - name: Build
       run: cmake --build build --config Debug --parallel 2
     - name: Test
@@ -116,8 +144,20 @@ jobs:
         arch: ${{ matrix.architecture }}
     - name: Install Clang
       run: curl -fsSL -o LLVM${{ matrix.version }}.exe https://github.com/llvm/llvm-project/releases/download/llvmorg-${{ matrix.version }}/LLVM-${{ matrix.version }}-win64.exe ; 7z x LLVM${{ matrix.version }}.exe -y -o"C:/Program Files/LLVM"
-    - name: Run CMake
-      run: cmake -S . -B build -DCMAKE_CXX_COMPILER="C:/Program Files/LLVM/bin/clang++.exe" -DCMAKE_C_COMPILER="C:/Program Files/LLVM/bin/clang.exe" -DCMAKE_BUILD_TYPE=Debug -G "MinGW Makefiles" -A ${{ matrix.architecture }}
+
+    - name: ⚙️ run-cmake (configure)
+      uses: cmake-tools/run-cmake@v0-alpha
+      id: 'configure'
+      with:
+        mode: configure
+        platform: ${{ matrix.architecture }}
+        install_prefix: '../install'
+        binary_dir: '../build'
+        variables: |
+          CMAKE_BUILD_TYPE=Debug
+          CMAKE_CXX_COMPILER="C:/Program Files/LLVM/bin/clang++.exe"
+          CMAKE_C_COMPILER="C:/Program Files/LLVM/bin/clang.exe"
+
     - name: Build
       run: cmake --build build --parallel 2
     - name: Test
@@ -143,8 +183,22 @@ jobs:
         arch: ${{ matrix.architecture }}
     - name: Install Clang
       run: curl -fsSL -o LLVM${{ matrix.version }}.exe https://github.com/llvm/llvm-project/releases/download/llvmorg-${{ matrix.version }}/LLVM-${{ matrix.version }}-win64.exe ; 7z x LLVM${{ matrix.version }}.exe -y -o"C:/Program Files/LLVM"
-    - name: Run CMake
-      run: cmake -S . -B build -DCMAKE_CXX_COMPILER="C:/Program Files/LLVM/bin/clang++.exe" -DCMAKE_C_COMPILER="C:/Program Files/LLVM/bin/clang.exe" -G"Visual Studio 17 2022" -A ${{ matrix.architecture }} -T ClangCL
+
+    - name: ⚙️ run-cmake (configure)
+      uses: cmake-tools/run-cmake@v0-alpha
+      id: 'configure'
+      with:
+        mode: configure
+        generator: 'Visual Studio 17 2022'
+        toolset: ClangCL
+        platform: ${{ matrix.architecture }}
+        install_prefix: '../install'
+        binary_dir: '../build'
+        variables: |
+          CMAKE_BUILD_TYPE=Debug
+          CMAKE_CXX_COMPILER="C:/Program Files/LLVM/bin/clang++.exe"
+          CMAKE_C_COMPILER="C:/Program Files/LLVM/bin/clang.exe"
+
     - name: Build
       run: cmake --build build --config Debug --parallel 2
     - name: Test

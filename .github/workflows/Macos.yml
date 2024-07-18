@@ -12,29 +12,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  macos-11:
-    runs-on: macos-11
-    strategy:
-      fail-fast: false
-      matrix:
-        xcode: ['11.7', '12.4', 12.5.1, '13.0']
-    env:
-      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
-
-    steps:
-    - uses: actions/checkout@v4
-    - name: 📂 Load .env file
-      if: hashFiles('.github/workflows/.env') != ''
-      uses: xom9ikk/dotenv@v2
-      with:
-        path: .github/workflows
-    - name: Run CMake
-      run: cmake -S . -B build -D CMAKE_BUILD_TYPE=Debug
-    - name: Build
-      run: cmake --build build --parallel 2
-    - name: Test
-      run: cd build ; ctest -C Debug --output-on-failure ${{ env.CTEST_VERBOSITY }}
-
   macos-12:
     runs-on: macos-12
     strategy:
@@ -51,8 +28,18 @@ jobs:
       uses: xom9ikk/dotenv@v2
       with:
         path: .github/workflows
+
+    - name: ⚙️ run-cmake (configure)
+      uses: cmake-tools/run-cmake@v0-alpha
+      id: 'configure'
+      with:
+        mode: configure
+        generator: 'Xcode'
+        install_prefix: '../install'
+        binary_dir: '../build'
+
     - name: Run CMake
-      run: cmake -S . -B build -D CMAKE_BUILD_TYPE=Debug
+      run: cmake -S . -B build --config Debug -D CMAKE_BUILD_TYPE=Debug
     - name: Build
       run: cmake --build build --parallel 2
     - name: Test
