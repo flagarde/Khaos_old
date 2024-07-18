@@ -199,7 +199,7 @@
             platform: ${{ matrix.architecture }}
             variables: |
               CMAKE_CXX_COMPILER=C:/Program Files/LLVM/bin/clang++.exe
-              CMAKE_C_COMPILER="C:/Program Files/LLVM/bin/clang.exe"
+              CMAKE_C_COMPILER=C:/Program Files/LLVM/bin/clang.exe
               CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }}
 
         - name: ⚙️ Build
