@@ -17,9 +17,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image: [4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+        version: [4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 
-    container: flagarde/ci-ubuntu-gcc-${{ matrix.image }}-x86_64:latest
+    container: flagarde/ci-ubuntu-gcc-${{ matrix.version }}-x86_64:latest
 
     steps:
     - name: Install git
@@ -56,7 +56,6 @@ jobs:
       id: build
       with:
         mode: build
-        clean_first: true
 
     - name: 🧪 run-ctest
       uses: cmake-tools/run-ctest@v0-alpha
@@ -70,9 +69,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image: [3.5, 3.6, 3.7, 3.8, 3.9, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        version: [3.5, 3.6, 3.7, 3.8, 3.9, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
-    container: flagarde/ci-ubuntu-clang-${{ matrix.image }}-x86_64:latest
+    container: flagarde/ci-ubuntu-clang-${{ matrix.version }}-x86_64:latest
 
     steps:
     - name: Install git
@@ -109,7 +108,6 @@ jobs:
       id: build
       with:
         mode: build
-        clean_first: true
 
     - name: 🧪 run-ctest
       uses: cmake-tools/run-ctest@v0-alpha
@@ -162,7 +160,6 @@ jobs:
       id: build
       with:
         mode: build
-        clean_first: true
 
     - name: 🧪 run-ctest
       uses: cmake-tools/run-ctest@v0-alpha
