@@ -64,7 +64,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        gcc: [10, 11, 12, 13]
+        version: [9, 10, 11, 12, 13, 14]
 
     steps:
     - name: Checkout
@@ -82,10 +82,13 @@ jobs:
         cmakeVersion: ^3
         ninjaVersion: ^1
 
+    - name:  ⬇️ Setup GCC
+      run: brew install gcc@${{matrix.version}}
+
     - name: ⚙️ run-cmake (configure)
       env:
-        CC: gcc-${{matrix.gcc}}
-        CXX: g++-${{matrix.gcc}}
+        CC: gcc-${{matrix.version}}
+        CXX: g++-${{matrix.version}}
       uses: cmake-tools/run-cmake@v0-alpha
       id: 'configure'
       with:
