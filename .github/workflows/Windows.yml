@@ -72,8 +72,6 @@ jobs:
     runs-on: windows-2019
     strategy:
       fail-fast: false
-      matrix:
-        architecture: [win32, x64]
 
     steps:
     - name: Checkout
@@ -85,8 +83,6 @@ jobs:
       with:
         path: .github/workflows
     - uses: TheMrMilchmann/setup-msvc-dev@v3
-      with:
-        arch: ${{ matrix.architecture }}
 
     - name: ⬇️ Setup CMake
       uses: lukka/get-cmake@latest
@@ -100,7 +96,6 @@ jobs:
       with:
         mode: configure
         generator: 'Visual Studio 16 2019'
-        platform: ${{ matrix.architecture }}
         install_prefix: '../install'
         binary_dir: '../build'
 
@@ -121,8 +116,6 @@ jobs:
     runs-on: windows-2022
     strategy:
       fail-fast: false
-      matrix:
-        architecture: [x64_x86, x64]
 
     steps:
     - name: Checkout
@@ -135,8 +128,6 @@ jobs:
         path: .github/workflows
 
     - uses: TheMrMilchmann/setup-msvc-dev@v3
-      with:
-        arch: ${{ matrix.architecture }}
 
     - name: ⬇️ Setup CMake
       uses: lukka/get-cmake@latest
@@ -150,7 +141,6 @@ jobs:
       with:
         mode: configure
         generator: 'Visual Studio 17 2022'
-        platform: ${{ matrix.architecture }}
         install_prefix: '../install'
         binary_dir: '../build'
 
@@ -206,9 +196,8 @@ jobs:
         install_prefix: '../install'
         binary_dir: '../build'
         variables: |
-          CMAKE_BUILD_TYPE=Debug
-          CMAKE_CXX_COMPILER="C:/Program Files/LLVM/bin/clang++.exe"
-          CMAKE_C_COMPILER="C:/Program Files/LLVM/bin/clang.exe"
+          CMAKE_CXX_COMPILER:PATH=C:/Program Files/LLVM/bin/clang++.exe
+          CMAKE_C_COMPILER:PATH=C:/Program Files/LLVM/bin/clang.exe
 
     - name: 🛠️ run-cmake (build)
       uses: cmake-tools/run-cmake@v0-alpha
@@ -263,8 +252,8 @@ jobs:
         install_prefix: '../install'
         binary_dir: '../build'
         variables: |
-          CMAKE_CXX_COMPILER="C:/Program Files/LLVM/bin/clang++.exe"
-          CMAKE_C_COMPILER="C:/Program Files/LLVM/bin/clang.exe"
+          CMAKE_CXX_COMPILER:PATH=C:/Program Files/LLVM/bin/clang++.exe
+          CMAKE_C_COMPILER:PATH=C:/Program Files/LLVM/bin/clang.exe
 
     - name: 🛠️ run-cmake (build)
       uses: cmake-tools/run-cmake@v0-alpha
