@@ -53,8 +53,11 @@ jobs:
         mode: build
         config: Debug
 
-    - name: Test
-      run: cd build ; ctest -C Debug --output-on-failure ${{ env.CTEST_VERBOSITY }}
+    - name: 🧪 run-ctest
+      uses: cmake-tools/run-ctest@v0-alpha
+      id: test
+      with:
+        build_config: Debug
 
   gcc:
     runs-on: macos-12
@@ -97,5 +100,8 @@ jobs:
       with:
         mode: build
 
-    - name: Test
-      run: cd build ; ctest -C Debug --output-on-failure ${{ env.CTEST_VERBOSITY }}
+    - name: 🧪 run-ctest
+      uses: cmake-tools/run-ctest@v0-alpha
+      id: test
+      with:
+        build_config: Debug
