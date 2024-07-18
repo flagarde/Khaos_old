@@ -62,8 +62,13 @@
             variables: |
               CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }}
 
-        - name: ⚙️ Build
-          run: cmake --build ${{ env.CMAKE_BINARY_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel ${{ env.CMAKE_NUMBER_JOBS }}
+        - name: 🛠️ run-cmake (build)
+          uses: cmake-tools/run-cmake@v0-alpha
+          id: build
+          with:
+            mode: build
+            config: ${{ env.CMAKE_BUILD_TYPE }}
+
         - name: 🧪 Test
           run: ctest --test-dir ${{ env.CMAKE_BINARY_PREFIX }} -C ${{ env.CMAKE_BUILD_TYPE }} --output-on-failure
         - name: 🎉 Install
@@ -108,8 +113,13 @@
             binary_dir: ${{ env.CMAKE_BINARY_PREFIX }}
             platform: ${{ matrix.architecture }}
 
-        - name: ⚙️ Build
-          run: cmake --build ${{ env.CMAKE_BINARY_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel ${{ env.CMAKE_NUMBER_JOBS }}
+        - name: 🛠️ run-cmake (build)
+          uses: cmake-tools/run-cmake@v0-alpha
+          id: build
+          with:
+            mode: build
+            config: ${{ env.CMAKE_BUILD_TYPE }}
+
         - name: 🧪 Test
           run: ctest --test-dir ${{ env.CMAKE_BINARY_PREFIX }} -C ${{ env.CMAKE_BUILD_TYPE }} --output-on-failure
         - name: 🎉 Install
@@ -154,8 +164,13 @@
             binary_dir: ${{ env.CMAKE_BINARY_PREFIX }}
             platform: ${{ matrix.architecture }}
 
-        - name: ⚙️ Build
-          run: cmake --build ${{ env.CMAKE_BINARY_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel ${{ env.CMAKE_NUMBER_JOBS }}
+        - name: 🛠️ run-cmake (build)
+          uses: cmake-tools/run-cmake@v0-alpha
+          id: build
+          with:
+            mode: build
+            config: ${{ env.CMAKE_BUILD_TYPE }}
+
         - name: 🧪 Test
           run: ctest --test-dir ${{ env.CMAKE_BINARY_PREFIX }} -C ${{ env.CMAKE_BUILD_TYPE }} --output-on-failure
         - name: 🎉 Install
@@ -202,8 +217,12 @@
               CMAKE_C_COMPILER=C:/Program Files/LLVM/bin/clang.exe
               CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }}
 
-        - name: ⚙️ Build
-          run: cmake --build ${{ env.CMAKE_BINARY_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel ${{ env.CMAKE_NUMBER_JOBS }}
+        - name: 🛠️ run-cmake (build)
+          uses: cmake-tools/run-cmake@v0-alpha
+          id: build
+          with:
+            mode: build
+            config: ${{ env.CMAKE_BUILD_TYPE }}
         - name: 🧪 Test
           run: ctest --test-dir ${{ env.CMAKE_BINARY_PREFIX }} -C ${{ env.CMAKE_BUILD_TYPE }} --output-on-failure
         - name: 🎉 Install
@@ -248,8 +267,12 @@
                 CMAKE_CXX_COMPILER=C:/Program Files/LLVM/bin/clang++.exe
                 CMAKE_C_COMPILER="C:/Program Files/LLVM/bin/clang.exe"
 
-        - name: ⚙️ Build
-          run: cmake --build ${{ env.CMAKE_BINARY_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel ${{ env.CMAKE_NUMBER_JOBS }}
+        - name: 🛠️ run-cmake (build)
+          uses: cmake-tools/run-cmake@v0-alpha
+          id: build
+          with:
+            mode: build
+            config: ${{ env.CMAKE_BUILD_TYPE }}
         - name: 🧪 Test
           run: ctest --test-dir ${{ env.CMAKE_BINARY_PREFIX }} -C ${{ env.CMAKE_BUILD_TYPE }} --output-on-failure
         - name: 🎉 Install
