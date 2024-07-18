@@ -27,16 +27,18 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
+
     - name: 📂 Load .env file
       if: hashFiles('.github/workflows/.env') != ''
       uses: xom9ikk/dotenv@v2
       with:
         path: .github/workflows
-    - name: Setup CMake
-      uses: jwlawson/actions-setup-cmake@v2.0
+
+    - name: ⬇️ Setup CMake
+      uses: lukka/get-cmake@latest
       with:
-        cmake-version: 3.24.x
-        github-api-token: ${{ secrets.GITHUB_TOKEN }}
+        cmakeVersion: ^3
+        ninjaVersion: ^1
 
     - name: ⚙️ run-cmake (configure)
       uses: cmake-tools/run-cmake@v0-alpha
@@ -69,16 +71,18 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
+
     - name: 📂 Load .env file
       if: hashFiles('.github/workflows/.env') != ''
       uses: xom9ikk/dotenv@v2
       with:
         path: .github/workflows
-    - name: Setup CMake
-      uses: jwlawson/actions-setup-cmake@v2.0
+
+    - name: ⬇️ Setup CMake
+      uses: lukka/get-cmake@latest
       with:
-        cmake-version: 3.24.x
-        github-api-token: ${{ secrets.GITHUB_TOKEN }}
+        cmakeVersion: ^3
+        ninjaVersion: ^1
 
     - name: ⚙️ run-cmake (configure)
       uses: cmake-tools/run-cmake@v0-alpha
@@ -96,9 +100,7 @@ jobs:
       run: cd build ; ctest -C Debug --output-on-failure ${{ env.CTEST_VERBOSITY }}
 
   intel:
-
     runs-on: ubuntu-latest
-
     container: flagarde/ci-ubuntu-gcc-11-x86_64:latest
 
     steps:
@@ -107,16 +109,18 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
+
     - name: 📂 Load .env file
       if: hashFiles('.github/workflows/.env') != ''
       uses: xom9ikk/dotenv@v2
       with:
         path: .github/workflows
-    - name: Setup CMake
-      uses: jwlawson/actions-setup-cmake@v2.0
+
+    - name: ⬇️ Setup CMake
+      uses: lukka/get-cmake@latest
       with:
-        cmake-version: 3.24.x
-        github-api-token: ${{ secrets.GITHUB_TOKEN }}
+        cmakeVersion: ^3
+        ninjaVersion: ^1
 
     - name: Install intel-onepai
       run: apt install --no-install-recommends -y intel-oneapi-compiler-dpcpp-cpp; . /opt/intel/oneapi/setvars.sh

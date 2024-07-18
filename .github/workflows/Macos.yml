@@ -22,12 +22,20 @@ jobs:
       DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
+
     - name: 📂 Load .env file
       if: hashFiles('.github/workflows/.env') != ''
       uses: xom9ikk/dotenv@v2
       with:
         path: .github/workflows
+
+    - name: ⬇️ Setup CMake
+      uses: lukka/get-cmake@latest
+      with:
+        cmakeVersion: ^3
+        ninjaVersion: ^1
 
     - name: ⚙️ run-cmake (configure)
       uses: cmake-tools/run-cmake@v0-alpha
@@ -38,32 +46,46 @@ jobs:
         install_prefix: '../install'
         binary_dir: '../build'
 
-    - name: Run CMake
-      run: cmake -S . -B build --config Debug -D CMAKE_BUILD_TYPE=Debug
     - name: Build
-      run: cmake --build build --parallel 2
+      run: cmake --build build --config Debug --parallel 2
     - name: Test
       run: cd build ; ctest -C Debug --output-on-failure ${{ env.CTEST_VERBOSITY }}
 
   gcc:
-    runs-on: macos-11
+    runs-on: macos-12
     strategy:
       fail-fast: false
       matrix:
         gcc: [10, 11, 12, 13]
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
+
     - name: 📂 Load .env file
       if: hashFiles('.github/workflows/.env') != ''
       uses: xom9ikk/dotenv@v2
       with:
         path: .github/workflows
-    - name: Run CMake
+
+    - name: ⬇️ Setup CMake
+      uses: lukka/get-cmake@latest
+      with:
+        cmakeVersion: ^3
+        ninjaVersion: ^1
+
+    - name: ⚙️ run-cmake (configure)
       env:
         CC: gcc-${{matrix.gcc}}
         CXX: g++-${{matrix.gcc}}
-      run: cmake -S . -B build -D CMAKE_BUILD_TYPE=Debug
+      uses: cmake-tools/run-cmake@v0-alpha
+      id: 'configure'
+      with:
+        mode: configure
+        generator: 'Ninja'
+        install_prefix: '../install'
+        binary_dir: '../build'
+
     - name: Build
       run: cmake --build build --parallel 2
     - name: Test
