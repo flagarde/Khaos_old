@@ -1,0 +1,65 @@
+---
+name: MSVC6.0
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  MSVC6:
+    runs-on: windows-latest
+    name: 'MSVC 6.0'
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 📥 Install MSVC6.0
+        uses: actions/checkout@v4
+        with:
+          repository: 'itsmattkc/MSVC600'
+          path: './'
+
+      - name: Setup MSVC6.0
+        run: ./VC98/bin/VCVARS32.bat
+
+      - name: ⬇️ Setup CMake
+        uses: lukka/get-cmake@latest
+        with:
+          cmakeVersion: ^3.5
+          ninjaVersion: ^1.11.1
+
+      - name: 📂 Load .env file
+        if: hashFiles('.github/workflows/.env') != ''
+        uses: xom9ikk/dotenv@v2
+        with:
+          path: .github/workflows
+
+      - name: ⚙️ run-cmake (configure)
+        uses: cmake-tools/run-cmake@v0-alpha
+        id: 'configure'
+        with:
+          mode: configure
+          generator: 'Visual Studio 6'
+          source_dir: ${{ env.CMAKE_SOURCE_PREFIX }}
+          install_prefix: ${{ env.CMAKE_INSTALL_PREFIX }}
+          binary_dir: ${{ env.CMAKE_BINARY_PREFIX }}
+          variables: |
+            CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }}
+
+      - name: 🛠️ run-cmake (build)
+        uses: cmake-tools/run-cmake@v0-alpha
+        id: build
+        with:
+          mode: build
+          config: ${{ env.CMAKE_BUILD_TYPE }}
+
+      - name: 🧪 Test
+        run: ctest --test-dir ${{ env.CMAKE_BINARY_PREFIX }} -C ${{ env.CMAKE_BUILD_TYPE }} --output-on-failure
+      - name: 🎉 Install
+        run: cmake --install ${{ env.CMAKE_BINARY_PREFIX }} --prefix ${{ env.CMAKE_INSTALL_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }}
