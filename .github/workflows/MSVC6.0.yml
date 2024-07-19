@@ -31,7 +31,7 @@ jobs:
       - name: ⬇️ Setup CMake
         uses: lukka/get-cmake@latest
         with:
-          cmakeVersion: ^3.5
+          cmakeVersion: ~3.5
           ninjaVersion: ^1.11.1
 
       - name: 📂 Load .env file
