@@ -26,6 +26,10 @@ jobs:
           path: './MSVC6'
 
       - name: Setup MSVC6.0
+        env:
+          CC: ./MSVC6/MSVC600/VC98/Bin/CL.EXE
+          CXX: ./MSVC6/MSVC600/VC98/Bin/CL.EXE
+
         run: ./MSVC6/VC98/bin/VCVARS32.bat
 
       - name: ⬇️ Setup CMake
