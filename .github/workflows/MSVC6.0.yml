@@ -42,9 +42,6 @@ jobs:
 
       - name: ⚙️ run-cmake (configure)
         uses: cmake-tools/run-cmake@v0-alpha
-        env:
-          CMAKE_C_COMPILER: ./MSVC6/MSVC600/VC98/Bin/CL.EXE
-          CMAKE_CXX_COMPILER: ./MSVC6/MSVC600/VC98/Bin/CL.EXE
         id: 'configure'
         with:
           mode: configure
@@ -54,6 +51,8 @@ jobs:
           binary_dir: ${{ env.CMAKE_BINARY_PREFIX }}
           variables: |
             CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }}
+            CMAKE_C_COMPILER: ./MSVC6/MSVC600/VC98/Bin/CL.EXE
+            CMAKE_CXX_COMPILER: ./MSVC6/MSVC600/VC98/Bin/CL.EXE
 
       - name: 🛠️ run-cmake (build)
         uses: cmake-tools/run-cmake@v0-alpha
