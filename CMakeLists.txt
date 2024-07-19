@@ -14,7 +14,13 @@ if(KHAOS_BUILD_DOCS OR KHAOS_BUILD_TESTS AND ("${CMAKE_VERSION}" VERSION_GREATER
   cmmm_modules_list(URL "gh:flagarde/CMakeCM#main" FILEPATH ModulesListNew.cmake)
 endif()
 
-project(Khaos VERSION 0.0.1.0 DESCRIPTION "A C/C++ library to simplify cross-platform programming" HOMEPAGE_URL "https://github.com/flagarde/Khaos" LANGUAGES C CXX)
+if("${CMAKE_VERSION}" VERSION_GREATER "3.11.4")
+  project(Khaos VERSION 0.0.1.0 DESCRIPTION "A C/C++ library to simplify cross-platform programming" HOMEPAGE_URL "https://github.com/flagarde/Khaos" LANGUAGES C CXX)
+else if("${CMAKE_VERSION}" VERSION_GREATER "3.8.2")
+  project(Khaos VERSION 0.0.1.0 DESCRIPTION "A C/C++ library to simplify cross-platform programming" LANGUAGES C CXX)
+else()
+  project(Khaos VERSION 0.0.1.0 LANGUAGES C CXX)
+endif()
 
 add_subdirectory(src)
 
