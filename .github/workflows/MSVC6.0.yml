@@ -43,8 +43,8 @@ jobs:
       - name: ⚙️ run-cmake (configure)
         uses: cmake-tools/run-cmake@v0-alpha
         env:
-          CC: ./MSVC6/MSVC600/VC98/Bin/CL.EXE
-          CXX: ./MSVC6/MSVC600/VC98/Bin/CL.EXE
+          CMAKE_C_COMPILER: ./MSVC6/MSVC600/VC98/Bin/CL.EXE
+          CMAKE_CXX_COMPILER: ./MSVC6/MSVC600/VC98/Bin/CL.EXE
         id: 'configure'
         with:
           mode: configure
