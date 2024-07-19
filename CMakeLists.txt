@@ -6,7 +6,7 @@ option(KHAOS_BUILD_DOCS "Build the docs" ON)
 option(KHAOS_BUILD_TESTS "Build the tests" ON)
 option(KHAOS_BUILD_EXAMPLES "Build the examples" ON)
 
-if(KHAOS_BUILD_DOCS OR KHAOS_BUILD_TESTS)
+if(KHAOS_BUILD_DOCS OR KHAOS_BUILD_TESTS AND ("${CMAKE_VERSION}" VERSION_GREATER "3.10.3"))
   include(FetchContent)
   FetchContent_Declare(CMMM GIT_REPOSITORY "https://github.com/cmake-tools/cmmm.git" GIT_TAG "v1.0")
   FetchContent_MakeAvailable(CMMM)
