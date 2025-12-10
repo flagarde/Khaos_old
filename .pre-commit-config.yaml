@@ -67,7 +67,7 @@ repos:
 #    args: [--mapping, '2', --sequence, '2', --offset, '0', --width, '250']
 
 - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
-  rev: 3.5.0
+  rev: 3.6.0
   hooks:
   - id: editorconfig-checker
     name: check .editorconfig rules
@@ -92,6 +92,6 @@ repos:
   - id: cpplint
 
 - repo: https://github.com/pre-commit/mirrors-clang-format
-  rev: v21.1.6
+  rev: v21.1.7
   hooks:
   - id: clang-format
